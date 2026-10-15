@@ -1,12 +1,15 @@
-TOYOTA CORPORATE EXPERIENCE — V4
+TOYOTA CORPORATE EXPERIENCE - V9
 
-Abre index.html en Chrome, Edge o Firefox.
-El proyecto funciona sin servidor y sin instalar paquetes.
-Los diagramas, simulaciones, cuestionario y presentación son interactivos.
-La ilustración de fondo es original y local, no depende de internet.
-La imagen del vehículo es una ilustración conceptual, no una fotografía Toyota oficial.
-Para publicar: sube el contenido de esta carpeta a Vercel como sitio estático.
-Contenido académico independiente, no afiliado a Toyota.
-Consulta los términos de Toyota antes de utilizar logotipos o imágenes oficiales.
+Abre index.html en Chrome, Edge o Firefox. Funciona sin servidor ni paquetes.
+Para publicar: sube esta carpeta completa a Vercel como sitio estatico.
 
-V5: Fotografías Toyota remotas en portada, cierre y presentación. Requieren conexión a internet; el fondo SVG local sigue disponible como respaldo. Fuentes: Toyota Gazoo Racing (press release 2025/0321-01) y Toyota Media Suiza (Supra Studio). Uso exclusivamente académico; verificar las condiciones de las fuentes antes de redistribuir.
+NOVEDADES V9
+- Animaciones al hacer scroll: barra de progreso, encabezado dinamico, titulares que se revelan por palabra, parallax, banda de texto en movimiento, contadores animados.
+- Seccion 01 con orbita interactiva de departamentos.
+- TOYOTA - FACTORY EXPERIENCE: la secuencia ahora recorre 4 escenas DISTINTAS (assets/scene-1..4) con transicion cinematografica, etiquetas por etapa, barra de progreso por segmentos, flechas, deslizar en movil y autoplay al llegar a la seccion.
+- Modo presentacion rediseñado: fondos con imagenes que cambian por diapositiva, diseno a dos columnas, animaciones escalonadas, puntos de navegacion, deslizar en tablet/movil y nueva diapositiva "De la pieza al cliente".
+
+PARA USAR TUS PROPIAS FOTOS EN LA FABRICA
+Reemplaza los archivos de assets/ conservando el nombre (scene-1-materiales.webp, scene-2-ensamblaje.webp, scene-3-calidad.webp, scene-4-distribucion.webp). Recomendado: 1600x900.
+
+Las escenas actuales son recortes de assets/supra-factory.webp. Proyecto academico independiente, no afiliado a Toyota. Consulta los terminos de uso de Toyota antes de usar logotipos o imagenes oficiales.
