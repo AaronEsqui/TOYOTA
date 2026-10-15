@@ -427,6 +427,22 @@ body.site-fullscreen .hero{min-height:100svh}
 #fullscreen-message.visible{display:block}
 @media(max-width:1100px){.hdr .site-fullscreen-btn .fullscreen-label{display:none}}
 @media(max-width:600px){.hdr .site-fullscreen-btn{padding:8px 10px;font-size:17px}.hero .site-fullscreen-btn{width:100%;justify-content:center}}
+
+/* V14 — cinematic tire smoke. Canvas is decorative and never blocks controls. */
+.smoke-section{position:relative;isolation:isolate;overflow:hidden}
+.smoke-section>.tire-smoke{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.9}
+.smoke-section>.wrap,.smoke-section>.exec-inner{position:relative;z-index:2}
+.footer.smoke-section{min-height:470px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:105px 24px}
+.footer.smoke-section>.eyebrow,.footer.smoke-section>h2,.footer.smoke-section>p{position:relative;z-index:2;text-shadow:0 5px 24px #000,0 1px 6px #000}
+.footer.smoke-section h2{font-size:clamp(37px,6vw,82px);letter-spacing:-.055em;line-height:1.1}
+#conclusion.smoke-section{min-height:640px;display:flex;align-items:center}
+#conclusion.smoke-section .wrap{width:100%}
+#conclusion.smoke-section h2{max-width:920px;text-shadow:0 4px 26px #000}
+#conclusion.smoke-section .lead{background:linear-gradient(90deg,#080a0ec0,#080a0e22);border-radius:8px;padding:12px 16px 12px 0;text-shadow:0 2px 9px #000}
+.exec-section.smoke-section>.tire-smoke{z-index:0;opacity:.78}
+.exec-section.smoke-section>.exec-inner{z-index:2}
+@media(max-width:650px){.footer.smoke-section{min-height:400px}.smoke-section>.tire-smoke{opacity:.68}}
+@media(prefers-reduced-motion:reduce){.smoke-section>.tire-smoke{opacity:.2}}
 </style>
 </head>
 <body>
@@ -602,17 +618,15 @@ body.site-fullscreen .hero{min-height:100svh}
   <div class="tile" style="max-width:800px" data-reveal="up"><p id="quiz-count" class="eyebrow"></p><h3 id="quiz-question"></h3><div id="quiz-options"></div><p id="quiz-feedback" class="muted"></p><button class="btn" id="quiz-next" style="display:none" onclick="nextQuestion()">Continuar →</button></div>
 </div></section>
 
-<section class="section" id="conclusion"><div class="wrap">
+<section class="section smoke-section" id="conclusion"><canvas class="tire-smoke" aria-hidden="true"></canvas><div class="wrap">
   <div class="eyebrow">08 / Conclusión ejecutiva</div>
   <h2 data-split>La eficiencia es el resultado de la conexión.</h2>
   <p class="lead" data-reveal="up">El sistema administrativo de Toyota integra objetivos, personas, estructura, procesos, recursos, información, tecnología y control. Su coordinación favorece la calidad, la reducción de desperdicios y la mejora continua.</p>
   <div class="actions"><button class="btn" onclick="startPresentation()">▶ Iniciar presentación</button><a href="#inicio" class="btn alt">Volver al inicio ↑</a></div>
-  <div class="presentation-guide"><p><strong>Modo exposición.</strong> Usa ← → para avanzar, N para las notas, F para pantalla completa y Esc para salir. El cronómetro continúa durante la exposición.</p><button class="btn alt small" onclick="startPresentation()">▶ Abrir modo ejecutivo</button></div>
-  <div class="source-links"><a href="https://global.toyota/en/downloadable-assets/" target="_blank" rel="noopener noreferrer">Archivo visual oficial Toyota ↗</a><a href="https://global.toyota/en/terms-of-use/" target="_blank" rel="noopener noreferrer">Condiciones de uso de marca ↗</a></div>
 </div></section>
 </main>
 
-<footer class="footer"><div class="eyebrow">Coordinación · Innovación · Mejora continua</div><h2 data-split>GRACIAS POR SU ATENCIÓN</h2><p class="muted">Sistema Administrativo de Toyota · Presentación académica independiente</p></footer>
+<footer class="footer smoke-section"><canvas class="tire-smoke" aria-hidden="true"></canvas><div class="eyebrow">Coordinación · Innovación · Mejora continua</div><h2 data-split>GRACIAS POR SU ATENCIÓN</h2><p class="muted">Sistema Administrativo de Toyota · Presentación académica independiente</p></footer>
 <div class="photo-credit">Proyecto académico independiente, no afiliado a Toyota. Fotografías: Toyota Gazoo Racing y Toyota Media; sujetas a las condiciones de sus titulares. Las cuatro imágenes de Factory Experience fueron aportadas para este proyecto académico y se incluyen localmente en alta calidad.</div>
 
 <!-- ============ PRESENTACIÓN ============ -->
@@ -821,7 +835,7 @@ function buildExecutive(){
  const scroll=$('exec-scroll');
  scroll.innerHTML=slides.map((s,i)=>{
   const vis=s.visual?`<div class="s-visual">${s.visual()}</div>`:'';
-  return `<section class="exec-section" id="exec-section-${i}" data-exec-index="${i}" style="--exec-img:url('${s.bg}')"><div class="exec-inner"><div class="exec-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div><div class="exec-overline">${s.tag}</div><div class="s-grid ${s.layout==='split'?'split':''}"><div class="s-text"><h2>${s.title}</h2><div class="lead">${s.body}</div></div>${vis}</div></div></section>`;
+  return `<section class="exec-section ${i===8||i===10?'smoke-section':''}" id="exec-section-${i}" data-exec-index="${i}" style="--exec-img:url('${s.bg}')">${i===8||i===10?'<canvas class="tire-smoke" aria-hidden="true"></canvas>':''}<div class="exec-inner"><div class="exec-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div><div class="exec-overline">${s.tag}</div><div class="s-grid ${s.layout==='split'?'split':''}"><div class="s-text"><h2>${s.title}</h2><div class="lead">${s.body}</div></div>${vis}</div></div></section>`;
  }).join('');
  // All sections are present together, like the VW report, rather than changing a card.
  const sections=[...scroll.querySelectorAll('.exec-section')];
@@ -875,6 +889,50 @@ document.addEventListener('fullscreenchange',()=>{
   btn.title=active?'Salir de pantalla completa (Esc)':'Expandir la página web a pantalla completa';
  });
 });
+
+/* V14 — procedural tire smoke, no external images, no dependencies. */
+(function tireSmokeEffect(){
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const layers=new Map();let frame=0,last=0;
+ const rand=(a,b)=>a+Math.random()*(b-a);
+ function setup(canvas){
+  if(layers.has(canvas))return;
+  const ctx=canvas.getContext('2d',{alpha:true});if(!ctx)return;
+  const entry={canvas,ctx,particles:[],active:false,w:0,h:0};layers.set(canvas,entry);
+  const resize=()=>{const r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);entry.w=r.width;entry.h=r.height};
+  resize();if(window.ResizeObserver)new ResizeObserver(resize).observe(canvas);
+  if(window.IntersectionObserver){new IntersectionObserver(items=>{entry.active=items[0].isIntersecting;wake()},{threshold:.08}).observe(canvas)}else entry.active=true;
+ }
+ function spawn(e){
+  const side=Math.random()<.5?0:1;
+  const x=e.w*(side?rand(.73,.98):rand(.02,.27));
+  const y=e.h*rand(.80,1.05);
+  e.particles.push({x,y,vx:side?rand(-.8,-.12):rand(.12,.8),vy:rand(-1.25,-.42),r:rand(22,52),life:0,max:rand(110,220),phase:rand(0,6.28),shade:Math.random()<.23?'warm':'white'});
+ }
+ function paint(e,dt){
+  const {ctx,w,h}=e;if(!w||!h)return;
+  ctx.clearRect(0,0,w,h);
+  if(reduce.matches){return}
+  const rate=Math.max(1,Math.round(dt/17));for(let j=0;j<rate;j++)if(e.particles.length<95&&Math.random()<.83)spawn(e);
+  for(let i=e.particles.length-1;i>=0;i--){const p=e.particles[i];p.life+=dt/16.67;p.x+=(p.vx+Math.sin(p.phase+p.life*.025)*.24)*dt/16.67;p.y+=p.vy*dt/16.67;p.r+=.23*dt/16.67;
+   const t=p.life/p.max;if(t>=1||p.y<-p.r*2){e.particles.splice(i,1);continue}
+   const alpha=Math.min(1,t*8)*Math.pow(1-t,1.5)*.22;
+   const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+   if(p.shade==='warm'){g.addColorStop(0,`rgba(215,195,195,${alpha*.8})`);g.addColorStop(.45,`rgba(165,151,158,${alpha*.52})`)}
+   else{g.addColorStop(0,`rgba(232,236,243,${alpha})`);g.addColorStop(.45,`rgba(181,189,202,${alpha*.6})`)}
+   g.addColorStop(1,'rgba(150,159,177,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+  }
+ }
+ function tick(t){frame=0;const dt=Math.min(40,t-(last||t));last=t;
+  let active=false;for(const e of layers.values()){if(!e.canvas.isConnected){layers.delete(e.canvas);continue}if(e.active&&e.w&&e.h){paint(e,dt);active=true}}
+  if(active)frame=requestAnimationFrame(tick);
+ }
+ function wake(){if(reduce.matches){for(const e of layers.values())e.ctx.clearRect(0,0,e.w,e.h);return}if(!frame&&[...layers.values()].some(e=>e.active)){last=0;frame=requestAnimationFrame(tick)}}
+ function scan(){document.querySelectorAll('canvas.tire-smoke').forEach(setup);wake()}
+ const observer=new MutationObserver(()=>{if(document.querySelectorAll('canvas.tire-smoke').length>layers.size)scan()});observer.observe(document.body,{childList:true,subtree:true});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){if(frame)cancelAnimationFrame(frame);frame=0}else wake()});reduce.addEventListener?.('change',wake);scan();
+})();
+
 </script>
 </body>
 </html>
