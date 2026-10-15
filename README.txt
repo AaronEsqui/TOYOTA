@@ -13,3 +13,5 @@ PARA USAR TUS PROPIAS FOTOS EN LA FABRICA
 Reemplaza los archivos de assets/ conservando el nombre (scene-1-materiales.webp, scene-2-ensamblaje.webp, scene-3-calidad.webp, scene-4-distribucion.webp). Recomendado: 1600x900.
 
 Las escenas actuales son recortes de assets/supra-factory.webp. Proyecto academico independiente, no afiliado a Toyota. Consulta los terminos de uso de Toyota antes de usar logotipos o imagenes oficiales.
+
+VERSIÓN 11: Imágenes aportadas por el usuario: materiales=plano técnico Supra A80, ensamblaje=compartimento del motor, calidad=Supra rojo, distribución=grupo de modelos Supra. La imagen de materiales es una ilustración técnica, no una fotografía. Las etiquetas y animaciones representan conceptos educativos, no mediciones de Toyota.

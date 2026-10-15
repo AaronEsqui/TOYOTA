@@ -337,6 +337,33 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 .hero-inner{padding:120px 6% 120px}.slide{padding:20px;max-height:calc(100svh - 170px)}.present-controls{font-size:12px;gap:5px}.present-controls .btn{padding:7px;font-size:11px}.time-select{display:none}#present:before{font-size:8px;top:12px}
 .fx-bignum{display:none}.fx-head{padding:16px}.fx-info{padding:16px}.fx-tag{font-size:8px;padding:6px 8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}.w>span{transform:none}.hero .lead,.hero .eyebrow,.hero .actions,.hero-stats{opacity:1;transform:none}.fx-tag,.fx-ok,.fx-frame{opacity:1;transform:none}.bar span{width:var(--w)}}
+
+/* V10 · actividad participativa con reintentos */
+.quiz-choice.quiz-wrong{border-color:#ff405a!important;background:#581c2a!important;color:#ffd8df!important;opacity:.68;cursor:not-allowed;animation:quizShake .35s ease}
+.quiz-choice.quiz-wrong:before{content:'✕ ';font-weight:900}
+.quiz-choice.quiz-correct{border-color:#32d399!important;background:#123c31!important;color:#c5ffe9!important;box-shadow:0 0 28px #32d39924;animation:quizSuccess .5s ease}
+.quiz-choice.quiz-correct:before{content:'✓ ';font-weight:900}
+.quiz-choice.quiz-muted{opacity:.48}
+.quiz-feedback{min-height:40px;display:flex;align-items:center;padding:10px 13px;border-radius:8px;transition:background .25s,color .25s}
+.quiz-feedback-wrong{background:#e5393518;color:#ff8294!important;border:1px solid #ff405a45}
+.quiz-feedback-correct{background:#10b98116;color:#80f3c6!important;border:1px solid #10b98155}
+.quiz-finish{padding:22px;border:1px solid #10b98166;border-radius:12px;background:#10b98112;margin:18px 0}
+.quiz-finish strong{font-size:23px;color:#91ffce}
+@keyframes quizShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+@keyframes quizSuccess{0%{transform:scale(.98)}55%{transform:scale(1.025)}100%{transform:scale(1)}}
+/* Las fotos reales se priorizan con respaldo gráfico local. */
+.hero-photo{background-image:linear-gradient(90deg,#07090cfb 0%,#07090cf0 24%,#07090cb0 47%,#07090c40 85%),url('https://toyotagazooracing.com/-/media/TMC/tgr/global/contents/pressrelease/images/2025/0321-01/download/0321-01_065.jpg'),url('assets/scene-wide.webp')}
+#conclusion{background-image:linear-gradient(90deg,#090b0ef5,#090b0ec9 55%,#090b0e70),url('https://toyota-media.ch/_storage/asset/118190/storage/master/file/1313504/download/Toyota_Supra_Red_Studio_002.jpg'),url('assets/scene-4-distribucion.webp')}
+.footer{background-image:linear-gradient(90deg,#080a0eea,#080a0e9a),url('https://toyota-media.ch/_storage/asset/118166/storage/master/file/7220434/download/Toyota_Supra_Grey_Studio_005.jpg'),url('assets/scene-wide.webp')}
+@media(prefers-reduced-motion:reduce){.quiz-choice.quiz-wrong,.quiz-choice.quiz-correct{animation:none}}
+
+/* V11: imágenes aportadas para las cuatro etapas */
+.fx-scene[data-i="0"] .fx-img{background-position:center 42%!important}
+.fx-scene[data-i="1"] .fx-img{background-position:center 50%!important}
+.fx-scene[data-i="2"] .fx-img{background-position:center 58%!important}
+.fx-scene[data-i="3"] .fx-img{background-position:center 50%!important}
+.fx-scene[data-i="0"] .fx-tag,.fx-scene[data-i="1"] .fx-tag,.fx-scene[data-i="2"] .fx-tag,.fx-scene[data-i="3"] .fx-tag{backdrop-filter:blur(12px)}
+@media(max-width:650px){.fx-scene[data-i="0"] .fx-img{background-position:center 45%!important}.fx-scene[data-i="3"] .fx-img{background-position:55% center!important}}
 </style>
 </head>
 <body>
@@ -429,42 +456,42 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 
       <!-- 01 MATERIALES -->
       <div class="fx-scene is-active" data-i="0">
-        <div class="fx-img" style="--img:url('assets/scene-1-materiales.webp');--grade:saturate(1.05) contrast(1.05);--x0:-1.5%;--y0:0%;--s0:1.04;--x1:1.5%;--y1:-1%;--s1:1.13"></div>
-        <div class="fx-tag" style="--x:56%;--y:24%;--k:0"><span>PEDIDO #A-2041 · RECIBIDO</span></div>
-        <div class="fx-tag" style="--x:62%;--y:44%;--k:1"><span>INVENTARIO · JIT 4 h</span></div>
-        <div class="fx-tag" style="--x:58%;--y:64%;--k:2"><span>PROVEEDOR · A TIEMPO</span></div>
+        <div class="fx-img" style="--img:url('assets/scene-1-materiales.webp');--grade:saturate(1.03) contrast(1.04);--x0:-1.5%;--y0:0%;--s0:1.04;--x1:1.5%;--y1:-1%;--s1:1.13"></div>
+        <div class="fx-tag" style="--x:56%;--y:24%;--k:0"><span>PLANEACIÓN DE MATERIALES</span></div>
+        <div class="fx-tag" style="--x:62%;--y:44%;--k:1"><span>INVENTARIO · JUST IN TIME</span></div>
+        <div class="fx-tag" style="--x:58%;--y:64%;--k:2"><span>GESTIÓN DE PROVEEDORES</span></div>
       </div>
 
       <!-- 02 ENSAMBLAJE -->
       <div class="fx-scene" data-i="1">
-        <div class="fx-img" style="--img:url('assets/scene-2-ensamblaje.webp');--grade:saturate(1.3) contrast(1.15) brightness(1.05);--x0:2%;--y0:1%;--s0:1.12;--x1:-1%;--y1:-1%;--s1:1.03"></div>
-        <div class="fx-spark-core" style="--ox:31%;--oy:27%"></div>
-        <div class="fx-sparks" data-sparks="31,27"></div>
-        <div class="fx-tag warn" style="--x:50%;--y:14%;--k:0"><span>SOLDADURA · PUNTO 07/12</span></div>
-        <div class="fx-tag" style="--x:62%;--y:30%;--k:1"><span>ROBOT R-04 · ±0.1 mm</span></div>
+        <div class="fx-img" style="--img:url('assets/scene-2-ensamblaje.webp');--grade:saturate(1.05) contrast(1.06);--x0:2%;--y0:1%;--s0:1.12;--x1:-1%;--y1:-1%;--s1:1.03"></div>
+        
+        
+        <div class="fx-tag warn" style="--x:50%;--y:14%;--k:0"><span>COMPONENTES DEL MOTOR</span></div>
+        <div class="fx-tag" style="--x:62%;--y:30%;--k:1"><span>ENSAMBLAJE · PRECISIÓN</span></div>
       </div>
 
       <!-- 03 CALIDAD -->
       <div class="fx-scene" data-i="2">
-        <div class="fx-img" style="--img:url('assets/scene-3-calidad.webp');--grade:saturate(.85) brightness(.95) hue-rotate(-6deg);--x0:0%;--y0:2%;--s0:1.16;--x1:0%;--y1:-1%;--s1:1.04"></div>
-        <div class="fx-tint" style="--tint:#2a6a9a88"></div>
+        <div class="fx-img" style="--img:url('assets/scene-3-calidad.webp');--grade:saturate(1.03) contrast(1.03);--x0:0%;--y0:2%;--s0:1.16;--x1:0%;--y1:-1%;--s1:1.04"></div>
+        
         <div class="fx-frame"><i></i><i></i><i></i><i></i></div>
         <div class="fx-laser"></div>
-        <div class="fx-tag" style="--x:7%;--y:26%;--k:0"><span>INSPECCIÓN ÓPTICA</span></div>
-        <div class="fx-tag" style="--x:7%;--y:38%;--k:1"><span>TOLERANCIA ±0.02 mm</span></div>
-        <div class="fx-ok">✓ APROBADO</div>
+        <div class="fx-tag" style="--x:7%;--y:26%;--k:0"><span>REVISIÓN DEL VEHÍCULO</span></div>
+        <div class="fx-tag" style="--x:7%;--y:38%;--k:1"><span>CONTROL DE CALIDAD</span></div>
+        <div class="fx-ok">✓ VERIFICACIÓN</div>
       </div>
 
       <!-- 04 DISTRIBUCIÓN -->
       <div class="fx-scene" data-i="3">
-        <div class="fx-img" style="--img:url('assets/scene-4-distribucion.webp');--grade:saturate(.8) brightness(.92);--x0:2%;--y0:0%;--s0:1.12;--x1:-2%;--y1:1%;--s1:1.04"></div>
+        <div class="fx-img" style="--img:url('assets/scene-4-distribucion.webp');--grade:saturate(1.02) contrast(1.03);--x0:2%;--y0:0%;--s0:1.12;--x1:-2%;--y1:1%;--s1:1.04"></div>
         <svg class="fx-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <path class="path" id="route" d="M140 790 C 420 640, 600 830, 860 640 S 1280 360, 1470 190"/>
           <circle class="city" cx="140" cy="790" r="13"/><circle class="city" cx="1470" cy="190" r="13"/>
           <circle class="truck" r="12"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#route"/></animateMotion></circle>
         </svg>
         <div class="fx-tag" style="--x:5%;--y:16%;--k:0"><span>ENVÍO · DISTRIBUIDOR</span></div>
-        <div class="fx-tag" style="--x:5%;--y:28%;--k:1"><span>ENTREGA ESTIMADA · 3 DÍAS</span></div>
+        <div class="fx-tag" style="--x:5%;--y:28%;--k:1"><span>LOGÍSTICA · DISTRIBUCIÓN</span></div>
       </div>
 
       <div class="fx-vignette"></div>
@@ -606,10 +633,49 @@ function metric(i){$('metric-detail').textContent=metrics[i][2];document.querySe
 
 /* ================= QUIZ ================= */
 const questions=[['¿Qué integra un sistema administrativo?',['Solo maquinaria','Personas, procesos, recursos e información','Únicamente finanzas','Solo ventas'],1,'Integra elementos humanos, materiales y de información.'],['¿Por qué es importante coordinar las áreas?',['Evita retrasos y desperdicios','Elimina toda supervisión','Impide la comunicación','Hace innecesaria la planeación'],0,'La coordinación facilita un flujo ordenado de trabajo.'],['¿Para qué sirve la información?',['Solo para publicidad','Para reemplazar a los trabajadores','Para supervisar operaciones y decidir mejor','Para evitar el control'],2,'Los datos apoyan decisiones y detección de problemas.'],['¿Qué describe Just in Time?',['Producir sin planear','Disponer de materiales cuando se necesitan','Acumular inventarios sin límite','Eliminar proveedores'],1,'Busca disponer de lo necesario en el momento adecuado.'],['¿Qué puede ocurrir si falla un proveedor?',['Nada cambia','Mejora automáticamente la calidad','Se detiene únicamente el área de ventas','Pueden afectarse producción y entregas'],3,'Las áreas están conectadas y una falla puede propagarse.']];
-let qi=0,score=0,answered=false;
-function showQuestion(){answered=false;$('quiz-next').style.display='none';$('quiz-feedback').textContent='';if(qi>=questions.length){$('quiz-count').textContent='RESULTADO FINAL';$('quiz-question').textContent=`${score} de ${questions.length} respuestas correctas`;$('quiz-options').innerHTML='<button class="btn" onclick="restartQuiz()">↻ Volver a intentar</button>';return}const q=questions[qi];$('quiz-count').textContent=`PREGUNTA ${qi+1} DE ${questions.length}`;$('quiz-question').textContent=q[0];$('quiz-options').innerHTML=q[1].map((o,i)=>`<button class="quiz-choice" onclick="answer(${i})">${o}</button>`).join('');['quiz-question','quiz-options'].forEach(id=>{const e=$(id);e.style.animation='none';void e.offsetWidth;e.style.animation=''})}
-function answer(i){if(answered)return;answered=true;const q=questions[qi];if(i===q[2])score++;document.querySelectorAll('.quiz-choice').forEach((b,j)=>{b.disabled=true;if(j===q[2])b.style.borderColor='#30b77c';else if(j===i)b.style.borderColor='#ff4d5e'});$('quiz-feedback').textContent=(i===q[2]?'¡Correcto! ':'Respuesta incorrecta. ')+q[3];$('quiz-next').style.display='inline-block'}
-function nextQuestion(){qi++;showQuestion()}function restartQuiz(){qi=0;score=0;showQuestion()}showQuestion();
+let qi=0,score=0,answered=false,quizAttempts=0,quizMistakes=0;
+function showQuestion(){
+ answered=false;quizAttempts=0;
+ $('quiz-next').style.display='none';
+ $('quiz-feedback').textContent='Selecciona una respuesta. Si te equivocas, puedes volver a intentar.';
+ $('quiz-feedback').className='muted quiz-feedback';
+ if(qi>=questions.length){
+  $('quiz-count').textContent='ACTIVIDAD COMPLETADA';
+  $('quiz-question').textContent=`¡Excelente! Completaron ${questions.length} de ${questions.length} preguntas.`;
+  $('quiz-options').innerHTML=`<div class="quiz-finish"><strong>¡Aprendizaje completado!</strong><p>Intentos incorrectos durante la actividad: ${quizMistakes}</p><p>Lo importante fue aprender hasta encontrar cada respuesta.</p></div><button class="btn" onclick="restartQuiz()">↻ Repetir actividad</button>`;
+  $('quiz-feedback').textContent='Gracias por participar.';
+  return;
+ }
+ const q=questions[qi];
+ $('quiz-count').textContent=`PREGUNTA ${qi+1} DE ${questions.length}`;
+ $('quiz-question').textContent=q[0];
+ $('quiz-options').innerHTML=q[1].map((o,i)=>`<button class="quiz-choice" type="button" onclick="answer(${i})">${o}</button>`).join('');
+ ['quiz-question','quiz-options'].forEach(id=>{const e=$(id);e.style.animation='none';void e.offsetWidth;e.style.animation=''});
+}
+function answer(i){
+ if(answered)return;
+ const q=questions[qi],buttons=document.querySelectorAll('.quiz-choice'),choice=buttons[i];
+ if(!choice||choice.disabled)return;
+ quizAttempts++;
+ if(i!==q[2]){
+  quizMistakes++;
+  choice.disabled=true;choice.classList.add('quiz-wrong');
+  choice.setAttribute('aria-label',q[1][i]+', respuesta incorrecta');
+  $('quiz-feedback').textContent='✕ Esa no es la respuesta correcta. ¡Intenta con otra opción!';
+  $('quiz-feedback').className='quiz-feedback quiz-feedback-wrong';
+  return;
+ }
+ answered=true;score++;
+ choice.classList.add('quiz-correct');
+ buttons.forEach((b,j)=>{b.disabled=true;if(j!==i&& !b.classList.contains('quiz-wrong'))b.classList.add('quiz-muted')});
+ $('quiz-feedback').textContent=`✓ ¡Correcto! ${q[3]} ${quizAttempts>1?'Lo conseguiste después de '+quizAttempts+' intentos.':''}`;
+ $('quiz-feedback').className='quiz-feedback quiz-feedback-correct';
+ $('quiz-next').style.display='inline-block';
+ $('quiz-next').textContent=qi===questions.length-1?'Ver resultado →':'Siguiente pregunta →';
+}
+function nextQuestion(){if(!answered)return;qi++;showQuestion()}
+function restartQuiz(){qi=0;score=0;quizMistakes=0;showQuestion()}
+showQuestion();
 
 /* ================= FACTORY EXPERIENCE · SECUENCIA ================= */
 const FX={i:0,dur:5200,elapsed:0,playing:false,inView:false,last:0,raf:0,started:false};
@@ -648,7 +714,7 @@ const slides=[
 {tag:'06 / DECISIONES',title:'INFORMACIÓN Y TECNOLOGÍA',bg:IMG.s3,layout:'full',body:'<p>Los datos ayudan a controlar operaciones, detectar problemas y tomar mejores decisiones.</p><div class="slide-metrics" id="slide-metrics">'+[['Producción',78],['Inventarios',64],['Calidad',91],['Logística',83],['Ventas',72],['Costos',69]].map(m=>`<div class="tile" data-a style="--w:${m[1]}%"><span class="muted">${m[0]}</span><b>${m[1]}%</b><div class="bar"><span></span></div></div>`).join('')+'</div><p class="muted small">Datos ficticios con fines demostrativos.</p>',init:()=>setTimeout(()=>document.querySelectorAll('#slide-metrics .tile').forEach(t=>t.classList.add('go')),400),note:'Explica cómo los datos apoyan la manufactura, logística y contabilidad.'},
 {tag:'07 / CASO PRÁCTICO',title:'EL EFECTO DOMINÓ',bg:IMG.s4,layout:'full',body:'<div class="process" id="slide-domino"></div><div class="actions"><button class="btn" onclick="slideDomino(false)">Simular falla</button><button class="btn alt" onclick="slideDomino(true)">Implementar solución</button><button class="btn alt" onclick="slideDomino(null)">Reiniciar</button></div><p class="status" id="slide-domino-status">¿Qué ocurre si un proveedor se retrasa?</p>',note:'Explica cómo una falla inicial puede afectar inventario, producción, logística y clientes.'},
 {tag:'08 / SÍNTESIS',title:'CONCLUSIONES EJECUTIVAS',bg:IMG.wide,layout:'full',body:'<p>La coordinación de objetivos, personas, estructura, procesos, recursos, información, tecnología y control favorece la calidad, la eficiencia y la mejora continua.</p><div class="pillars"><div class="tile" data-a><b>01</b><h3>Calidad</h3><p class="muted">Cada etapa la construye, no solo la inspección final.</p></div><div class="tile" data-a><b>02</b><h3>Eficiencia</h3><p class="muted">Menos desperdicio gracias a planeación y coordinación.</p></div><div class="tile" data-a><b>03</b><h3>Mejora continua</h3><p class="muted">Pequeños cambios constantes con participación de las personas.</p></div></div>',note:'Resume la importancia de integrar todos los componentes.'},
-{tag:'09 / PARTICIPACIÓN',title:'COMPRUEBA TUS CONOCIMIENTOS',bg:IMG.s3,layout:'full',body:'<p>La versión de exploración incluye cinco preguntas interactivas con retroalimentación y calificación.</p><button class="btn" onclick="exitPresentation();location.hash=\'#quiz\'">Abrir cuestionario →</button>',note:'Invita al grupo a responder el cuestionario si queda tiempo.'},
+{tag:'09 / PARTICIPACIÓN',title:'COMPRUEBA TUS CONOCIMIENTOS',bg:IMG.s3,layout:'full',body:'<p>La versión de exploración incluye cinco preguntas interactivas con retroalimentación y oportunidades ilimitadas para volver a intentar.</p><button class="btn" onclick="exitPresentation();location.hash=\'#quiz\'">Abrir cuestionario →</button>',note:'Invita al grupo a responder el cuestionario si queda tiempo.'},
 {tag:'TOYOTA · SISTEMA ADMINISTRATIVO',title:'GRACIAS POR<br>SU ATENCIÓN',bg:IMG.s2,layout:'cover',body:'<p data-a>COORDINACIÓN · INNOVACIÓN · MEJORA CONTINUA</p><div class="actions" data-a><button class="btn" onclick="slideIndex=0;renderSlide(1)">↻ Reiniciar presentación</button><button class="btn alt" onclick="exitPresentation()">Explorar sitio web</button></div>',note:'Agradece la atención y abre espacio para preguntas.'}
 ];
 let slideIndex=0,presentStart=0,timerHandle=null,miniI=0,miniTimer=null;
