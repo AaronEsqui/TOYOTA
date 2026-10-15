@@ -418,16 +418,25 @@ body.presenting #present{display:block!important}
 @media(max-width:850px){.exec-section{min-height:calc(100svh - 136px);padding:55px 6%}.exec-section .s-grid.split{grid-template-columns:1fr}.exec-section h2{font-size:clamp(35px,8vw,62px)}.exec-sub{display:none}.exec-topbar{min-height:64px}.exec-scroll{top:64px}.exec-section .process{flex-wrap:wrap}}
 @media(max-width:550px){.exec-topbar{padding:8px 14px}.exec-brand{font-size:12px}.exec-top-actions .btn{font-size:11px;padding:7px}.exec-section{padding:46px 6%}.exec-section .lead{font-size:16px}.exec-section .duo,.exec-section .pillars{display:grid;grid-template-columns:1fr}.exec-num{top:-30px}.exec-section h2{font-size:clamp(32px,9vw,48px)}#present .present-controls{padding:8px;gap:4px}#present .present-controls .btn{padding:7px;font-size:10px}#present .present-controls #timer{display:none}#present .present-controls #slide-counter{font-size:11px}.fx-stage{min-height:270px}}
 @media(prefers-reduced-motion:reduce){.exec-scroll{scroll-behavior:auto}.is-active .fx-img,.is-leaving .fx-img{animation:none!important}.exec-section.is-current h2,.exec-section.is-current .lead{animation:none}}
+
+/* V13: modo pantalla completa para toda la web (independiente de Presentar) */
+.site-fullscreen-btn{white-space:nowrap}
+body.site-fullscreen .hdr{background:#07090cee;backdrop-filter:blur(18px)}
+body.site-fullscreen .hero{min-height:100svh}
+#fullscreen-message{position:fixed;z-index:500;right:18px;bottom:20px;max-width:min(420px,calc(100vw - 36px));padding:13px 18px;background:#151922;border:1px solid #ff5261;border-radius:10px;color:white;box-shadow:0 15px 40px #0008;font-size:13px;display:none}
+#fullscreen-message.visible{display:block}
+@media(max-width:1100px){.hdr .site-fullscreen-btn .fullscreen-label{display:none}}
+@media(max-width:600px){.hdr .site-fullscreen-btn{padding:8px 10px;font-size:17px}.hero .site-fullscreen-btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#sistema">Saltar al contenido</a>
-<div id="scroll-progress" aria-hidden="true"></div>
+<div id="scroll-progress" aria-hidden="true"></div><div id="fullscreen-message" role="status" aria-live="polite"></div>
 
 <header class="hdr" id="hdr">
   <a class="brand" href="#inicio"><span class="toyota-emblem"><svg viewBox="0 0 100 64" width="49" height="34" aria-label="Emblema Toyota" role="img"><ellipse cx="50" cy="32" rx="46" ry="28" fill="none" stroke="currentColor" stroke-width="5"/><ellipse cx="50" cy="32" rx="15" ry="26" fill="none" stroke="currentColor" stroke-width="5"/><ellipse cx="50" cy="23" rx="30" ry="11" fill="none" stroke="currentColor" stroke-width="5"/></svg></span> TOYOTA <small>ESTUDIO ACADÉMICO</small></a>
   <nav id="nav"><a href="#sistema">Sistema</a><a href="#componentes">Componentes</a><a href="#coordinacion">Coordinación</a><a href="#produccion">Fábrica</a><a href="#tecnologia">Tecnología</a><a href="#caso">Caso práctico</a></nav>
-  <div style="display:flex;gap:10px;align-items:center"><button class="btn small" onclick="startPresentation()">▶ Presentar</button><button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button></div>
+  <div style="display:flex;gap:10px;align-items:center"><button class="btn alt small site-fullscreen-btn" type="button" onclick="toggleSiteFullscreen()" aria-label="Mostrar página web en pantalla completa" aria-pressed="false" title="Expandir la página web a pantalla completa">⛶ <span class="fullscreen-label">Pantalla completa</span></button><button class="btn small" onclick="startPresentation()">▶ Presentar</button><button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button></div>
 </header>
 
 <main>
@@ -438,7 +447,7 @@ body.presenting #present{display:block!important}
     <div class="eyebrow">Toyota · Corporate management experience</div>
     <h1 data-split data-base=".25s">SISTEMA <span class="red">ADMINISTRATIVO</span></h1>
     <p class="lead">Personas, procesos y tecnología trabajando hacia un mismo objetivo. Una experiencia interactiva de administración empresarial.</p>
-    <div class="actions"><a class="btn" href="#sistema">Explorar experiencia →</a><button class="btn alt" onclick="startPresentation()">▶ Modo presentación</button></div>
+    <div class="actions"><a class="btn" href="#sistema">Explorar experiencia →</a><button class="btn alt" onclick="startPresentation()">▶ Modo presentación</button><button class="btn alt site-fullscreen-btn" type="button" onclick="toggleSiteFullscreen()" aria-pressed="false">⛶ <span class="fullscreen-label">Ver en pantalla completa</span></button></div>
     <div class="hero-stats">
       <div class="stat"><b data-count="8" data-pad="2">00</b><span>COMPONENTES</span></div>
       <div class="stat"><b data-count="4" data-pad="2">00</b><span>ETAPAS DE FÁBRICA</span></div>
@@ -839,6 +848,33 @@ function nextSlide(){goSlide(slideIndex+1)}
 function prevSlide(){goSlide(slideIndex-1)}
 function renderSlide(){goSlide(slideIndex)}
 
+
+// Pantalla completa de la WEB: no activa el modo de diapositivas.
+let fullscreenMessageTimeout;
+function showFullscreenMessage(message){
+ const el=document.getElementById('fullscreen-message');
+ el.textContent=message;el.classList.add('visible');
+ clearTimeout(fullscreenMessageTimeout);
+ fullscreenMessageTimeout=setTimeout(()=>el.classList.remove('visible'),3800);
+}
+async function toggleSiteFullscreen(){
+ try{
+  if(document.fullscreenElement){await document.exitFullscreen();return}
+  if(!document.documentElement.requestFullscreen){showFullscreenMessage('Este navegador no permite pantalla completa desde la página. Puedes usar F11 en tu computadora.');return}
+  await document.documentElement.requestFullscreen({navigationUI:'hide'});
+ }catch(error){showFullscreenMessage('No se pudo activar pantalla completa. Prueba con F11 o revisa los permisos del navegador.')}
+}
+document.addEventListener('fullscreenchange',()=>{
+ const active=Boolean(document.fullscreenElement);
+ document.body.classList.toggle('site-fullscreen',active);
+ document.querySelectorAll('.site-fullscreen-btn').forEach(btn=>{
+  btn.setAttribute('aria-pressed',String(active));
+  const label=btn.querySelector('.fullscreen-label');
+  if(label)label.textContent=active?'Salir de pantalla completa':'Pantalla completa';
+  btn.setAttribute('aria-label',active?'Salir de pantalla completa':'Mostrar página web en pantalla completa');
+  btn.title=active?'Salir de pantalla completa (Esc)':'Expandir la página web a pantalla completa';
+ });
+});
 </script>
 </body>
 </html>
