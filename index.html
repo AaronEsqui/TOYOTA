@@ -163,7 +163,7 @@ background-size:cover;background-position:center,center 55%,center 55%,center}
 #quiz-question,#quiz-options{animation:swap .5s var(--ease)}
 
 /* conclusion + footer */
-#conclusion{background-image:linear-gradient(90deg,#090b0ef5,#090b0ec9 55%,#090b0e70),url("https://toyota-media.ch/_storage/asset/118190/storage/master/file/1313504/download/Toyota_Supra_Red_Studio_002.jpg"),url("assets/scene-4-distribucion.webp");background-size:cover;background-position:center}
+#conclusion{background-image:linear-gradient(90deg,#090b0ef5,#090b0ec9 55%,#090b0e70),url("https://toyota-media.ch/_storage/asset/118190/storage/master/file/1313504/download/Toyota_Supra_Red_Studio_002.jpg"),url("assets/scene-4-distribucion.jpg");background-size:cover;background-position:center}
 .presentation-guide{margin-top:60px;padding:20px;border:1px solid #ffffff24;border-radius:14px;background:#ffffff08;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .presentation-guide p{margin:0;flex:1 1 320px;color:#c3c9d2;font-size:14px}
 .source-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
@@ -353,7 +353,7 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 @keyframes quizSuccess{0%{transform:scale(.98)}55%{transform:scale(1.025)}100%{transform:scale(1)}}
 /* Las fotos reales se priorizan con respaldo gráfico local. */
 .hero-photo{background-image:linear-gradient(90deg,#07090cfb 0%,#07090cf0 24%,#07090cb0 47%,#07090c40 85%),url('https://toyotagazooracing.com/-/media/TMC/tgr/global/contents/pressrelease/images/2025/0321-01/download/0321-01_065.jpg'),url('assets/scene-wide.webp')}
-#conclusion{background-image:linear-gradient(90deg,#090b0ef5,#090b0ec9 55%,#090b0e70),url('https://toyota-media.ch/_storage/asset/118190/storage/master/file/1313504/download/Toyota_Supra_Red_Studio_002.jpg'),url('assets/scene-4-distribucion.webp')}
+#conclusion{background-image:linear-gradient(90deg,#090b0ef5,#090b0ec9 55%,#090b0e70),url('https://toyota-media.ch/_storage/asset/118190/storage/master/file/1313504/download/Toyota_Supra_Red_Studio_002.jpg'),url('assets/scene-4-distribucion.jpg')}
 .footer{background-image:linear-gradient(90deg,#080a0eea,#080a0e9a),url('https://toyota-media.ch/_storage/asset/118166/storage/master/file/7220434/download/Toyota_Supra_Grey_Studio_005.jpg'),url('assets/scene-wide.webp')}
 @media(prefers-reduced-motion:reduce){.quiz-choice.quiz-wrong,.quiz-choice.quiz-correct{animation:none}}
 
@@ -364,6 +364,60 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 .fx-scene[data-i="3"] .fx-img{background-position:center 50%!important}
 .fx-scene[data-i="0"] .fx-tag,.fx-scene[data-i="1"] .fx-tag,.fx-scene[data-i="2"] .fx-tag,.fx-scene[data-i="3"] .fx-tag{backdrop-filter:blur(12px)}
 @media(max-width:650px){.fx-scene[data-i="0"] .fx-img{background-position:center 45%!important}.fx-scene[data-i="3"] .fx-img{background-position:55% center!important}}
+
+/* V12 — Volkswagen-inspired executive scrolling presentation */
+.fx-img{inset:0!important;background-position:center!important;image-rendering:auto;filter:none!important;transform:scale(1.005)!important}
+.is-active .fx-img,.is-leaving .fx-img{animation:fxHD 12s ease-in-out forwards!important}
+@keyframes fxHD{from{transform:scale(1.005)}to{transform:scale(1.065)}}
+.fx-stage{aspect-ratio:16/8.5;min-height:370px}
+.fx-scene[data-i="0"] .fx-img{background-size:contain!important;background-color:#c8b997}
+.fx-scene[data-i="1"] .fx-img{background-position:center 46%!important}
+.fx-scene[data-i="2"] .fx-img{background-position:center 57%!important}
+.fx-scene[data-i="3"] .fx-img{background-position:center 52%!important}
+/* Executive layout: full-width narrative, not floating slide cards */
+#present{padding:0!important;display:none;background:#080a0e}
+body.presenting #present{display:block!important}
+#present .pbg,#present .pshade,#present .slide-watermark,#present>.slide,#present>#slide-dots{display:none!important}
+.exec-topbar{position:absolute;z-index:130;top:0;left:0;right:0;min-height:70px;padding:10px clamp(18px,4vw,64px);display:flex;gap:18px;align-items:center;justify-content:space-between;background:#090b0eea;backdrop-filter:blur(20px);border-bottom:1px solid #ffffff22}
+.exec-brand{font-size:clamp(13px,1.5vw,17px);font-weight:900;letter-spacing:.13em}.exec-brand b{color:#f43249}.exec-sub{font-size:10px;letter-spacing:.15em;color:#a8b1be;text-transform:uppercase}
+.exec-top-actions{display:flex;align-items:center;gap:9px}.exec-top-actions .btn{padding:8px 12px;font-size:12px}
+.exec-scroll{position:absolute;inset:70px 0 66px;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#e51b35 #10131a;overscroll-behavior:contain}
+.exec-section{position:relative;min-height:min(830px,calc(100svh - 136px));padding:clamp(52px,7vw,100px) clamp(22px,8vw,125px);display:flex;align-items:center;border-bottom:1px solid #ffffff20;isolation:isolate;scroll-margin-top:0}
+.exec-section:nth-child(even){background:#0d1118}
+.exec-section:before{content:"";position:absolute;inset:0;z-index:-2;background-image:linear-gradient(90deg,#07090df9 0%,#080b10e6 42%,#090d13a8 100%),var(--exec-img);background-position:center,center;background-size:cover;opacity:.8}
+.exec-section:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 95% 15%,#eb0a1e14,transparent 50%);pointer-events:none}
+.exec-inner{width:min(100%,1330px);margin:auto;position:relative}
+.exec-overline{display:flex;align-items:center;gap:18px;margin-bottom:24px;color:#ff5369;font-size:12px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}
+.exec-overline:before{content:"";display:block;width:38px;height:3px;background:#eb0a1e}
+.exec-num{position:absolute;right:0;top:-58px;color:#ffffff10;font-size:clamp(95px,15vw,210px);font-weight:900;line-height:1;pointer-events:none}
+.exec-section h2{font-size:clamp(39px,5.9vw,85px);line-height:1.01;letter-spacing:-.055em;max-width:1120px;text-wrap:balance;margin:0 0 30px}
+.exec-section .lead{max-width:1080px;font-size:clamp(17px,1.8vw,24px);color:#e2e5ea;line-height:1.55}
+.exec-section .s-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+.exec-section .s-grid.split{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);align-items:center}
+.exec-section .s-visual{min-width:0}.exec-section .s-img{aspect-ratio:16/10;box-shadow:0 24px 70px #0009}
+.exec-section .pillars,.exec-section .slide-metrics{max-width:1160px}
+.exec-section .tile{background:#10151ee0;backdrop-filter:blur(10px)}
+.exec-section .chip{background:#161c25e8}
+.exec-section .process{max-width:1100px}
+.exec-section .duo{max-width:1150px}
+.exec-section .eyebrow{display:none}
+.exec-section .mini{max-width:600px}
+.exec-section .status{max-width:1000px}
+.exec-section .lead p{max-width:1040px}
+.exec-section .lead .actions{margin-top:25px}
+.exec-section .s-text>div.lead{max-width:1150px}
+.exec-section.is-current .exec-overline{animation:execEnter .65s both}
+.exec-section.is-current h2{animation:execEnter .85s .08s both}
+.exec-section.is-current .lead{animation:execEnter .8s .15s both}
+@keyframes execEnter{from{opacity:.4;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.exec-roadmap{display:flex;gap:4px;align-items:center;max-width:100%;overflow-x:auto;scrollbar-width:none;padding:8px 0}.exec-roadmap button{flex:0 0 auto;min-width:26px;height:7px;border:0;border-radius:9px;background:#ffffff3c;padding:0}.exec-roadmap button.on{background:#ff2944;box-shadow:0 0 12px #eb0a1e88}
+#present .present-controls{height:66px;padding:9px clamp(16px,4vw,64px);flex-wrap:nowrap;gap:10px}
+#present .present-controls .btn{font-size:12px;padding:8px 12px}
+#present .progress{z-index:150}
+#present .notes{z-index:140}
+@media(max-width:850px){.exec-section{min-height:calc(100svh - 136px);padding:55px 6%}.exec-section .s-grid.split{grid-template-columns:1fr}.exec-section h2{font-size:clamp(35px,8vw,62px)}.exec-sub{display:none}.exec-topbar{min-height:64px}.exec-scroll{top:64px}.exec-section .process{flex-wrap:wrap}}
+@media(max-width:550px){.exec-topbar{padding:8px 14px}.exec-brand{font-size:12px}.exec-top-actions .btn{font-size:11px;padding:7px}.exec-section{padding:46px 6%}.exec-section .lead{font-size:16px}.exec-section .duo,.exec-section .pillars{display:grid;grid-template-columns:1fr}.exec-num{top:-30px}.exec-section h2{font-size:clamp(32px,9vw,48px)}#present .present-controls{padding:8px;gap:4px}#present .present-controls .btn{padding:7px;font-size:10px}#present .present-controls #timer{display:none}#present .present-controls #slide-counter{font-size:11px}.fx-stage{min-height:270px}}
+@media(prefers-reduced-motion:reduce){.exec-scroll{scroll-behavior:auto}.is-active .fx-img,.is-leaving .fx-img{animation:none!important}.exec-section.is-current h2,.exec-section.is-current .lead{animation:none}}
 </style>
 </head>
 <body>
@@ -456,7 +510,7 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 
       <!-- 01 MATERIALES -->
       <div class="fx-scene is-active" data-i="0">
-        <div class="fx-img" style="--img:url('assets/scene-1-materiales.webp');--grade:saturate(1.03) contrast(1.04);--x0:-1.5%;--y0:0%;--s0:1.04;--x1:1.5%;--y1:-1%;--s1:1.13"></div>
+        <div class="fx-img" style="--img:url('assets/scene-1-materiales.jpg');--grade:saturate(1.03) contrast(1.04);--x0:-1.5%;--y0:0%;--s0:1.04;--x1:1.5%;--y1:-1%;--s1:1.13"></div>
         <div class="fx-tag" style="--x:56%;--y:24%;--k:0"><span>PLANEACIÓN DE MATERIALES</span></div>
         <div class="fx-tag" style="--x:62%;--y:44%;--k:1"><span>INVENTARIO · JUST IN TIME</span></div>
         <div class="fx-tag" style="--x:58%;--y:64%;--k:2"><span>GESTIÓN DE PROVEEDORES</span></div>
@@ -464,7 +518,7 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 
       <!-- 02 ENSAMBLAJE -->
       <div class="fx-scene" data-i="1">
-        <div class="fx-img" style="--img:url('assets/scene-2-ensamblaje.webp');--grade:saturate(1.05) contrast(1.06);--x0:2%;--y0:1%;--s0:1.12;--x1:-1%;--y1:-1%;--s1:1.03"></div>
+        <div class="fx-img" style="--img:url('assets/scene-2-ensamblaje.jpg');--grade:saturate(1.05) contrast(1.06);--x0:2%;--y0:1%;--s0:1.12;--x1:-1%;--y1:-1%;--s1:1.03"></div>
         
         
         <div class="fx-tag warn" style="--x:50%;--y:14%;--k:0"><span>COMPONENTES DEL MOTOR</span></div>
@@ -473,7 +527,7 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 
       <!-- 03 CALIDAD -->
       <div class="fx-scene" data-i="2">
-        <div class="fx-img" style="--img:url('assets/scene-3-calidad.webp');--grade:saturate(1.03) contrast(1.03);--x0:0%;--y0:2%;--s0:1.16;--x1:0%;--y1:-1%;--s1:1.04"></div>
+        <div class="fx-img" style="--img:url('assets/scene-3-calidad.jpg');--grade:saturate(1.03) contrast(1.03);--x0:0%;--y0:2%;--s0:1.16;--x1:0%;--y1:-1%;--s1:1.04"></div>
         
         <div class="fx-frame"><i></i><i></i><i></i><i></i></div>
         <div class="fx-laser"></div>
@@ -484,7 +538,7 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 
       <!-- 04 DISTRIBUCIÓN -->
       <div class="fx-scene" data-i="3">
-        <div class="fx-img" style="--img:url('assets/scene-4-distribucion.webp');--grade:saturate(1.02) contrast(1.03);--x0:2%;--y0:0%;--s0:1.12;--x1:-2%;--y1:1%;--s1:1.04"></div>
+        <div class="fx-img" style="--img:url('assets/scene-4-distribucion.jpg');--grade:saturate(1.02) contrast(1.03);--x0:2%;--y0:0%;--s0:1.12;--x1:-2%;--y1:1%;--s1:1.04"></div>
         <svg class="fx-route" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <path class="path" id="route" d="M140 790 C 420 640, 600 830, 860 640 S 1280 360, 1470 190"/>
           <circle class="city" cx="140" cy="790" r="13"/><circle class="city" cx="1470" cy="190" r="13"/>
@@ -503,10 +557,10 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
     </div>
     <div class="fx-prog" id="fx-prog"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
     <div class="fx-steps" id="fx-steps">
-      <button class="fx-step active" style="--thumb:url('assets/scene-1-materiales.webp')" onclick="fxGo(0,true)"><b>01</b>Materiales</button>
-      <button class="fx-step" style="--thumb:url('assets/scene-2-ensamblaje.webp')" onclick="fxGo(1,true)"><b>02</b>Ensamblaje</button>
-      <button class="fx-step" style="--thumb:url('assets/scene-3-calidad.webp')" onclick="fxGo(2,true)"><b>03</b>Calidad</button>
-      <button class="fx-step" style="--thumb:url('assets/scene-4-distribucion.webp')" onclick="fxGo(3,true)"><b>04</b>Distribución</button>
+      <button class="fx-step active" style="--thumb:url('assets/scene-1-materiales.jpg')" onclick="fxGo(0,true)"><b>01</b>Materiales</button>
+      <button class="fx-step" style="--thumb:url('assets/scene-2-ensamblaje.jpg')" onclick="fxGo(1,true)"><b>02</b>Ensamblaje</button>
+      <button class="fx-step" style="--thumb:url('assets/scene-3-calidad.jpg')" onclick="fxGo(2,true)"><b>03</b>Calidad</button>
+      <button class="fx-step" style="--thumb:url('assets/scene-4-distribucion.jpg')" onclick="fxGo(3,true)"><b>04</b>Distribución</button>
     </div>
     <div class="fx-controls"><span class="lbl" id="fx-label">ETAPA 01 / 04 · MATERIALES</span>
       <div class="btns"><button class="btn alt small" id="fx-play" onclick="fxToggle()">▶ Reproducir secuencia</button><button class="btn alt small" onclick="fxRestart()">↺ Desde el inicio</button></div></div>
@@ -550,10 +604,10 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 </main>
 
 <footer class="footer"><div class="eyebrow">Coordinación · Innovación · Mejora continua</div><h2 data-split>GRACIAS POR SU ATENCIÓN</h2><p class="muted">Sistema Administrativo de Toyota · Presentación académica independiente</p></footer>
-<div class="photo-credit">Proyecto académico independiente, no afiliado a Toyota. Fotografías: Toyota Gazoo Racing y Toyota Media; sujetas a las condiciones de sus titulares. Las escenas de la fábrica son recortes locales de la imagen incluida en /assets.</div>
+<div class="photo-credit">Proyecto académico independiente, no afiliado a Toyota. Fotografías: Toyota Gazoo Racing y Toyota Media; sujetas a las condiciones de sus titulares. Las cuatro imágenes de Factory Experience fueron aportadas para este proyecto académico y se incluyen localmente en alta calidad.</div>
 
 <!-- ============ PRESENTACIÓN ============ -->
-<div id="present" aria-label="Modo presentación">
+<div id="present" aria-label="Modo presentación"><div class="exec-topbar"><div><div class="exec-brand">TOYOTA <b>·</b> SISTEMA ADMINISTRATIVO</div><div class="exec-sub">Presentación ejecutiva · Recorrido académico</div></div><div class="exec-top-actions"><span class="exec-sub" id="exec-position">INTRO / 11</span><button class="btn alt small" onclick="exitPresentation()">✕ Salir</button></div></div><div class="exec-scroll" id="exec-scroll" aria-label="Recorrido ejecutivo por secciones"></div>
   <div class="pbg a"></div><div class="pbg b"></div><div class="pshade"></div>
   <div class="slide-watermark" id="slide-ghost" aria-hidden="true">01</div>
   <div class="slide" id="slide" tabindex="-1" aria-live="polite"></div>
@@ -572,7 +626,7 @@ body.presenting .hdr,body.presenting #scroll-progress{display:none}
 
 <script>
 /* ================= DATOS ================= */
-const IMG={wide:'assets/scene-wide.webp',s1:'assets/scene-1-materiales.webp',s2:'assets/scene-2-ensamblaje.webp',s3:'assets/scene-3-calidad.webp',s4:'assets/scene-4-distribucion.webp'};
+const IMG={wide:'assets/scene-wide.webp',s1:'assets/scene-1-materiales.jpg',s2:'assets/scene-2-ensamblaje.jpg',s3:'assets/scene-3-calidad.jpg',s4:'assets/scene-4-distribucion.jpg'};
 const areas=[['Producción','Transforma materiales en vehículos mediante procesos coordinados.','Producción'],['Compras','Gestiona los materiales y las relaciones con proveedores.','Compras'],['Logística','Organiza el flujo de materiales y la distribución.','Logística'],['Finanzas','Administra recursos económicos y costos.','Finanzas'],['Ventas','Conecta los vehículos y servicios con los clientes.','Ventas'],['Recursos Humanos','Coordina el talento y las capacidades del personal.','RR. HH.']];
 const components=[['Objetivos','Fabricar y comercializar vehículos de calidad, seguros y confiables; satisfacer clientes, mejorar continuamente y operar de forma eficiente y sostenible.'],['Personas','Colaboradores de producción, ingeniería, diseño, compras, logística, ventas, finanzas, recursos humanos y servicio al cliente.'],['Estructura','Distribución de responsabilidades entre dirección, plantas, investigación y desarrollo, cadena de suministro, comercialización y administración.'],['Procesos','Diseño, compra de materiales, fabricación, ensamblaje, inspección, distribución, ventas y servicio posventa.'],['Recursos','Personal, capital, maquinaria, herramientas, piezas, materias primas, energía, instalaciones y redes de proveedores.'],['Información','Datos de producción, inventarios, ventas, costos, calidad, proveedores y satisfacción del cliente.'],['Tecnología','Maquinaria industrial, robots, automatización, herramientas digitales y sistemas de información.'],['Control y retroalimentación','Supervisión de calidad, tiempos, costos, seguridad y resultados; inspecciones e indicadores para mejorar.']];
 const metrics=[['Producción',78,'Permite conocer el avance de la fabricación y detectar cuellos de botella.'],['Inventarios',64,'Ayuda a planear la disponibilidad de materiales y evitar faltantes.'],['Calidad',91,'Facilita detectar defectos y aplicar acciones correctivas.'],['Logística',83,'Apoya el seguimiento de entregas y la coordinación de transporte.']];
@@ -750,6 +804,41 @@ const timerElement=$('timer');timerElement.before(timeSelect);setInterval(()=>{i
 
 /* ================= ARRANQUE ================= */
 observeAll();
+
+/* V12: modo recorrido ejecutivo inspirado en el estilo de exposición Volkswagen. */
+let executiveBuilt=false,execObserver=null,execScrollTick=false;
+function buildExecutive(){
+ if(executiveBuilt)return;executiveBuilt=true;
+ const scroll=$('exec-scroll');
+ scroll.innerHTML=slides.map((s,i)=>{
+  const vis=s.visual?`<div class="s-visual">${s.visual()}</div>`:'';
+  return `<section class="exec-section" id="exec-section-${i}" data-exec-index="${i}" style="--exec-img:url('${s.bg}')"><div class="exec-inner"><div class="exec-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div><div class="exec-overline">${s.tag}</div><div class="s-grid ${s.layout==='split'?'split':''}"><div class="s-text"><h2>${s.title}</h2><div class="lead">${s.body}</div></div>${vis}</div></div></section>`;
+ }).join('');
+ // All sections are present together, like the VW report, rather than changing a card.
+ const sections=[...scroll.querySelectorAll('.exec-section')];
+ execObserver=new IntersectionObserver(entries=>{
+  let best=null;for(const e of entries){if(e.isIntersecting&&(!best||e.intersectionRatio>best.intersectionRatio))best=e}
+  if(!best)return;
+  const i=Number(best.target.dataset.execIndex);slideIndex=i;
+  sections.forEach((s,j)=>s.classList.toggle('is-current',j===i));
+  $('slide-counter').textContent=String(i+1).padStart(2,'0')+' / '+slides.length;
+  $('slide-progress').style.width=((i+1)/slides.length*100)+'%';
+  $('exec-position').textContent=String(i+1).padStart(2,'0')+' / '+slides.length;
+  $('notes').textContent=slides[i].note;
+  document.querySelectorAll('#slide-dots button').forEach((b,j)=>b.classList.toggle('on',i===j));
+ },{root:scroll,threshold:[.25,.45,.65]});
+ sections.forEach(s=>execObserver.observe(s));
+ // Interactive areas remain operational inside the executive view.
+ renderSteps('slide-coord',coordSteps,null);renderSteps('slide-domino',dominoSteps,null);
+ document.querySelectorAll('#slide-metrics .tile').forEach(t=>t.classList.add('go'));
+}
+function startPresentation(){buildExecutive();document.body.classList.add('presenting');slideIndex=0;presentStart=Date.now();$('exec-scroll').scrollTop=0;clearInterval(timerHandle);timerHandle=setInterval(()=>{const t=Math.floor((Date.now()-presentStart)/1000);$('timer').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')},1000);miniStart()}
+function exitPresentation(){document.body.classList.remove('presenting');clearInterval(timerHandle);clearInterval(miniTimer);$('notes').classList.remove('show');if(document.fullscreenElement)document.exitFullscreen().catch(()=>{})}
+function goSlide(i){buildExecutive();slideIndex=Math.max(0,Math.min(slides.length-1,i));$('exec-section-'+slideIndex).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})}
+function nextSlide(){goSlide(slideIndex+1)}
+function prevSlide(){goSlide(slideIndex-1)}
+function renderSlide(){goSlide(slideIndex)}
+
 </script>
 </body>
 </html>
