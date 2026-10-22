@@ -498,6 +498,12 @@ body.site-fullscreen .hero{min-height:100svh}
 @media(max-width:650px){.toyota-gallery{margin-bottom:65px}.toyota-gallery-heading{display:block}.toyota-gallery-heading>p{margin-top:16px}.toyota-gallery-tabs{grid-template-columns:1fr 1fr}.toyota-gallery-tabs button{padding:14px 10px}.toyota-gallery-stage{aspect-ratio:3/4;min-height:450px}.toyota-gallery-stage>img{object-position:50% 35%}.toyota-gallery-overlay{right:24px;bottom:54px}.toyota-gallery-overlay p{font-size:13px}.toyota-gallery-count{right:24px;bottom:22px;font-size:10px}.toyota-gallery-watermark{left:24px;top:22px}.toyota-gallery-footer{display:block}.toyota-gallery-footer>span{display:block;margin-top:10px;text-align:left}.toyota-gallery-stage.is-brand>img{width:58%;left:21%;height:36%;top:12%}}
 @media(prefers-reduced-motion:reduce){.toyota-gallery-stage>img,.toyota-gallery-tabs button{transition:none}.toyota-gallery-stage:hover>img{scale:1}}
 
+
+/* Transición direccional: dos planos de imagen y un barrido de luz */
+.toyota-gallery-sweep{position:absolute;left:0;top:-10%;height:120%;width:20%;pointer-events:none;z-index:-1;background:linear-gradient(90deg,transparent,#ffffff12 35%,#ff6c7a55 50%,#ffffff18 55%,transparent);mix-blend-mode:screen;opacity:0}
+.toyota-gallery-tabs button:after{content:'';position:absolute;left:10px;right:10px;bottom:7px;height:1px;background:#ff6c7a;transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.22,1,.36,1)}.toyota-gallery-tabs button[aria-selected=true]:after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.toyota-gallery-tabs button:after{transition:none}.toyota-gallery-sweep{display:none}}
+
 </style>
 </head>
 <body>
@@ -1067,16 +1073,36 @@ document.addEventListener('fullscreenchange',()=>{
  {src:'assets/toyota-emblem.svg',alt:'Representación vectorial del emblema de Toyota con sus tres óvalos',category:'IDENTIDAD / TOYOTA',title:'Una identidad.<br>Muchas posibilidades.',description:'El emblema conecta visualmente los distintos vehículos y soluciones de movilidad de Toyota.',credit:'Representación vectorial del emblema. Toyota y su marca pertenecen a sus respectivos titulares.'}
  ];
  let selected=0,version=0;const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+ const running=new Set();
+ function clearTransition(){running.forEach(animation=>animation.cancel());running.clear();panel.querySelectorAll('.toyota-gallery-outgoing,.toyota-gallery-sweep').forEach(el=>el.remove())}
+ function animate(el,frames,options){const animation=el.animate(frames,options);running.add(animation);animation.finished.then(()=>running.delete(animation)).catch(()=>running.delete(animation));return animation}
  async function select(index){
-  const request=++version,item=items[index];const preload=new Image();preload.src=item.src;
+  const request=++version;if(index===selected)return;
+  const item=items[index],preload=new Image();preload.src=item.src;
   try{await preload.decode()}catch{return}if(request!==version)return;
+  const direction=index>selected?1:-1;clearTransition();
+  let outgoing=null;
+  if(!reduceMotion.matches&&image.animate){
+   outgoing=image.cloneNode();outgoing.removeAttribute('id');outgoing.removeAttribute('loading');outgoing.alt='';outgoing.setAttribute('aria-hidden','true');outgoing.className='toyota-gallery-outgoing';
+   const style=getComputedStyle(image);
+   Object.assign(outgoing.style,{width:style.width,height:style.height,left:style.left,top:style.top,objectFit:style.objectFit,objectPosition:style.objectPosition,filter:style.filter,transition:'none',scale:'1'});
+   panel.insertBefore(outgoing,image);
+  }
   selected=index;image.src=item.src;image.alt=item.alt;panel.classList.toggle('is-brand',index===3);
   tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1});panel.setAttribute('aria-labelledby',tabs[index].id);
   document.getElementById('toyota-gallery-category').textContent=item.category;document.getElementById('toyota-gallery-caption').innerHTML=item.title;document.getElementById('toyota-gallery-description').textContent=item.description;document.getElementById('toyota-gallery-credit').textContent=item.credit;panel.querySelector('.toyota-gallery-count').textContent=String(index+1).padStart(2,'0')+' / 04';
-  if(!reduceMotion.matches){[image,panel.querySelector('.toyota-gallery-overlay')].forEach((el,i)=>{el.getAnimations().forEach(a=>a.cancel());el.animate([{opacity:0,transform:i?'translateY(18px)':'scale(1.045)'},{opacity:1,transform:'none'}],{duration:i?600:850,easing:'cubic-bezier(.16,1,.3,1)'})})}
+  if(!reduceMotion.matches&&image.animate){
+   const easing='cubic-bezier(.22,1,.36,1)',duration=1050;
+   const reveal=animate(image,[{clipPath:direction>0?'inset(0 0 0 100%)':'inset(0 100% 0 0)',transform:'translateX('+direction*35+'px) scale(1.085)'},{clipPath:'inset(0 0 0 0)',transform:'translateX(0) scale(1)'}],{duration,easing});
+   if(outgoing){animate(outgoing,[{opacity:1,transform:'scale(1)'},{opacity:.25,transform:'translateX('+(-direction*45)+'px) scale(1.045)'}],{duration,easing});reveal.finished.then(()=>outgoing.remove()).catch(()=>outgoing.remove())}
+   const sweep=document.createElement('span');sweep.className='toyota-gallery-sweep';sweep.setAttribute('aria-hidden','true');panel.appendChild(sweep);
+   const beam=animate(sweep,[{transform:'translateX('+(direction>0?-150:650)+'%) skewX(-12deg)',opacity:0},{offset:.18,opacity:.65},{offset:.75,opacity:.3},{transform:'translateX('+(direction>0?650:-150)+'%) skewX(-12deg)',opacity:0}],{duration:1100,easing:'cubic-bezier(.65,0,.35,1)'});beam.finished.then(()=>sweep.remove()).catch(()=>sweep.remove());
+   [...panel.querySelector('.toyota-gallery-overlay').children].forEach((el,i)=>animate(el,[{opacity:0,transform:'translateY(28px)',filter:'blur(5px)'},{opacity:1,transform:'translateY(0)',filter:'blur(0)'}],{duration:720,delay:160+i*100,easing,fill:'backwards'}));
+   animate(panel.querySelector('.toyota-gallery-count'),[{opacity:0,transform:'translateY(-12px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,delay:300,easing,fill:'backwards'});
+  }
  }
  tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>select(index));tab.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%tabs.length;else if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();tabs[next].focus();select(next)})});
- reduceMotion.addEventListener('change',()=>{if(reduceMotion.matches)panel.getAnimations({subtree:true}).forEach(a=>a.cancel())});
+ reduceMotion.addEventListener('change',()=>{if(reduceMotion.matches)clearTransition()});
 })();
 
 </script>
