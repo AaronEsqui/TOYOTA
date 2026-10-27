@@ -748,6 +748,28 @@ body.site-fullscreen .hero{min-height:100svh}
 @keyframes principleIcon{50%{filter:drop-shadow(0 0 12px #eb0a1e88);transform:translateY(-3px)}}
 @media(max-width:650px){.principles-logo{right:-30%;top:10%}.principles-fire{height:50%}}
 @media(prefers-reduced-motion:reduce){.principles-logo,.principles-fire,.principles-smoke,.principles-embers,.toyota-principles .principle-icon{animation:none!important}}
+</style><style>
+/* Motion upgrade: kinetic section reveals and ambient transitions */
+.toyota-principles{--motion-shift:0px;--motion-glow:.35}
+.toyota-principles .principles-atmosphere{transform:translate3d(0,var(--motion-shift),0);transition:transform .16s linear}
+.toyota-principles .principles-logo{animation:principleLogo 9s ease-in-out infinite alternate,logoTurn 24s ease-in-out infinite alternate}
+.toyota-principles .principle-card{transform-style:preserve-3d;will-change:transform;transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.toyota-principles .principle-card:hover{transform:translateY(-10px) perspective(900px) rotateX(2deg)}
+.toyota-principles .principle-card:after{content:"";position:absolute;inset:-100% -50%;background:linear-gradient(110deg,transparent 42%,#ffffff10 50%,transparent 58%);transform:translateX(-90%) rotate(12deg);transition:transform .9s ease;pointer-events:none}
+.toyota-principles .principle-card:hover:after{transform:translateX(90%) rotate(12deg)}
+.toyota-principles .principle-icon{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.toyota-principles .principle-card:hover .principle-icon{transform:scale(1.16) rotate(-8deg)}
+.toyota-principles .principle-lead{position:relative;backdrop-filter:blur(4px);text-shadow:0 0 25px #000a}
+.toyota-principles .motion-scan{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 0%,#ff2a4109 49.8%,#ff2a4122 50%,transparent 50.2%);background-size:100% 230%;animation:motionScan 8s linear infinite}
+.toyota-principles .motion-beam{position:absolute;top:-40%;bottom:-40%;left:-50%;width:45%;z-index:1;pointer-events:none;transform:rotate(23deg);background:linear-gradient(90deg,transparent,#ff274012,transparent);animation:motionBeam 11s ease-in-out infinite}
+.toyota-principles .motion-pulse{position:absolute;right:13%;top:28%;width:clamp(180px,25vw,390px);aspect-ratio:1;border:1px solid #ff344222;border-radius:50%;z-index:1;pointer-events:none;animation:motionPulse 5s ease-out infinite}
+.toyota-principles .motion-pulse.p2{animation-delay:2.5s}
+.toyota-principles.motion-visible .principles-logo{filter:blur(1px) drop-shadow(0 0 42px #ff172b)}
+@keyframes logoTurn{50%{rotate:2deg}}
+@keyframes motionScan{to{background-position:0 -230%}}
+@keyframes motionBeam{0%,10%{transform:translateX(-80vw) rotate(23deg);opacity:0}40%{opacity:1}70%,100%{transform:translateX(240vw) rotate(23deg);opacity:0}}
+@keyframes motionPulse{0%{transform:scale(.65);opacity:0}25%{opacity:.65}100%{transform:scale(1.6);opacity:0}}
+@media(prefers-reduced-motion:reduce){.toyota-principles .principles-atmosphere{transform:none!important}.toyota-principles .principles-logo,.motion-scan,.motion-beam,.motion-pulse{animation:none!important}.toyota-principles .principle-card{will-change:auto}}
 </style><section class="section toyota-principles" id="filosofia" aria-labelledby="filosofia-title"><div class="principles-atmosphere" aria-hidden="true"><div class="principles-logo"><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="80" rx="107" ry="68" fill="none" stroke="currentColor" stroke-width="10"/><ellipse cx="120" cy="80" rx="37" ry="67" fill="none" stroke="currentColor" stroke-width="10"/><ellipse cx="120" cy="60" rx="85" ry="29" fill="none" stroke="currentColor" stroke-width="10"/></svg><span>TOYOTA</span></div><div class="principles-fire"></div><div class="principles-smoke"></div><div class="principles-smoke secondary"></div><div class="principles-embers"></div></div><div class="wrap">
 <span class="eyebrow">Toyota · Cultura organizacional</span><h2 id="filosofia-title" data-reveal="up">NUESTRA <span class="red">FILOSOFÍA</span></h2>
 <p class="principle-lead" data-reveal="up">Buscar la excelencia mediante la mejora continua, el respeto por las personas, la eliminación de desperdicios, la innovación responsable y el trabajo colaborativo, tomando decisiones basadas en hechos y priorizando la calidad, la seguridad y el valor para el cliente.</p>
@@ -1155,5 +1177,37 @@ document.addEventListener('fullscreenchange',()=>{
 })();
 
 </script>
-</body>
+<script>
+/* Extra motion is restricted to the four new Toyota culture sections. */
+(function(){
+ const sections=[...document.querySelectorAll('.toyota-principles')];
+ if(!sections.length)return;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ sections.forEach((section,index)=>{
+  const fx=section.querySelector('.principles-atmosphere');
+  if(fx){
+   const scan=document.createElement('div');scan.className='motion-scan';fx.append(scan);
+   const beam=document.createElement('div');beam.className='motion-beam';fx.append(beam);
+   for(let n=0;n<2;n++){const pulse=document.createElement('div');pulse.className='motion-pulse'+(n?' p2':'');fx.append(pulse)}
+  }
+ });
+ if(!('IntersectionObserver' in window))return;
+ const visible=new Set();
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{e.target.classList.toggle('motion-visible',e.isIntersecting);if(e.isIntersecting)visible.add(e.target);else visible.delete(e.target)});
+ },{threshold:.08});sections.forEach(section=>observer.observe(section));
+ let pending=false;
+ function update(){
+  pending=false;if(reduced.matches)return;
+  for(const section of visible){
+   const r=section.getBoundingClientRect();
+   const progress=(innerHeight/2-r.top-r.height/2)/Math.max(innerHeight,1);
+   section.style.setProperty('--motion-shift',Math.max(-45,Math.min(45,progress*36)).toFixed(1)+'px');
+  }
+ }
+ function schedule(){if(!pending&&!reduced.matches&&visible.size){pending=true;requestAnimationFrame(update)}}
+ addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});
+ reduced.addEventListener?.('change',()=>{if(reduced.matches)sections.forEach(s=>s.style.setProperty('--motion-shift','0px'));else schedule()});
+})();
+</script></body>
 </html>
