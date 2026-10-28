@@ -804,6 +804,32 @@ body.site-fullscreen .hero{min-height:100svh}
 @media(max-width:900px){.toyota-future .future-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.toyota-future .future-grid,.toyota-future .future-bottom{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.toyota-future .future-card{transition:none}}
+
+/* Efectos cinéticos exclusivos de las propuestas */
+.toyota-future::before{content:"";position:absolute;inset:-35%;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0 68%,rgba(235,10,30,.10) 76%,transparent 83%);animation:future-rotate 22s linear infinite}
+.toyota-future::after{content:"TOYOTA";position:absolute;right:-.05em;top:12%;font-size:clamp(110px,21vw,360px);font-weight:900;letter-spacing:-.09em;color:rgba(255,255,255,.025);pointer-events:none;transform:rotate(-8deg)}
+.toyota-future .future-wrap::before{content:"";position:absolute;top:-65px;left:-20%;width:65%;height:2px;background:linear-gradient(90deg,transparent,#eb0a1e,#fff,transparent);filter:drop-shadow(0 0 12px #eb0a1e);animation:future-sweep 6s ease-in-out infinite alternate;pointer-events:none}
+.toyota-future .future-tag{display:inline-block;animation:future-pulse 3s ease-in-out infinite}
+.toyota-future h2{position:relative;text-shadow:0 0 30px rgba(235,10,30,.18)}
+.toyota-future .future-card{position:relative;overflow:hidden;isolation:isolate;transform-style:preserve-3d;will-change:transform}
+.toyota-future .future-card::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(350px circle at var(--mx,50%) var(--my,50%),rgba(235,10,30,.23),transparent 65%);opacity:0;transition:opacity .4s}
+.toyota-future .future-card::after{content:"";position:absolute;left:-80%;top:0;width:45%;height:100%;transform:skewX(-22deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.11),transparent);transition:left .7s}
+.toyota-future .future-card:hover::before,.toyota-future .future-card:focus-within::before{opacity:1}
+.toyota-future .future-card:hover::after{left:140%}
+.toyota-future .future-card:hover{box-shadow:0 20px 55px #0009,0 0 25px rgba(235,10,30,.20)}
+.toyota-future .future-card .future-num{display:inline-block;animation:future-pulse 3.5s ease-in-out infinite}
+.toyota-future .future-bottom article{transition:transform .4s,box-shadow .4s}
+.toyota-future .future-bottom article:hover{transform:translateY(-5px);box-shadow:0 15px 40px #0005}
+.toyota-future.future-animated .future-card,.toyota-future.future-animated .future-bottom article{opacity:0;transform:translateY(44px) scale(.96);transition:opacity .7s ease,transform .75s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.toyota-future.future-animated.future-visible .future-card,.toyota-future.future-animated.future-visible .future-bottom article{opacity:1;transform:translateY(0) scale(1)}
+.toyota-future.future-animated.future-visible .future-card:nth-child(2){transition-delay:.09s}
+.toyota-future.future-animated.future-visible .future-card:nth-child(3){transition-delay:.18s}
+.toyota-future.future-animated.future-visible .future-card:nth-child(4){transition-delay:.27s}
+.toyota-future.future-animated.future-visible .future-card:nth-child(5){transition-delay:.36s}
+.toyota-future.future-animated.future-visible .future-card:nth-child(6){transition-delay:.45s}
+.toyota-future.future-animated.future-visible .future-bottom article{transition-delay:.48s}
+@keyframes future-rotate{to{transform:rotate(360deg)}}@keyframes future-sweep{from{transform:translateX(-25%)}to{transform:translateX(145%)}}@keyframes future-pulse{50%{filter:drop-shadow(0 0 12px rgba(235,10,30,.8));opacity:.78}}
+@media(prefers-reduced-motion:reduce){.toyota-future::before,.toyota-future .future-wrap::before,.toyota-future .future-tag,.toyota-future .future-card .future-num{animation:none}.toyota-future.future-animated .future-card,.toyota-future.future-animated .future-bottom article{opacity:1;transform:none;transition:none}}
 </style>
 <section class="toyota-future" id="propuestas-toyota" aria-labelledby="future-title">
 <div class="future-wrap">
@@ -821,6 +847,14 @@ body.site-fullscreen .hero{min-height:100svh}
 <div class="future-bottom"><article><h3>Justificación</h3><p>Estas propuestas permitirían que Toyota se adapte a las necesidades del mercado, aproveche mejor sus recursos y fortalezca su competitividad a largo plazo.</p></article><article><h3>Conclusión</h3><p>Buscamos que Toyota no solo destaque por fabricar vehículos de calidad, sino también por innovar, cuidar a sus colaboradores y ofrecer soluciones de movilidad sostenibles y accesibles.</p></article></div>
 <p class="future-note">Propuestas académicas del equipo; no representan necesariamente iniciativas oficiales o ya implementadas por Toyota.</p>
 </div></section>
+<script>
+/* Reveal progresivo y luz interactiva; respeta movimiento reducido */
+(()=>{const section=document.querySelector('#propuestas-toyota');if(!section)return;
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(!reduced.matches && 'IntersectionObserver' in window){section.classList.add('future-animated');const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){section.classList.add('future-visible');observer.unobserve(section)}}},{threshold:.12});observer.observe(section)}
+if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches){section.querySelectorAll('.future-card').forEach(card=>card.addEventListener('pointermove',e=>{const b=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-b.left)/b.width*100)+'%');card.style.setProperty('--my',((e.clientY-b.top)/b.height*100)+'%')}))}
+})();
+</script>
 
 </main>
 
