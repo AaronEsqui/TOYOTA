@@ -830,8 +830,31 @@ body.site-fullscreen .hero{min-height:100svh}
 .toyota-future.future-animated.future-visible .future-bottom article{transition-delay:.48s}
 @keyframes future-rotate{to{transform:rotate(360deg)}}@keyframes future-sweep{from{transform:translateX(-25%)}to{transform:translateX(145%)}}@keyframes future-pulse{50%{filter:drop-shadow(0 0 12px rgba(235,10,30,.8));opacity:.78}}
 @media(prefers-reduced-motion:reduce){.toyota-future::before,.toyota-future .future-wrap::before,.toyota-future .future-tag,.toyota-future .future-card .future-num{animation:none}.toyota-future.future-animated .future-card,.toyota-future.future-animated .future-bottom article{opacity:1;transform:none;transition:none}}
+
+/* Ambientación autónoma: visible sin clic, hover ni selección */
+.toyota-future{isolation:isolate}
+.toyota-future .future-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.toyota-future .future-atmosphere .future-orb{position:absolute;width:clamp(260px,38vw,580px);aspect-ratio:1;border-radius:50%;filter:blur(65px);opacity:.24;background:radial-gradient(circle,#eb0a1e 0%,#9e152a 25%,transparent 70%);animation:future-orbit 13s ease-in-out infinite alternate}
+.toyota-future .future-atmosphere .future-orb:nth-child(1){top:-13%;left:-14%}
+.toyota-future .future-atmosphere .future-orb:nth-child(2){bottom:-18%;right:-15%;animation-delay:-6s;animation-duration:17s}
+.toyota-future .future-atmosphere .future-beam{position:absolute;top:-30%;left:18%;height:160%;width:2px;background:linear-gradient(transparent,#ff364b,rgba(255,255,255,.65),transparent);transform:rotate(25deg);box-shadow:0 0 25px 4px #eb0a1e66;opacity:.45;animation:future-beam-drift 9s linear infinite}
+.toyota-future .future-atmosphere .future-beam:nth-of-type(4){left:78%;animation-delay:-4s;animation-duration:12s}
+.toyota-future .future-atmosphere .future-spark{position:absolute;left:var(--sx);top:var(--sy);width:var(--ss);height:var(--ss);border-radius:50%;background:#ff5362;box-shadow:0 0 12px 2px #eb0a1e;opacity:0;animation:future-spark-rise var(--sd) ease-in-out infinite;animation-delay:var(--delay)}
+.toyota-future .future-card{animation:future-card-breathe 5s ease-in-out infinite;animation-delay:calc(var(--card-index,0) * -.65s)}
+.toyota-future .future-card:nth-child(2){--card-index:1}.toyota-future .future-card:nth-child(3){--card-index:2}.toyota-future .future-card:nth-child(4){--card-index:3}.toyota-future .future-card:nth-child(5){--card-index:4}.toyota-future .future-card:nth-child(6){--card-index:5}
+.toyota-future .future-card{border-color:rgba(235,10,30,.24);box-shadow:0 0 20px rgba(235,10,30,.06),inset 0 1px #ffffff16}
+.toyota-future .future-card .future-num{color:#ff6474}
+.toyota-future .future-bottom article{animation:future-border-glow 4s ease-in-out infinite alternate}
+.toyota-future .future-bottom article:nth-child(2){animation-delay:-2s}
+@keyframes future-orbit{0%{transform:translate(-8%,-10%) scale(.8)}100%{transform:translate(25%,18%) scale(1.25)}}
+@keyframes future-beam-drift{0%{translate:-35vw 0;opacity:0}25%{opacity:.4}75%{opacity:.4}100%{translate:55vw 0;opacity:0}}
+@keyframes future-spark-rise{0%,100%{opacity:0;transform:translateY(30px) scale(.4)}35%{opacity:.8}70%{opacity:.35}85%{transform:translateY(-85px) scale(1.4)}}
+@keyframes future-card-breathe{0%,100%{box-shadow:0 0 16px rgba(235,10,30,.05),inset 0 1px #ffffff16}50%{box-shadow:0 0 32px rgba(235,10,30,.21),inset 0 1px #ffffff24}}
+@keyframes future-border-glow{from{border-left-color:#a20b1c;box-shadow:0 0 0 transparent}to{border-left-color:#ff5060;box-shadow:-8px 0 22px #eb0a1e25}}
+@media(prefers-reduced-motion:reduce){.toyota-future .future-atmosphere *,.toyota-future .future-card,.toyota-future .future-bottom article{animation:none!important}}
 </style>
 <section class="toyota-future" id="propuestas-toyota" aria-labelledby="future-title">
+<div class="future-atmosphere" aria-hidden="true"><i class="future-orb"></i><i class="future-orb"></i><i class="future-beam"></i><i class="future-beam"></i><i class="future-spark" style="--sx:11%;--sy:9%;--ss:2px;--sd:4s;--delay:-0s"></i><i class="future-spark" style="--sx:48%;--sy:32%;--ss:3px;--sd:5s;--delay:-1s"></i><i class="future-spark" style="--sx:85%;--sy:55%;--ss:4px;--sd:6s;--delay:-2s"></i><i class="future-spark" style="--sx:22%;--sy:78%;--ss:2px;--sd:7s;--delay:-3s"></i><i class="future-spark" style="--sx:59%;--sy:1%;--ss:3px;--sd:8s;--delay:-4s"></i><i class="future-spark" style="--sx:96%;--sy:24%;--ss:4px;--sd:4s;--delay:-5s"></i><i class="future-spark" style="--sx:33%;--sy:47%;--ss:2px;--sd:5s;--delay:-6s"></i><i class="future-spark" style="--sx:70%;--sy:70%;--ss:3px;--sd:6s;--delay:-7s"></i><i class="future-spark" style="--sx:7%;--sy:93%;--ss:4px;--sd:7s;--delay:-0s"></i><i class="future-spark" style="--sx:44%;--sy:16%;--ss:2px;--sd:8s;--delay:-1s"></i><i class="future-spark" style="--sx:81%;--sy:39%;--ss:3px;--sd:4s;--delay:-2s"></i><i class="future-spark" style="--sx:18%;--sy:62%;--ss:4px;--sd:5s;--delay:-3s"></i><i class="future-spark" style="--sx:55%;--sy:85%;--ss:2px;--sd:6s;--delay:-4s"></i><i class="future-spark" style="--sx:92%;--sy:8%;--ss:3px;--sd:7s;--delay:-5s"></i><i class="future-spark" style="--sx:29%;--sy:31%;--ss:4px;--sd:8s;--delay:-6s"></i><i class="future-spark" style="--sx:66%;--sy:54%;--ss:2px;--sd:4s;--delay:-7s"></i><i class="future-spark" style="--sx:3%;--sy:77%;--ss:3px;--sd:5s;--delay:-0s"></i><i class="future-spark" style="--sx:40%;--sy:0%;--ss:4px;--sd:6s;--delay:-1s"></i></div>
 <div class="future-wrap">
 <div class="future-tag">Planeación estratégica · Visión de futuro</div>
 <h2 id="future-title">¿Qué más agregaríamos a Toyota?</h2>
