@@ -1084,6 +1084,10 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 .toyota-foda .foda-radar-help{text-align:center;font-size:9px;letter-spacing:.13em;color:#a3abb6;font-weight:700;margin:2px 0 0}
 .toyota-foda .foda-radar-help span{color:#ff6474}
 .toyota-foda>.foda-wrap{max-width:1240px;padding:0 clamp(16px,4vw,40px)}
+/* Expande solo la portada FODA a todo el ancho; el diagnóstico conserva su columna de lectura. */
+.toyota-foda .foda-hero{width:100vw;margin-left:calc(50% - 50vw)}
+.toyota-foda .foda-hero-image{translate:var(--cinema-x,0px) var(--cinema-y,0px)}
+.toyota-foda .foda-hero .foda-hero-layout,.toyota-foda .foda-hero-tail{max-width:1300px}
 .toyota-foda #foda-matriz{scroll-margin-top:90px}
 .toyota-foda .foda-panel{scroll-margin-top:115px;background:linear-gradient(143deg,#19212a,#0b0e14 72%);border-radius:22px;box-shadow:0 18px 36px #0003;isolation:isolate;transform-style:preserve-3d}
 .toyota-foda .foda-panel:after{content:"";position:absolute;z-index:-1;inset:-60%;pointer-events:none;background:radial-gradient(circle at var(--foda-x,50%) var(--foda-y,50%),color-mix(in srgb,var(--foda-accent) 15%,transparent),transparent 25%);opacity:0;transition:opacity .4s}
