@@ -1034,29 +1034,158 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 .toyota-foda .foda-sources a{color:#e0e4eb;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 @media(max-width:760px){.toyota-foda .foda-grid,.toyota-foda .foda-strategies,.toyota-foda .foda-answers{grid-template-columns:1fr}.toyota-foda .foda-panel,.toyota-foda .foda-strategy{padding:21px}.toyota-foda .foda-subhead{margin-top:52px}.toyota-foda .foda-priority{margin-top:52px}.toyota-foda .foda-stat{gap:4px}}
 @media(prefers-reduced-motion:reduce){.toyota-foda:after{animation:none}.toyota-foda .foda-panel,.toyota-foda .foda-strategy{transition:none}}
+
+/* ============ FODA CINEMATIC EXPERIENCE · V2 ============ */
+.toyota-foda{--foda-red:#eb0a1e;padding:0 0 clamp(80px,9vw,130px);background:radial-gradient(ellipse at 96% 36%,rgba(235,10,30,.065),transparent 42%),#07090e}
+.toyota-foda:before{display:none}
+.toyota-foda:after{z-index:4;animation-duration:13s}
+.toyota-foda .foda-hero{position:relative;isolation:isolate;min-height:clamp(610px,76vh,840px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:clamp(105px,10vw,130px) clamp(22px,5.5vw,84px) 48px;background:#080b11;border-bottom:1px solid #ffffff19;margin-bottom:clamp(52px,6vw,92px)}
+.toyota-foda .foda-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,12,.93) 0%,rgba(5,7,12,.8) 33%,rgba(5,7,12,.65) 65%,rgba(5,7,12,.75) 100%),linear-gradient(0deg,#07090e 0%,transparent 37%);pointer-events:none}
+.toyota-foda .foda-hero-image{position:absolute;z-index:-2;inset:-7%;background-image:url("assets/scene-wide.webp");background-position:center 54%;background-size:cover;filter:grayscale(70%) brightness(.55) contrast(1.18);animation:foda-hero-drift 25s ease-in-out infinite alternate}
+.toyota-foda .foda-hero-grid{position:absolute;inset:0;z-index:0;opacity:.16;pointer-events:none;background-image:linear-gradient(#ffffff15 1px,transparent 1px),linear-gradient(90deg,#ffffff12 1px,transparent 1px);background-size:74px 74px;mask-image:linear-gradient(90deg,#000,transparent 80%)}
+.toyota-foda .foda-hero .foda-hero-layout{display:grid;position:relative;z-index:2;grid-template-columns:minmax(0,1.1fr) minmax(300px,.85fr);align-items:center;gap:clamp(25px,5vw,80px);max-width:1380px;width:100%;margin:0 auto}
+.toyota-foda .foda-hero-copy{min-width:0}
+.toyota-foda .foda-hero h2{font-size:clamp(64px,8.6vw,136px);line-height:.9;max-width:740px;letter-spacing:-.075em;margin:28px 0 28px;text-shadow:0 9px 35px #0008}
+.toyota-foda .foda-hero h2 em{display:block;letter-spacing:-.065em;color:transparent;-webkit-text-stroke:2px #ff4257;text-shadow:0 0 25px #eb0a1e55;filter:drop-shadow(0 0 16px #eb0a1e55)}
+.toyota-foda .foda-hero .foda-lead{font-size:clamp(15px,1.45vw,19px);line-height:1.8;max-width:630px;color:#d3d8e2}
+.toyota-foda .foda-hero .foda-kicker{letter-spacing:.24em}
+.toyota-foda .foda-hero .foda-meta{margin-top:30px;gap:9px}
+.toyota-foda .foda-hero .foda-meta span{background:rgba(0,0,0,.35);backdrop-filter:blur(9px);border-color:#ffffff35;font-size:11px;letter-spacing:.03em;transition:background .3s,border-color .3s,transform .3s}
+.toyota-foda .foda-hero .foda-meta span:hover{border-color:#ff4e61;background:#eb0a1e20;transform:translateY(-3px)}
+.toyota-foda .foda-headlights{position:absolute;z-index:1;top:23%;width:100%;left:0;pointer-events:none;display:flex;justify-content:space-between;opacity:.55;filter:blur(1px)}
+.toyota-foda .foda-headlights span{display:block;width:clamp(35px,9vw,142px);height:5px;background:#fdfbff;box-shadow:0 0 10px 3px #fff,0 0 50px 13px #ff3652,0 0 115px 45px #eb0a1e55;transform:skew(-22deg);animation:foda-headlight 5s ease-in-out infinite alternate}
+.toyota-foda .foda-headlights span:nth-child(1){margin-left:13%;animation-delay:-2.3s}.toyota-foda .foda-headlights span:nth-child(2){margin-right:9%}
+.toyota-foda .foda-hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:35px}
+.toyota-foda .foda-hero-actions>a{background:#eb0a1e;color:#fff;border:1px solid #ff4057;padding:13px 19px;border-radius:5px;font-size:12px;letter-spacing:.07em;font-weight:900;display:inline-flex;align-items:center;gap:15px;box-shadow:0 0 28px #eb0a1e35;transition:transform .3s,background .3s,box-shadow .3s}
+.toyota-foda .foda-hero-actions>a:hover{transform:translateY(-4px);background:#fa1f34;box-shadow:0 10px 45px #eb0a1e80}
+.toyota-foda .foda-hero-actions>span{color:#aab0ba;font-size:10px;letter-spacing:.14em}
+.toyota-foda .foda-hero-tail{position:relative;max-width:1380px;width:100%;margin:75px auto 0;z-index:2;display:flex;gap:clamp(24px,4vw,65px);border-top:1px solid #ffffff22;padding:22px 0 0;color:#9fa9b6;font-size:10px;letter-spacing:.28em;font-weight:700}
+.toyota-foda .foda-radar{position:relative;width:100%;min-width:0;max-width:520px;justify-self:center;padding:22px 18px 14px;background:linear-gradient(140deg,rgba(20,25,34,.72),rgba(7,11,19,.45));border:1px solid #ffffff27;border-radius:20px;box-shadow:0 30px 90px #0009,inset 0 1px #ffffff12;backdrop-filter:blur(12px)}
+.toyota-foda .foda-radar:before{content:"";position:absolute;top:-1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,#ff5a6d,transparent);box-shadow:0 0 20px #eb0a1e}
+.toyota-foda .foda-radar-caption{display:flex;align-items:center;justify-content:space-between;color:#e6eaf0;font-weight:800;letter-spacing:.13em;font-size:10px}
+.toyota-foda .foda-radar-caption span{color:#ff6375}
+.toyota-foda .foda-radar-board{position:relative;width:100%;aspect-ratio:1;max-height:440px}
+.toyota-foda .foda-radar-lines{position:absolute;inset:0;width:100%;height:100%;color:#e6eaf0;opacity:.72;animation:foda-radar-wake 2s ease both}
+.toyota-foda .foda-radar-beacon{transform-origin:200px 200px;animation:foda-orbit 13s linear infinite}
+.toyota-foda .foda-orbit-circle{position:absolute;inset:20%;border-radius:50%;border:1px dashed #ffffff20;animation:foda-spin 35s linear infinite;pointer-events:none}
+.toyota-foda .foda-orbit-two{inset:32%;border:1px solid #eb0a1e44;animation-direction:reverse;animation-duration:24s}
+.toyota-foda .foda-radar-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;pointer-events:none}
+.toyota-foda .foda-radar-center span{font-size:clamp(9px,1vw,13px);font-weight:900;letter-spacing:.2em;color:#f7f7f8}
+.toyota-foda .foda-radar-center strong{font-size:clamp(25px,3vw,45px);font-weight:900;letter-spacing:-.09em;line-height:1;color:#ff465e}
+.toyota-foda .foda-radar-center small{font-size:8px;letter-spacing:.1em;color:#a1acb8}
+.toyota-foda .foda-radar-node{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:8px 10px;min-width:86px;min-height:67px;background:rgba(8,11,17,.88);border:1px solid #ffffff3c;border-radius:11px;color:#fff;backdrop-filter:blur(12px);transform:translate(-50%,-50%);transition:background .3s,border-color .3s,box-shadow .3s,scale .3s}
+.toyota-foda .foda-radar-node strong{font-size:24px;line-height:1;font-weight:900}
+.toyota-foda .foda-radar-node span{font-size:8px;font-weight:800;letter-spacing:.09em;white-space:nowrap}
+.toyota-foda .foda-radar-node:hover,.toyota-foda .foda-radar-node:focus-visible,.toyota-foda .foda-radar-node.is-active{background:#1f1720;border-color:#ff5568;box-shadow:0 0 27px #eb0a1e72;scale:1.09}
+.toyota-foda .foda-radar-node.r-f{left:50%;top:16%;color:#7bddf4}
+.toyota-foda .foda-radar-node.r-o{left:84%;top:50%;color:#71edc5}
+.toyota-foda .foda-radar-node.r-d{left:16%;top:50%;color:#ffdc89}
+.toyota-foda .foda-radar-node.r-a{left:50%;top:84%;color:#ff8091}
+.toyota-foda .foda-radar-help{text-align:center;font-size:9px;letter-spacing:.13em;color:#a3abb6;font-weight:700;margin:2px 0 0}
+.toyota-foda .foda-radar-help span{color:#ff6474}
+.toyota-foda>.foda-wrap{max-width:1240px;padding:0 clamp(16px,4vw,40px)}
+.toyota-foda #foda-matriz{scroll-margin-top:90px}
+.toyota-foda .foda-panel{scroll-margin-top:115px;background:linear-gradient(143deg,#19212a,#0b0e14 72%);border-radius:22px;box-shadow:0 18px 36px #0003;isolation:isolate;transform-style:preserve-3d}
+.toyota-foda .foda-panel:after{content:"";position:absolute;z-index:-1;inset:-60%;pointer-events:none;background:radial-gradient(circle at var(--foda-x,50%) var(--foda-y,50%),color-mix(in srgb,var(--foda-accent) 15%,transparent),transparent 25%);opacity:0;transition:opacity .4s}
+.toyota-foda .foda-panel:hover:after,.toyota-foda .foda-panel.is-spotlight:after{opacity:1}
+.toyota-foda .foda-panel.is-spotlight{border-color:var(--foda-accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--foda-accent) 25%,transparent),0 18px 60px #0009}
+.toyota-foda .foda-panel .foda-icon{position:relative;box-shadow:0 0 25px color-mix(in srgb,var(--foda-accent) 14%,transparent),inset 0 0 12px color-mix(in srgb,var(--foda-accent) 13%,transparent)}
+.toyota-foda .foda-panel.is-lit .foda-icon{animation:foda-badge-appear 1.2s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-panel.is-lit .foda-factor{animation:foda-text-appear .8s cubic-bezier(.22,1,.36,1) both}
+.toyota-foda .foda-panel.is-lit .foda-factor:nth-child(3){animation-delay:.14s}
+.toyota-foda .foda-subhead{position:relative}
+.toyota-foda .foda-subhead h3:after{content:"";display:block;margin-top:14px;width:clamp(65px,9vw,115px);height:3px;background:linear-gradient(90deg,#eb0a1e,#ff7280,transparent);box-shadow:0 0 14px #eb0a1e55;transform-origin:left}
+.toyota-foda .foda-stat{position:relative;overflow:hidden;box-shadow:inset 0 1px #ffffff16}
+.toyota-foda .foda-stat:after{content:"";position:absolute;top:-100%;bottom:-100%;left:-42%;width:28%;transform:rotate(26deg);background:linear-gradient(90deg,transparent,#ffffff12,transparent);animation:foda-stat-sweep 8s ease-in-out infinite}
+.toyota-foda .foda-transfer{padding:5px 0 29px;margin-top:-2px}
+.toyota-foda .foda-transfer-line{height:80px;display:flex;justify-content:center;position:relative}
+.toyota-foda .foda-transfer-line:before{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(transparent,#ef253a,#ff6d7d);box-shadow:0 0 19px #eb0a1e}
+.toyota-foda .foda-transfer-line span{position:absolute;bottom:0;width:10px;height:10px;transform:rotate(45deg);border-right:2px solid #ff5a6b;border-bottom:2px solid #ff5a6b}
+.toyota-foda .foda-transfer-line i{height:8px;width:8px;position:absolute;left:calc(50% - 4px);top:0;border-radius:50%;background:#ff586b;box-shadow:0 0 15px 4px #eb0a1e;animation:foda-drop 3.2s ease-in-out infinite}
+.toyota-foda .foda-transfer-center{display:flex;align-items:center;justify-content:center;gap:30px;color:#ff6b7a;letter-spacing:.12em;font-size:11px;text-align:center}
+.toyota-foda .foda-transfer-center strong{font-size:clamp(11px,1.4vw,15px);color:#eff0f3}
+.toyota-foda .foda-strategy{position:relative;isolation:isolate;overflow:hidden;border-top:2px solid #ff5264;background:linear-gradient(135deg,#171b24,#090c12);box-shadow:0 15px 42px #0004}
+.toyota-foda .foda-strategy:before{content:"";position:absolute;z-index:-1;width:65%;aspect-ratio:1;right:-32%;top:-50%;border-radius:50%;background:radial-gradient(circle,#eb0a1e2b,transparent 70%);transition:transform .8s,opacity .8s}
+.toyota-foda .foda-strategy:after{content:"";position:absolute;top:0;left:-80%;width:38%;height:100%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent);transition:left .8s;pointer-events:none}
+.toyota-foda .foda-strategy:hover:after{left:145%}
+.toyota-foda .foda-strategy:hover:before{transform:translate(-15%,15%) scale(1.2)}
+.toyota-foda .foda-strategy-code{font-size:36px;letter-spacing:-.08em;text-shadow:0 0 22px #eb0a1e45}
+.toyota-foda .foda-strategy.is-lit .foda-strategy-code{animation:foda-badge-appear 1s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-priority{background:radial-gradient(ellipse at 100% 12%,#eb0a1e44,transparent 38%),linear-gradient(125deg,#21131a,#11151d 68%);box-shadow:0 25px 80px #0005;border-color:#ff485b66}
+.toyota-foda .foda-priority:before{content:"";position:absolute;inset:0;border-radius:22px;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 70%);background-size:260% 100%;animation:foda-priority-scan 13s linear infinite}
+.toyota-foda .foda-action-steps{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:28px 0 10px;max-width:850px}
+.toyota-foda .foda-action-steps>div{display:flex;align-items:center;gap:9px;border:1px solid #ffffff32;background:#090c129e;border-radius:8px;padding:8px 12px}
+.toyota-foda .foda-action-steps b{color:#ff7382;font-size:12px}
+.toyota-foda .foda-action-steps span{font-size:10px;color:#eff1f4;font-weight:800;letter-spacing:.08em}
+.toyota-foda .foda-action-steps>i{width:30px;height:1px;background:linear-gradient(90deg,#ff5569,#ffffff3b);position:relative}
+.toyota-foda .foda-action-steps>i:after{content:"";position:absolute;right:0;top:-3px;border:4px solid transparent;border-left-color:#ff6e7c;transform:translateX(75%)}
+.toyota-foda .foda-answers article{transition:transform .35s,background .35s,border-color .35s}
+.toyota-foda .foda-answers article:hover{transform:translateY(-5px);background:#1a1620;border-color:#eb0a1e88}
+.toyota-foda .foda-closing{position:relative}
+.toyota-foda .foda-closing:before{content:"";position:absolute;top:0;left:0;width:150px;height:1px;background:#ff576a;box-shadow:0 0 22px #eb0a1e}
+.foda-presentation .tile{position:relative;overflow:hidden;border-top:2px solid #eb0a1e;box-shadow:0 18px 48px #0007;animation:foda-slide-rise .75s cubic-bezier(.16,1,.3,1) both}
+.foda-presentation .tile:nth-child(2){animation-delay:.12s}.foda-presentation .tile:nth-child(3){animation-delay:.24s}.foda-presentation .tile:nth-child(4){animation-delay:.36s}
+.foda-presentation .tile:after{content:"";position:absolute;inset:0;background:radial-gradient(450px circle at 90% 10%,#eb0a1e20,transparent 70%);pointer-events:none}
+.foda-presentation h3{color:#fff}
+@keyframes foda-hero-drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1%,1.5%)}}
+@keyframes foda-headlight{from{opacity:.45;scale:.8 1}to{opacity:.9;scale:1.2 1}}
+@keyframes foda-radar-wake{from{opacity:0;transform:scale(.8) rotate(-15deg)}to{opacity:.72;transform:none}}
+@keyframes foda-spin{to{transform:rotate(360deg)}}
+@keyframes foda-orbit{to{transform:rotate(360deg)}}
+@keyframes foda-badge-appear{from{opacity:0;transform:translateY(25px) rotate(-10deg) scale(.7);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes foda-text-appear{from{opacity:0;transform:translateY(23px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes foda-drop{0%{top:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:75px;opacity:0}}
+@keyframes foda-priority-scan{to{background-position:-260% 0}}
+@keyframes foda-stat-sweep{0%,55%{left:-42%}100%{left:142%}}
+@keyframes foda-slide-rise{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:1050px){.toyota-foda .foda-hero .foda-hero-layout{grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);gap:20px}.toyota-foda .foda-hero h2{font-size:clamp(60px,8vw,90px)}.toyota-foda .foda-radar-node{min-width:72px;min-height:58px;padding:7px}.toyota-foda .foda-radar-node span{font-size:7px}}
+@media(max-width:820px){.toyota-foda .foda-hero{padding:100px 5% 33px}.toyota-foda .foda-hero .foda-hero-layout{grid-template-columns:1fr;gap:45px}.toyota-foda .foda-hero h2{font-size:clamp(68px,12vw,110px)}.toyota-foda .foda-radar{max-width:500px}.toyota-foda .foda-hero-tail{margin-top:40px}.toyota-foda .foda-headlights{top:11%}.toyota-foda .foda-radar-node{min-width:86px;min-height:66px}.toyota-foda .foda-radar-node span{font-size:8px}}
+@media(max-width:480px){.toyota-foda .foda-hero{padding-top:95px}.toyota-foda .foda-hero h2{font-size:clamp(60px,15vw,82px)}.toyota-foda .foda-hero h2 em{-webkit-text-stroke:1.5px #ff5263}.toyota-foda .foda-radar{padding:13px 10px 11px}.toyota-foda .foda-radar-node{min-width:67px;min-height:53px;padding:5px 4px}.toyota-foda .foda-radar-node strong{font-size:21px}.toyota-foda .foda-radar-node span{font-size:6px;letter-spacing:0}.toyota-foda .foda-hero-tail{gap:16px;font-size:8px}.toyota-foda .foda-meta{gap:6px}.toyota-foda .foda-hero .foda-meta span{font-size:10px;padding:6px 9px}.toyota-foda .foda-transfer-center{gap:13px}.toyota-foda .foda-transfer-center span{font-size:9px}.toyota-foda .foda-action-steps{gap:8px}.toyota-foda .foda-action-steps>i{width:14px}}
+@media(prefers-reduced-motion:reduce){.toyota-foda .foda-hero-image,.toyota-foda .foda-headlights span,.toyota-foda .foda-radar-lines,.toyota-foda .foda-radar-beacon,.toyota-foda .foda-orbit-circle,.toyota-foda .foda-transfer-line i,.toyota-foda .foda-priority:before,.toyota-foda .foda-stat:after,.foda-presentation .tile{animation:none!important}.toyota-foda .foda-panel.is-lit .foda-icon,.toyota-foda .foda-panel.is-lit .foda-factor,.toyota-foda .foda-strategy.is-lit .foda-strategy-code{animation:none!important}.toyota-foda .foda-panel,.toyota-foda .foda-strategy,.toyota-foda .foda-radar-node{transition:none!important}}
 </style>
 <section id="diagnostico-foda" class="toyota-foda" aria-labelledby="foda-title">
 <div class="foda-wrap">
-<header data-reveal="up"><div class="foda-kicker">ACTIVIDAD INTEGRADORA · PLANEACIÓN ESTRATÉGICA</div><h2 id="foda-title">Diagnóstico <em>FODA.</em></h2>
+<header class="foda-hero" data-reveal="up">
+<div class="foda-hero-image" aria-hidden="true"></div>
+<div class="foda-hero-grid" aria-hidden="true"></div>
+<div class="foda-headlights" aria-hidden="true"><span></span><span></span></div>
+<div class="foda-hero-layout"><div class="foda-hero-copy"><div class="foda-kicker">ACTIVIDAD INTEGRADORA · PLANEACIÓN ESTRATÉGICA</div><h2 id="foda-title">Diagnóstico <em>FODA.</em></h2>
 <p class="foda-lead">Un análisis de Toyota Motor Corporation para tomar decisiones con fundamento. Retomamos la empresa, su misión, visión y el análisis PESTEL ya desarrollados en esta presentación; aquí completamos los factores internos y externos y los convertimos en estrategias.</p>
-<div class="foda-meta"><span>02 fortalezas</span><span>02 oportunidades</span><span>02 debilidades</span><span>02 amenazas</span><span>04 estrategias</span></div></header>
-<div class="foda-subhead" data-reveal="up"><div class="foda-kicker">01 / DIAGNÓSTICO</div><h3>Matriz FODA de Toyota</h3><p>Fortalezas y debilidades son factores internos. Oportunidades y amenazas provienen del entorno. Cada factor incluye una explicación de su importancia.</p></div>
+<div class="foda-meta"><span>02 fortalezas</span><span>02 oportunidades</span><span>02 debilidades</span><span>02 amenazas</span><span>04 estrategias</span></div>
+<div class="foda-hero-actions"><a class="foda-hero-cta" href="#foda-matriz">EXPLORAR DIAGNÓSTICO <span aria-hidden="true">↓</span></a><span>TOYOTA / PLANEACIÓN ESTRATÉGICA</span></div>
+</div>
+<div class="foda-radar" id="foda-radar" role="group" aria-label="Explorar los cuatro factores del FODA">
+ <div class="foda-radar-caption">MAPA ESTRATÉGICO <span>01 / 04</span></div>
+ <div class="foda-radar-board">
+  <span class="foda-orbit-circle foda-orbit-one" aria-hidden="true"></span><span class="foda-orbit-circle foda-orbit-two" aria-hidden="true"></span>
+  <svg class="foda-radar-lines" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M200 65 L334 200 L200 335 L66 200 Z" fill="none" stroke="currentColor" stroke-width="1" opacity=".30"/><path d="M200 65 L200 335 M66 200 L334 200" stroke="currentColor" stroke-width="1" stroke-dasharray="4 8" opacity=".35"/><circle cx="200" cy="200" r="113" fill="none" stroke="currentColor" stroke-width="1" opacity=".2"/><circle cx="200" cy="200" r="68" fill="none" stroke="#eb0a1e" stroke-width="1" opacity=".45"/><circle class="foda-radar-beacon" cx="200" cy="87" r="5" fill="#ff5263"/></svg>
+  <div class="foda-radar-center"><span>TOYOTA</span><strong>FODA</strong><small>ANÁLISIS 360°</small></div>
+  <button type="button" class="foda-radar-node r-f" data-target="foda-fortaleza" aria-label="Ir a las fortalezas"><strong>F</strong><span>FORTALEZAS</span></button>
+  <button type="button" class="foda-radar-node r-o" data-target="foda-oportunidad" aria-label="Ir a las oportunidades"><strong>O</strong><span>OPORTUNIDADES</span></button>
+  <button type="button" class="foda-radar-node r-d" data-target="foda-debilidad" aria-label="Ir a las debilidades"><strong>D</strong><span>DEBILIDADES</span></button>
+  <button type="button" class="foda-radar-node r-a" data-target="foda-amenaza" aria-label="Ir a las amenazas"><strong>A</strong><span>AMENAZAS</span></button>
+ </div>
+ <p class="foda-radar-help">SELECCIONA UN FACTOR PARA EXPLORARLO <span aria-hidden="true">↗</span></p>
+</div></div><div class="foda-hero-tail" aria-hidden="true"><span>ESTRATEGIA</span><span>ANÁLISIS</span><span>DECISIÓN</span></div>
+</header>
+<div id="foda-matriz" class="foda-subhead" data-reveal="up"><div class="foda-kicker">01 / DIAGNÓSTICO</div><h3>Matriz FODA de Toyota</h3><p>Fortalezas y debilidades son factores internos. Oportunidades y amenazas provienen del entorno. Cada factor incluye una explicación de su importancia.</p></div>
 <div class="foda-grid">
-<article class="foda-panel fortaleza" data-reveal="up"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">F</span><div><span>Interno · Positivo</span><h4>Fortalezas</h4></div></div>
+<article id="foda-fortaleza" class="foda-panel fortaleza" data-reveal="up" tabindex="-1"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">F</span><div><span>Interno · Positivo</span><h4>Fortalezas</h4></div></div>
 <div class="foda-factor"><strong><b>F1</b> Sistema de Producción Toyota</strong><p>Su enfoque en Just in Time, jidoka y mejora continua facilita el control de calidad, la reducción de desperdicios y la eficiencia de fabricación.</p></div>
 <div class="foda-factor"><strong><b>F2</b> Experiencia en vehículos híbridos</strong><p>Su trayectoria en electrificación híbrida, combinada con una presencia internacional, le ofrece experiencia técnica y acceso a distintos mercados.</p></div></article>
-<article class="foda-panel oportunidad" data-reveal="up"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">O</span><div><span>Externo · Positivo</span><h4>Oportunidades</h4></div></div>
+<article id="foda-oportunidad" class="foda-panel oportunidad" data-reveal="up" tabindex="-1"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">O</span><div><span>Externo · Positivo</span><h4>Oportunidades</h4></div></div>
 <div class="foda-factor"><strong><b>O1</b> Demanda de movilidad de menores emisiones</strong><p>Las necesidades de consumidores y mercados que buscan alternativas eficientes pueden impulsar modelos híbridos, enchufables y eléctricos.</p></div>
 <div class="foda-factor"><strong><b>O2</b> Avances en baterías y tecnología digital</strong><p>La evolución del software, baterías y automatización abre oportunidades para mejorar los productos y los procesos de fabricación.</p></div></article>
-<article class="foda-panel debilidad" data-reveal="up"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">D</span><div><span>Interno · Negativo</span><h4>Debilidades</h4></div></div>
+<article id="foda-debilidad" class="foda-panel debilidad" data-reveal="up" tabindex="-1"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">D</span><div><span>Interno · Negativo</span><h4>Debilidades</h4></div></div>
 <div class="foda-factor"><strong><b>D1</b> Baja participación relativa de eléctricos de batería</strong><p>En el ejercicio fiscal 2026, los BEV representaron aproximadamente 2.3% de las ventas Toyota y Lexus; su crecimiento parte de una base menor que la de los híbridos.</p></div>
 <div class="foda-factor"><strong><b>D2</b> Exigencia de inversión y adaptación</strong><p>Desarrollar varios tipos de motorización requiere coordinar inversiones, actualizar procesos y capacitar al personal, sin afectar calidad ni rentabilidad.</p></div></article>
-<article class="foda-panel amenaza" data-reveal="up"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">A</span><div><span>Externo · Negativo</span><h4>Amenazas</h4></div></div>
+<article id="foda-amenaza" class="foda-panel amenaza" data-reveal="up" tabindex="-1"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">A</span><div><span>Externo · Negativo</span><h4>Amenazas</h4></div></div>
 <div class="foda-factor"><strong><b>A1</b> Competencia de nuevos fabricantes eléctricos</strong><p>La presión por autonomía, precio, software y rapidez de innovación puede reducir oportunidades de venta si Toyota no responde a las expectativas de cada mercado.</p></div>
 <div class="foda-factor"><strong><b>A2</b> Regulaciones y volatilidad de costos</strong><p>Las reglas de emisiones, aranceles y variaciones en materias primas o suministro pueden aumentar costos y exigir cambios en productos y operaciones.</p></div></article>
 </div>
 <div class="foda-stat" data-reveal="up"><strong>2.3%</strong><span>Participación aproximada de los eléctricos de batería en las ventas Toyota y Lexus del ejercicio fiscal terminado en marzo de 2026: 243 mil BEV de 10.477 millones de vehículos. Dato usado para justificar D1, no como meta ni indicador oficial de desempeño estratégico.</span></div>
 <div class="foda-subhead" data-reveal="up"><div class="foda-kicker">02 / PROPUESTAS DEL EQUIPO</div><h3>Cuatro estrategias para actuar.</h3><p>La matriz no debe quedarse en una lista. Estas acciones conectan los factores y proponen decisiones concretas y viables para Toyota.</p></div>
+<div class="foda-transfer" aria-hidden="true"><div class="foda-transfer-line"><span></span><i></i></div><div class="foda-transfer-center"><span>F + O</span><strong>DEL DIAGNÓSTICO A LA ACCIÓN</strong><span>D + A</span></div></div>
 <div class="foda-strategies">
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">FO</span><span class="foda-cross">F2 + O1</span></div><h4>Crecer aprovechando las fortalezas.</h4><p>Utilizar la experiencia híbrida de Toyota para ampliar la oferta de vehículos de menores emisiones según las necesidades de cada mercado.</p><p class="foda-action"><strong>Acción:</strong> ampliar modelos híbridos, enchufables y eléctricos y evaluar su aceptación comercial.</p></article>
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">FA</span><span class="foda-cross">F1 + A1</span></div><h4>Defender la competitividad.</h4><p>Aplicar el sistema productivo de Toyota para responder a la presión de competidores con calidad, eficiencia y costos controlados.</p><p class="foda-action"><strong>Acción:</strong> reducir desperdicios y tiempos de producción sin disminuir la confiabilidad de los vehículos.</p></article>
@@ -1064,6 +1193,11 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">DA</span><span class="foda-cross">D2 + A2</span></div><h4>Reducir vulnerabilidades y riesgos.</h4><p>Evitar que las inversiones necesarias y los cambios externos comprometan la estabilidad de la empresa.</p><p class="foda-action"><strong>Acción:</strong> modernizar por etapas, diversificar suministros y revisar costos y requisitos legales por mercado.</p></article>
 </div>
 <div class="foda-priority" data-reveal="up"><div class="foda-kicker">03 / PRIORIDAD ESTRATÉGICA</div><h3>Fortalecer los vehículos eléctricos, sin abandonar los híbridos.</h3><p class="foda-priority-intro">La principal prioridad propuesta es mejorar la competitividad de Toyota en vehículos eléctricos de batería, apoyándose en su experiencia productiva y manteniendo una oferta adaptada a cada región. Es una recomendación académica, no una decisión oficial de Toyota.</p>
+<div class="foda-action-steps" aria-label="Ruta propuesta de implementación">
+<div><b>01</b><span>INNOVACIÓN</span></div><i aria-hidden="true"></i>
+<div><b>02</b><span>CAPACITACIÓN</span></div><i aria-hidden="true"></i>
+<div><b>03</b><span>MEDICIÓN</span></div>
+</div>
 <div class="foda-answers">
 <article><h4>¿Cuál es el principal problema?</h4><p>La participación todavía pequeña de los BEV dentro de las ventas Toyota y Lexus, ante mercados donde crece la competencia eléctrica.</p></article>
 <article><h4>¿Qué ocurre si no se atiende?</h4><p>Podría perder oportunidades de crecimiento y competitividad en segmentos donde los clientes prefieren opciones totalmente eléctricas.</p></article>
@@ -1073,6 +1207,54 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 <div class="foda-closing" data-reveal="up"><div class="foda-kicker">04 / CONCLUSIÓN DEL DIAGNÓSTICO</div><h3>Conservar las fortalezas. Preparar el futuro.</h3><p>Toyota cuenta con ventajas importantes en producción, calidad y experiencia híbrida, pero también enfrenta retos de adaptación tecnológica y competencia. El FODA muestra que una estrategia equilibrada debe proteger la eficiencia actual mientras fortalece sus capacidades para nuevas formas de movilidad. La propuesta del equipo es atender primero el desarrollo competitivo de vehículos eléctricos, con innovación y control de costos, sin perder la confiabilidad que distingue a Toyota.</p></div>
 <div class="foda-sources">Fuentes: <a href="https://global.toyota/en/company/vision-and-philosophy/production-system/" target="_blank" rel="noopener noreferrer">Toyota Production System</a> · <a href="https://global.toyota/pages/global_toyota/ir/financial-results/2026_4q_presentation_2_en.pdf" target="_blank" rel="noopener noreferrer">Resultados financieros FY2026, p. 5 (ventas por tecnología)</a>. Factores externos, debilidades interpretadas y estrategias: diagnóstico académico del equipo, no declaraciones oficiales de Toyota.</div>
 </div></section>
+
+<script id="toyota-foda-cinematic-motion">
+(function(){
+ const root=document.getElementById('diagnostico-foda');if(!root)return;
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const radar=[...root.querySelectorAll('.foda-radar-node')];
+ const panels=[...root.querySelectorAll('.foda-panel')];
+ const selectable=[...panels,...root.querySelectorAll('.foda-strategy,.foda-answers article')];
+ if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(entries=>{
+   entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('is-lit');io.unobserve(entry.target)}
+   });
+  },{threshold:.12,rootMargin:'0px 0px -24px 0px'});
+  selectable.forEach(el=>io.observe(el));
+ }else selectable.forEach(el=>el.classList.add('is-lit'));
+ function highlight(target){
+  panels.forEach(p=>p.classList.toggle('is-spotlight',p.id===target));
+  radar.forEach(b=>{const on=b.dataset.target===target;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on))});
+ }
+ radar.forEach(button=>button.addEventListener('click',()=>{
+  const target=button.dataset.target,el=document.getElementById(target);
+  if(!el)return;highlight(target);el.scrollIntoView({behavior:reduce.matches?'auto':'smooth',block:'center'});
+ }));
+ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce.matches){
+  panels.forEach(panel=>{
+   panel.addEventListener('pointermove',event=>{
+    const b=panel.getBoundingClientRect();
+    panel.style.setProperty('--foda-x',((event.clientX-b.left)/b.width*100)+'%');
+    panel.style.setProperty('--foda-y',((event.clientY-b.top)/b.height*100)+'%');
+   },{passive:true});
+  });
+  const hero=root.querySelector('.foda-hero');
+  let frame=0,px=0,py=0;
+  hero.addEventListener('pointermove',e=>{
+   const b=hero.getBoundingClientRect();
+   px=(e.clientX-b.left)/b.width-.5;py=(e.clientY-b.top)/b.height-.5;
+   if(frame)return;
+   frame=requestAnimationFrame(()=>{
+    frame=0;hero.style.setProperty('--cinema-x',(-px*18).toFixed(1)+'px');hero.style.setProperty('--cinema-y',(-py*13).toFixed(1)+'px');
+   });
+  },{passive:true});
+  hero.addEventListener('pointerleave',()=>{
+   hero.style.setProperty('--cinema-x','0px');hero.style.setProperty('--cinema-y','0px');
+  });
+ }
+})();
+</script>
 <!-- ============ FIN MATRIZ FODA ============ -->
 </main>
 
@@ -1248,9 +1430,9 @@ const slides=[
 {tag:'12 / FILOSOFÍA',title:'NUESTRA FILOSOFÍA',bg:IMG.wide,layout:'full',body:`<p>Buscar la excelencia mediante la mejora continua, el respeto por las personas, la eliminación de desperdicios, la innovación responsable y el trabajo colaborativo, tomando decisiones basadas en hechos y priorizando la calidad, la seguridad y el valor para el cliente.</p><p class="muted small">Síntesis académica de principios asociados con Toyota.</p>`,note:'Explica la mejora continua, el respeto por las personas y el valor para el cliente.'},
 {tag:'13 / TOYOTA WAY',title:'VALORES DE TOYOTA',bg:IMG.s3,layout:'full',body:`<div class="strategy-exec-grid"><div class="tile"><h3>Desafío (Challenge)</h3><p>Afrontar retos con una visión de largo plazo y buscar nuevas oportunidades.</p></div><div class="tile"><h3>Kaizen</h3><p>Mejorar continuamente los procesos y aprender de cada experiencia.</p></div><div class="tile"><h3>Genchi Genbutsu</h3><p>Ir al lugar de los hechos para comprender los problemas y tomar decisiones fundamentadas.</p></div><div class="tile"><h3>Respeto (Respect)</h3><p>Valorar a las personas, escuchar sus ideas y actuar con consideración.</p></div><div class="tile"><h3>Trabajo en equipo (Teamwork)</h3><p>Colaborar, compartir conocimientos y desarrollar el talento de las personas.</p></div></div><p class="muted small">Toyota Way 2001 · Resumen académico.</p>`,note:'Distingue los valores corporativos tradicionales de Toyota de nuestra propuesta.'},
 {tag:'14 / NUESTROS VALORES',title:'NUESTROS VALORES PROPUESTOS',bg:IMG.s3,layout:'full',body:`<div class="strategy-exec-grid"><div class="tile"><h3>Calidad y seguridad</h3><p>Garantizar vehículos y servicios que cumplan estándares rigurosos, protegiendo a clientes, trabajadores y comunidades.</p></div><div class="tile"><h3>Mejora continua (Kaizen)</h3><p>Evaluar permanentemente los procesos, resolver problemas e innovar para elevar la productividad.</p></div><div class="tile"><h3>Respeto y desarrollo de las personas</h3><p>Impulsar la capacitación, la igualdad de oportunidades, la seguridad laboral y la participación de los colaboradores.</p></div><div class="tile"><h3>Integridad y responsabilidad</h3><p>Actuar con transparencia, cumplir las obligaciones y mantener relaciones responsables con clientes, proveedores y comunidades.</p></div><div class="tile"><h3>Sostenibilidad</h3><p>Reducir el impacto ambiental de las operaciones, utilizar eficientemente los recursos y desarrollar movilidad de menor impacto.</p></div><div class="tile"><h3>Innovación y adaptabilidad</h3><p>Responder a los cambios tecnológicos, económicos y del mercado sin descuidar la calidad.</p></div></div><p class="muted small">Síntesis académica.</p>`,note:'Resume los seis valores y su aplicación en la empresa.'},
-{tag:"FODA / DIAGNÓSTICO",title:"FORTALEZAS · OPORTUNIDADES · DEBILIDADES · AMENAZAS",bg:IMG.wide,layout:'full',body:"<div class=\"strategy-exec-grid\"><div class=\"tile\"><h3>Fortalezas</h3><p>F1: Sistema de Producción Toyota.<br>F2: Experiencia híbrida.</p></div><div class=\"tile\"><h3>Oportunidades</h3><p>O1: Movilidad de bajas emisiones.<br>O2: Baterías y digitalización.</p></div><div class=\"tile\"><h3>Debilidades</h3><p>D1: Menor participación de BEV.<br>D2: Necesidad de inversión y capacitación.</p></div><div class=\"tile\"><h3>Amenazas</h3><p>A1: Competidores eléctricos.<br>A2: Regulaciones y costos variables.</p></div></div><p class=\"muted small\">F y D: factores internos. O y A: factores externos.</p>",note:"Describe al menos un factor de cada grupo y cómo afecta a Toyota. D1: alrededor de 2.3% de las ventas Toyota y Lexus FY2026 fueron BEV."},
-{tag:"FODA / ESTRATEGIAS",title:"DEL DIAGNÓSTICO A LA ACCIÓN",bg:IMG.s3,layout:'full',body:"<div class=\"strategy-exec-grid\"><div class=\"tile\"><h3>FO · Aprovechar</h3><p>F2 + O1: ampliar la oferta de vehículos de menores emisiones.</p></div><div class=\"tile\"><h3>FA · Proteger</h3><p>F1 + A1: competir con calidad y eficiencia productiva.</p></div><div class=\"tile\"><h3>DO · Mejorar</h3><p>D1 + O2: invertir en baterías, software y modelos BEV.</p></div><div class=\"tile\"><h3>DA · Prevenir</h3><p>D2 + A2: modernización gradual y diversificación de proveedores.</p></div></div>",note:"Explica que las estrategias FO, FA, DO y DA relacionan factores internos y externos; son propuestas académicas."},
-{tag:"FODA / PRIORIDAD",title:"¿QUÉ ATENDER PRIMERO?",bg:IMG.s4,layout:'full',body:"<p>Prioridad del equipo: fortalecer la competitividad de Toyota en vehículos totalmente eléctricos, sin abandonar los híbridos.</p><div class=\"strategy-exec-grid\"><div class=\"tile\"><h3>Problema</h3><p>Los BEV aún representan una parte pequeña de sus ventas.</p></div><div class=\"tile\"><h3>Acción inicial · DO</h3><p>Innovación en baterías, software y capacitación.</p></div><div class=\"tile\"><h3>Evaluación</h3><p>Participación BEV, costos, calidad y formación del personal.</p></div></div><p class=\"muted small\">Recomendación académica del equipo.</p>",note:"Argumenta por qué se atiende primero la estrategia DO y qué riesgos tendría no hacerlo."},
+{tag:"FODA / DIAGNÓSTICO",title:"FORTALEZAS · OPORTUNIDADES · DEBILIDADES · AMENAZAS",bg:IMG.wide,layout:'full',body:"<div class=\"foda-presentation\"><div class=\"strategy-exec-grid\"><div class=\"tile\"><h3>Fortalezas</h3><p>F1: Sistema de Producción Toyota.<br>F2: Experiencia híbrida.</p></div><div class=\"tile\"><h3>Oportunidades</h3><p>O1: Movilidad de bajas emisiones.<br>O2: Baterías y digitalización.</p></div><div class=\"tile\"><h3>Debilidades</h3><p>D1: Menor participación de BEV.<br>D2: Necesidad de inversión y capacitación.</p></div><div class=\"tile\"><h3>Amenazas</h3><p>A1: Competidores eléctricos.<br>A2: Regulaciones y costos variables.</p></div></div><p class=\"muted small\">F y D: factores internos. O y A: factores externos.</p></div>",note:"Describe al menos un factor de cada grupo y cómo afecta a Toyota. D1: alrededor de 2.3% de las ventas Toyota y Lexus FY2026 fueron BEV."},
+{tag:"FODA / ESTRATEGIAS",title:"DEL DIAGNÓSTICO A LA ACCIÓN",bg:IMG.s3,layout:'full',body:"<div class=\"foda-presentation\"><div class=\"strategy-exec-grid\"><div class=\"tile\"><h3>FO · Aprovechar</h3><p>F2 + O1: ampliar la oferta de vehículos de menores emisiones.</p></div><div class=\"tile\"><h3>FA · Proteger</h3><p>F1 + A1: competir con calidad y eficiencia productiva.</p></div><div class=\"tile\"><h3>DO · Mejorar</h3><p>D1 + O2: invertir en baterías, software y modelos BEV.</p></div><div class=\"tile\"><h3>DA · Prevenir</h3><p>D2 + A2: modernización gradual y diversificación de proveedores.</p></div></div></div>",note:"Explica que las estrategias FO, FA, DO y DA relacionan factores internos y externos; son propuestas académicas."},
+{tag:"FODA / PRIORIDAD",title:"¿QUÉ ATENDER PRIMERO?",bg:IMG.s4,layout:'full',body:"<div class=\"foda-presentation\"><p>Prioridad del equipo: fortalecer la competitividad de Toyota en vehículos totalmente eléctricos, sin abandonar los híbridos.</p><div class=\"strategy-exec-grid\"><div class=\"tile\"><h3>Problema</h3><p>Los BEV aún representan una parte pequeña de sus ventas.</p></div><div class=\"tile\"><h3>Acción inicial · DO</h3><p>Innovación en baterías, software y capacitación.</p></div><div class=\"tile\"><h3>Evaluación</h3><p>Participación BEV, costos, calidad y formación del personal.</p></div></div><p class=\"muted small\">Recomendación académica del equipo.</p></div>",note:"Argumenta por qué se atiende primero la estrategia DO y qué riesgos tendría no hacerlo."},
 {tag:'15 / CONCLUSIÓN',title:'CONCLUSIÓN GENERAL',bg:IMG.wide,layout:'full',body:`<p>Toyota demuestra que el éxito de una empresa no depende únicamente de fabricar buenos automóviles, sino también de contar con una misión, visión, filosofía y valores que orienten sus decisiones. La mejora continua, el respeto por las personas, la innovación y el trabajo en equipo fortalecen su competitividad y su capacidad para adaptarse. Por ello, la planeación estratégica es fundamental para alcanzar objetivos y construir un futuro más sostenible.</p>`,note:'Concluye destacando cómo la estrategia conecta valores, objetivos y resultados.'},
 {tag:'TOYOTA · SISTEMA ADMINISTRATIVO',title:'GRACIAS POR<br>SU ATENCIÓN',bg:IMG.s2,layout:'cover',body:'<p data-a>COORDINACIÓN · INNOVACIÓN · MEJORA CONTINUA</p><div class="actions" data-a><button class="btn" onclick="slideIndex=0;renderSlide(1)">↻ Reiniciar presentación</button><button class="btn alt" onclick="exitPresentation()">Explorar sitio web</button></div>',note:'Agradece la atención y abre espacio para preguntas.'}
 ];
