@@ -1146,12 +1146,131 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 @media(max-width:820px){.toyota-foda .foda-hero{padding:100px 5% 33px}.toyota-foda .foda-hero .foda-hero-layout{grid-template-columns:1fr;gap:45px}.toyota-foda .foda-hero h2{font-size:clamp(68px,12vw,110px)}.toyota-foda .foda-radar{max-width:500px}.toyota-foda .foda-hero-tail{margin-top:40px}.toyota-foda .foda-headlights{top:11%}.toyota-foda .foda-radar-node{min-width:86px;min-height:66px}.toyota-foda .foda-radar-node span{font-size:8px}}
 @media(max-width:480px){.toyota-foda .foda-hero{padding-top:95px}.toyota-foda .foda-hero h2{font-size:clamp(60px,15vw,82px)}.toyota-foda .foda-hero h2 em{-webkit-text-stroke:1.5px #ff5263}.toyota-foda .foda-radar{padding:13px 10px 11px}.toyota-foda .foda-radar-node{min-width:67px;min-height:53px;padding:5px 4px}.toyota-foda .foda-radar-node strong{font-size:21px}.toyota-foda .foda-radar-node span{font-size:6px;letter-spacing:0}.toyota-foda .foda-hero-tail{gap:16px;font-size:8px}.toyota-foda .foda-meta{gap:6px}.toyota-foda .foda-hero .foda-meta span{font-size:10px;padding:6px 9px}.toyota-foda .foda-transfer-center{gap:13px}.toyota-foda .foda-transfer-center span{font-size:9px}.toyota-foda .foda-action-steps{gap:8px}.toyota-foda .foda-action-steps>i{width:14px}}
 @media(prefers-reduced-motion:reduce){.toyota-foda .foda-hero-image,.toyota-foda .foda-headlights span,.toyota-foda .foda-radar-lines,.toyota-foda .foda-radar-beacon,.toyota-foda .foda-orbit-circle,.toyota-foda .foda-transfer-line i,.toyota-foda .foda-priority:before,.toyota-foda .foda-stat:after,.foda-presentation .tile{animation:none!important}.toyota-foda .foda-panel.is-lit .foda-icon,.toyota-foda .foda-panel.is-lit .foda-factor,.toyota-foda .foda-strategy.is-lit .foda-strategy-code{animation:none!important}.toyota-foda .foda-panel,.toyota-foda .foda-strategy,.toyota-foda .foda-radar-node{transition:none!important}}
+
+/* ========= HYPERTRANSITIONS · CYBER HUD / FUTURISTIC LAYER ========= */
+.toyota-foda{--foda-signal:#ff4058}
+.toyota-foda .foda-hyperdrive{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;isolation:isolate}
+.toyota-foda .foda-hud-corner{position:absolute;width:clamp(28px,5.5vw,74px);height:clamp(28px,5.5vw,74px);opacity:.7;filter:drop-shadow(0 0 10px #eb0a1e6a)}
+.toyota-foda .foda-hud-corner.c1{left:4%;top:13%;border-top:1px solid #ff5a72;border-left:1px solid #ff5a72}
+.toyota-foda .foda-hud-corner.c2{right:4%;top:13%;border-top:1px solid #ff5a72;border-right:1px solid #ff5a72}
+.toyota-foda .foda-hud-corner.c3{left:4%;bottom:12%;border-bottom:1px solid #ff5a72;border-left:1px solid #ff5a72}
+.toyota-foda .foda-hud-corner.c4{right:4%;bottom:12%;border-bottom:1px solid #ff5a72;border-right:1px solid #ff5a72}
+.toyota-foda .foda-signal{position:absolute;left:-18%;width:clamp(55px,13vw,190px);height:1px;background:linear-gradient(90deg,transparent,#ff3447,#fff,transparent);box-shadow:0 0 11px 2px #eb0a1e66;opacity:0;transform:skewX(-30deg);animation:foda-signal-rail 7s linear infinite}
+.toyota-foda .foda-signal.s1{top:17%;animation-delay:-.3s}
+.toyota-foda .foda-signal.s2{top:28%;animation-delay:-3.2s;animation-duration:9s}
+.toyota-foda .foda-signal.s3{top:39%;animation-delay:-5.1s;animation-duration:8s}
+.toyota-foda .foda-signal.s4{top:57%;animation-delay:-1.9s;animation-duration:10s}
+.toyota-foda .foda-signal.s5{top:72%;animation-delay:-6.3s;animation-duration:9.3s}
+.toyota-foda .foda-signal.s6{top:84%;animation-delay:-4.5s;animation-duration:11s}
+.toyota-foda .foda-ring{position:absolute;width:36vw;max-width:530px;aspect-ratio:1;right:-10%;top:11%;border-radius:50%;border:1px solid #ff435332;box-shadow:0 0 55px #eb0a1e12,inset 0 0 34px #eb0a1e0d;animation:foda-ring-expand 8s ease-in-out infinite}
+.toyota-foda .foda-ring.ring-b{width:21vw;right:-2%;top:19%;animation-delay:-4s;opacity:.65}
+.toyota-foda .foda-sweep-line{position:absolute;top:0;left:-75%;width:30%;height:100%;background:linear-gradient(90deg,transparent,#ef304211,transparent);transform:skew(-19deg);animation:foda-cinema-swipe 12s linear infinite}
+.toyota-foda .foda-hero h2 em{background:linear-gradient(120deg,#ff3148,#fff4 33%,#f43b4e 38%,#ff657b 48%,#f43b4e 59%,#ff3148);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foda-title-energy 9s ease-in-out infinite alternate}
+.toyota-foda .foda-radar-board::before{content:"";position:absolute;inset:8%;z-index:1;pointer-events:none;border-radius:50%;background:conic-gradient(from 5deg,transparent 0deg,transparent 304deg,#ff26401b 324deg,#ff445935 341deg,transparent 360deg);mask-image:radial-gradient(circle,transparent 0 21%,#000 46%,#000 67%,transparent 77%);animation:foda-360-sweep 11s linear infinite}
+.toyota-foda .foda-radar-board::after{content:"";position:absolute;inset:24%;z-index:0;pointer-events:none;border-radius:50%;background:radial-gradient(circle,transparent 58%,#ef304511 60%,transparent 63%);box-shadow:0 0 38px #ff30461b;animation:foda-radar-breathe 3.8s ease-in-out infinite}
+.toyota-foda .foda-radar-node{overflow:hidden}
+.toyota-foda .foda-radar-node::before{content:"";position:absolute;inset:0;pointer-events:none;transform:translateY(-110%);background:linear-gradient(transparent,#ffffff20,transparent);transition:transform .65s cubic-bezier(.15,1,.3,1)}
+.toyota-foda .foda-radar-node:hover::before,.toyota-foda .foda-radar-node:focus-visible::before{transform:translateY(110%)}
+.toyota-foda .foda-radar-node>strong,.toyota-foda .foda-radar-node>span{position:relative}
+.toyota-foda .foda-radar-status{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:13px;margin-top:10px;border-top:1px solid #ffffff22;font-size:9px;letter-spacing:.12em;color:#bac3cd;font-weight:700}
+.toyota-foda .foda-radar-status i{height:6px;width:6px;border-radius:50%;background:#ff4760;box-shadow:0 0 10px #ff4058;animation:foda-status 2s ease-in-out infinite}
+.toyota-foda .foda-transfer{position:relative;isolation:isolate}
+.toyota-foda .foda-stream-traces{position:absolute;inset:-20px 0 0;pointer-events:none;overflow:hidden;z-index:-1}
+.toyota-foda .foda-stream-traces span{position:absolute;width:2px;height:90px;top:8%;left:30%;background:linear-gradient(transparent,#ff4059a0,transparent);opacity:0;filter:drop-shadow(0 0 5px #eb0a1e);animation:foda-downlink 3.5s linear infinite}
+.toyota-foda .foda-stream-traces span:nth-child(2){left:50%;animation-delay:-1.5s}
+.toyota-foda .foda-stream-traces span:nth-child(3){left:70%;animation-delay:-2.6s}
+.toyota-foda .foda-panel .foda-factor{transition:border-color .3s,background-color .3s}
+.toyota-foda .foda-panel .foda-factor:hover{background-color:#ffffff06;border-color:#ffffff38}
+.toyota-foda .foda-panel:before{animation:foda-edge-spark 4s ease-in-out infinite alternate}
+.toyota-foda .foda-panel .foda-icon{transition:transform .55s cubic-bezier(.2,1.6,.3,1),box-shadow .45s}
+.toyota-foda .foda-panel:hover .foda-icon{transform:rotate(-6deg) scale(1.13);box-shadow:0 0 33px color-mix(in srgb,var(--foda-accent) 40%,transparent)}
+.toyota-foda .foda-strategy .foda-cross{position:relative;overflow:hidden}
+.toyota-foda .foda-strategy .foda-cross::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff30,transparent);transform:translateX(-140%);animation:foda-cross-scan 6s linear infinite}
+.toyota-foda .foda-strategy:nth-child(2) .foda-cross::after{animation-delay:-1.5s}
+.toyota-foda .foda-strategy:nth-child(3) .foda-cross::after{animation-delay:-3s}
+.toyota-foda .foda-strategy:nth-child(4) .foda-cross::after{animation-delay:-4.5s}
+.toyota-foda .foda-action-steps>div{transition:transform .4s,border-color .4s,box-shadow .4s}
+.toyota-foda .foda-action-steps>div:hover{transform:translateY(-5px);border-color:#ff596c;box-shadow:0 0 22px #eb0a1e3c}
+.toyota-foda .foda-navigator{position:fixed;z-index:55;right:14px;top:50%;transform:translate(12px,-50%);width:67px;padding:13px 7px 10px;border-radius:15px;border:1px solid #ffffff2c;background:#0a0e16ee;backdrop-filter:blur(20px);box-shadow:0 20px 60px #000b,0 0 24px #eb0a1e16;color:#fff;opacity:0;pointer-events:none;transition:opacity .35s,transform .5s cubic-bezier(.16,1,.3,1),width .35s;isolation:isolate}
+.toyota-foda .foda-navigator.is-visible{opacity:1;pointer-events:auto;transform:translate(0,-50%)}
+.toyota-foda .foda-nav-head{font-size:10px;letter-spacing:.12em;font-weight:900;text-align:center;border-bottom:1px solid #ffffff23;padding:2px 1px 11px;color:#fff}
+.toyota-foda .foda-nav-head span{display:block;color:#ff5369;font-size:7px;letter-spacing:.04em;margin-top:2px}
+.toyota-foda .foda-nav-items{position:relative;padding:6px 0;display:grid;gap:5px}
+.toyota-foda .foda-nav-progress{position:absolute;left:5px;top:18px;bottom:18px;width:1px;background:#ffffff25;pointer-events:none}
+.toyota-foda .foda-nav-progress i{display:block;width:2px;height:100%;background:linear-gradient(#ff6175,#eb0a1e);box-shadow:0 0 8px #eb0a1e;transform:scaleY(var(--foda-scroll,0));transform-origin:top}
+.toyota-foda .foda-nav-items a{display:flex;align-items:center;justify-content:center;min-height:42px;color:#cad0d8;border:1px solid transparent;border-radius:9px;transition:color .25s,background .25s,border-color .25s,box-shadow .25s}
+.toyota-foda .foda-nav-items a b{font-size:14px;font-weight:900;letter-spacing:.04em}
+.toyota-foda .foda-nav-items a span{display:none}
+.toyota-foda .foda-nav-items a:hover,.toyota-foda .foda-nav-items a:focus-visible,.toyota-foda .foda-nav-items a.is-current{color:#fff;background:#eb0a1e32;border-color:#ff526280;box-shadow:0 0 16px #eb0a1e24}
+.toyota-foda .foda-nav-bottom{font-size:8px;text-align:center;color:#8e97a5;border-top:1px solid #ffffff23;padding-top:10px;letter-spacing:.06em}
+.toyota-foda .foda-transition-flash{position:fixed;z-index:160;inset:0;pointer-events:none;opacity:0;visibility:hidden;contain:paint}
+.toyota-foda .foda-transition-flash span{position:absolute;inset:-35% -80%;background:linear-gradient(90deg,transparent 40%,#ff4b5b11 48%,#ff455547 50%,#fff5 50.5%,#ff455526 52%,transparent 60%);transform:translateX(-70%) skewX(-15deg)}
+.toyota-foda .foda-transition-flash i{position:absolute;top:0;bottom:0;left:0;width:100%;background:linear-gradient(90deg,transparent 47%,#ff4b5b25 49%,#ffffff24 50%,transparent 53%);transform:scaleX(0);transform-origin:center}
+.toyota-foda .foda-transition-flash.is-travelling{visibility:visible;opacity:1;animation:foda-flash-out .75s ease-out both}
+.toyota-foda .foda-transition-flash.is-travelling span{animation:foda-energy-wipe .7s cubic-bezier(.2,.8,.2,1) both}
+.toyota-foda .foda-transition-flash.is-travelling i{animation:foda-energy-flicker .5s ease-out both}
+.toyota-foda #foda-estrategias,.toyota-foda #foda-prioridad,.toyota-foda #foda-conclusion{scroll-margin-top:100px}
+.toyota-foda .foda-priority.foda-signal-in{animation:foda-signal-in 1.15s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-closing.foda-signal-in h3{animation:foda-text-focus 1s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-subhead.foda-signal-in h3{animation:foda-text-focus .95s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-subhead.foda-signal-in p{animation:foda-text-focus 1s .12s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-strategy.foda-holo-in{animation:foda-strategy-in .8s cubic-bezier(.16,1,.3,1) both}
+.toyota-foda .foda-strategy:nth-child(2).foda-holo-in{animation-delay:.11s}
+.toyota-foda .foda-strategy:nth-child(3).foda-holo-in{animation-delay:.20s}
+.toyota-foda .foda-strategy:nth-child(4).foda-holo-in{animation-delay:.29s}
+.holo-exec .exec-inner{isolation:isolate}
+.holo-exec .exec-inner:before{content:"";position:absolute;inset:-22px -16px;z-index:-1;border:1px solid #eb0a1e33;border-radius:16px;background:linear-gradient(145deg,#eb0a1e08,transparent 45%);pointer-events:none}
+.holo-exec .exec-inner:after{content:"";position:absolute;left:-22px;top:-10px;bottom:-10px;width:2px;background:linear-gradient(transparent,#ff3c55,#ff8191,transparent);box-shadow:0 0 18px #eb0a1e;pointer-events:none}
+.holo-exec.is-current .exec-inner{animation:holo-exec-in .92s cubic-bezier(.16,1,.3,1) both}
+.holo-exec.is-current .exec-inner:before{animation:holo-frame-scan 1.1s ease both}
+.holo-exec.is-current .exec-inner:after{animation:holo-line-in .95s cubic-bezier(.16,1,.3,1) both}
+.holo-exec .foda-presentation .tile{animation:none;opacity:1}
+.holo-exec.is-current .foda-presentation .tile{animation:foda-slide-rise .85s cubic-bezier(.16,1,.3,1) both}
+.holo-exec.is-current .foda-presentation .tile:nth-child(2){animation-delay:.13s}
+.holo-exec.is-current .foda-presentation .tile:nth-child(3){animation-delay:.26s}
+.holo-exec.is-current .foda-presentation .tile:nth-child(4){animation-delay:.39s}
+.holo-exec .exec-overline:before{box-shadow:0 0 15px #ff5468}
+@keyframes foda-signal-rail{0%{transform:translateX(0) skewX(-30deg);opacity:0}14%{opacity:.78}68%{opacity:.32}100%{transform:translateX(850vw) skewX(-30deg);opacity:0}}
+@keyframes foda-ring-expand{0%,100%{opacity:.1;transform:scale(.9)}50%{opacity:.5;transform:scale(1.12)}}
+@keyframes foda-cinema-swipe{0%,15%{transform:translateX(0) skewX(-19deg)}45%,100%{transform:translateX(600%) skewX(-19deg)}}
+@keyframes foda-title-energy{0%,30%{background-position:0 0}90%,100%{background-position:100% 0}}
+@keyframes foda-360-sweep{to{transform:rotate(360deg)}}
+@keyframes foda-radar-breathe{50%{opacity:.3;transform:scale(1.15)}}
+@keyframes foda-status{50%{opacity:.28;box-shadow:0 0 2px #ff4058}}
+@keyframes foda-downlink{0%{opacity:0;transform:translateY(-60px)}20%{opacity:.8}80%{opacity:.45}100%{opacity:0;transform:translateY(145px)}}
+@keyframes foda-edge-spark{to{filter:brightness(1.6) drop-shadow(0 0 9px #eb0a1e60)}}
+@keyframes foda-cross-scan{0%,50%{transform:translateX(-140%)}75%,100%{transform:translateX(140%)}}
+@keyframes foda-flash-out{0%,45%{opacity:1}100%{opacity:0}}
+@keyframes foda-energy-wipe{from{transform:translateX(-70%) skewX(-15deg)}to{transform:translateX(70%) skewX(-15deg)}}
+@keyframes foda-energy-flicker{40%{transform:scaleX(.03);opacity:.8}100%{transform:scaleX(0);opacity:0}}
+@keyframes foda-signal-in{from{opacity:.2;transform:translateY(38px) scale(.985);filter:blur(9px)}to{opacity:1;transform:none;filter:none}}
+@keyframes foda-text-focus{from{opacity:.15;transform:translateY(24px);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+@keyframes foda-strategy-in{from{opacity:.05;transform:translateX(25px) translateY(28px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes holo-exec-in{from{opacity:.55;transform:translateY(35px) scale(.98);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+@keyframes holo-frame-scan{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes holo-line-in{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+@media(min-width:1250px){.toyota-foda .foda-navigator:hover,.toyota-foda .foda-navigator:focus-within{width:176px}.toyota-foda .foda-navigator:hover .foda-nav-items a,.toyota-foda .foda-navigator:focus-within .foda-nav-items a{justify-content:flex-start;padding:0 12px;gap:14px}.toyota-foda .foda-navigator:hover .foda-nav-items a span,.toyota-foda .foda-navigator:focus-within .foda-nav-items a span{display:inline;color:#d4d8df;font-weight:700;letter-spacing:.07em;font-size:9px}.toyota-foda .foda-navigator:hover .foda-nav-head span,.toyota-foda .foda-navigator:focus-within .foda-nav-head span{font-size:9px}}
+@media(max-width:1000px){.toyota-foda .foda-navigator{display:none}.toyota-foda .foda-hud-corner{opacity:.35}.toyota-foda .foda-ring{width:350px;max-width:80vw}.toyota-foda .foda-hyperdrive{opacity:.65}}
+@media(max-width:600px){.toyota-foda .foda-signal{width:70px;opacity:.3}.toyota-foda .foda-hyperdrive{opacity:.4}.toyota-foda .foda-radar-status{font-size:8px;gap:7px}.toyota-foda .foda-ring{display:none}.holo-exec .exec-inner:before{inset:-12px -8px}.holo-exec .exec-inner:after{left:-12px}}
+body.presenting .toyota-foda .foda-navigator{display:none}
+@media(prefers-reduced-motion:reduce){
+ .toyota-foda .foda-signal,.toyota-foda .foda-ring,.toyota-foda .foda-sweep-line,.toyota-foda .foda-hero h2 em,.toyota-foda .foda-radar-board::before,.toyota-foda .foda-radar-board::after,.toyota-foda .foda-radar-status i,.toyota-foda .foda-stream-traces span,.toyota-foda .foda-panel:before,.toyota-foda .foda-cross::after,.toyota-foda .foda-strategy .foda-cross::after,.toyota-foda .foda-priority.foda-signal-in,.toyota-foda .foda-closing.foda-signal-in h3,.toyota-foda .foda-subhead.foda-signal-in h3,.toyota-foda .foda-subhead.foda-signal-in p,.toyota-foda .foda-strategy.foda-holo-in,.toyota-foda .foda-transition-flash,.holo-exec.is-current .exec-inner,.holo-exec.is-current .exec-inner:before,.holo-exec.is-current .exec-inner:after,.holo-exec.is-current .foda-presentation .tile{animation:none!important;filter:none!important;transform:none}
+ .toyota-foda .foda-hero h2 em{-webkit-text-stroke:1px #ff4257;background:none;color:#ff465e}
+ .toyota-foda .foda-transition-flash{display:none}
+ .toyota-foda .foda-navigator{transition:none}
+}
 </style>
 <section id="diagnostico-foda" class="toyota-foda" aria-labelledby="foda-title">
 <div class="foda-wrap">
 <header class="foda-hero" data-reveal="up">
 <div class="foda-hero-image" aria-hidden="true"></div>
 <div class="foda-hero-grid" aria-hidden="true"></div>
+<div class="foda-hyperdrive" aria-hidden="true">
+ <span class="foda-hud-corner c1"></span><span class="foda-hud-corner c2"></span><span class="foda-hud-corner c3"></span><span class="foda-hud-corner c4"></span>
+ <span class="foda-signal s1"></span><span class="foda-signal s2"></span><span class="foda-signal s3"></span><span class="foda-signal s4"></span><span class="foda-signal s5"></span><span class="foda-signal s6"></span>
+ <span class="foda-ring ring-a"></span><span class="foda-ring ring-b"></span>
+ <span class="foda-sweep-line"></span>
+</div>
 <div class="foda-headlights" aria-hidden="true"><span></span><span></span></div>
 <div class="foda-hero-layout"><div class="foda-hero-copy"><div class="foda-kicker">ACTIVIDAD INTEGRADORA · PLANEACIÓN ESTRATÉGICA</div><h2 id="foda-title">Diagnóstico <em>FODA.</em></h2>
 <p class="foda-lead">Un análisis de Toyota Motor Corporation para tomar decisiones con fundamento. Retomamos la empresa, su misión, visión y el análisis PESTEL ya desarrollados en esta presentación; aquí completamos los factores internos y externos y los convertimos en estrategias.</p>
@@ -1170,8 +1289,21 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
   <button type="button" class="foda-radar-node r-a" data-target="foda-amenaza" aria-label="Ir a las amenazas"><strong>A</strong><span>AMENAZAS</span></button>
  </div>
  <p class="foda-radar-help">SELECCIONA UN FACTOR PARA EXPLORARLO <span aria-hidden="true">↗</span></p>
+ <div class="foda-radar-status" aria-hidden="true"><i></i><span>4 EJES DE ANÁLISIS</span><span>8 FACTORES</span><span>4 ESTRATEGIAS</span></div>
 </div></div><div class="foda-hero-tail" aria-hidden="true"><span>ESTRATEGIA</span><span>ANÁLISIS</span><span>DECISIÓN</span></div>
 </header>
+<nav class="foda-navigator" aria-label="Recorrido del diagnóstico FODA">
+ <div class="foda-nav-head">TOYOTA <span>ESTRATEGIA</span></div>
+ <div class="foda-nav-items">
+ <span class="foda-nav-progress" aria-hidden="true"><i></i></span>
+ <a href="#foda-matriz" aria-label="Ir a la matriz FODA"><b>01</b><span>DIAGNÓSTICO</span></a>
+ <a href="#foda-estrategias" aria-label="Ir a las estrategias"><b>02</b><span>ESTRATEGIAS</span></a>
+ <a href="#foda-prioridad" aria-label="Ir a la prioridad estratégica"><b>03</b><span>PRIORIDAD</span></a>
+ <a href="#foda-conclusion" aria-label="Ir a la conclusión"><b>04</b><span>CONCLUSIÓN</span></a>
+ </div>
+ <div class="foda-nav-bottom">FODA · 2035</div>
+</nav>
+<div class="foda-transition-flash" aria-hidden="true"><span></span><i></i></div>
 <div id="foda-matriz" class="foda-subhead" data-reveal="up"><div class="foda-kicker">01 / DIAGNÓSTICO</div><h3>Matriz FODA de Toyota</h3><p>Fortalezas y debilidades son factores internos. Oportunidades y amenazas provienen del entorno. Cada factor incluye una explicación de su importancia.</p></div>
 <div class="foda-grid">
 <article id="foda-fortaleza" class="foda-panel fortaleza" data-reveal="up" tabindex="-1"><div class="foda-panel-head"><span class="foda-icon" aria-hidden="true">F</span><div><span>Interno · Positivo</span><h4>Fortalezas</h4></div></div>
@@ -1189,14 +1321,15 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 </div>
 <div class="foda-stat" data-reveal="up"><strong>2.3%</strong><span>Participación aproximada de los eléctricos de batería en las ventas Toyota y Lexus del ejercicio fiscal terminado en marzo de 2026: 243 mil BEV de 10.477 millones de vehículos. Dato usado para justificar D1, no como meta ni indicador oficial de desempeño estratégico.</span></div>
 <div class="foda-subhead" data-reveal="up"><div class="foda-kicker">02 / PROPUESTAS DEL EQUIPO</div><h3>Cuatro estrategias para actuar.</h3><p>La matriz no debe quedarse en una lista. Estas acciones conectan los factores y proponen decisiones concretas y viables para Toyota.</p></div>
-<div class="foda-transfer" aria-hidden="true"><div class="foda-transfer-line"><span></span><i></i></div><div class="foda-transfer-center"><span>F + O</span><strong>DEL DIAGNÓSTICO A LA ACCIÓN</strong><span>D + A</span></div></div>
-<div class="foda-strategies">
+<div class="foda-transfer" aria-hidden="true">
+<div class="foda-stream-traces"><span></span><span></span><span></span></div><div class="foda-transfer-line"><span></span><i></i></div><div class="foda-transfer-center"><span>F + O</span><strong>DEL DIAGNÓSTICO A LA ACCIÓN</strong><span>D + A</span></div></div>
+<div id="foda-estrategias" class="foda-strategies">
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">FO</span><span class="foda-cross">F2 + O1</span></div><h4>Crecer aprovechando las fortalezas.</h4><p>Utilizar la experiencia híbrida de Toyota para ampliar la oferta de vehículos de menores emisiones según las necesidades de cada mercado.</p><p class="foda-action"><strong>Acción:</strong> ampliar modelos híbridos, enchufables y eléctricos y evaluar su aceptación comercial.</p></article>
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">FA</span><span class="foda-cross">F1 + A1</span></div><h4>Defender la competitividad.</h4><p>Aplicar el sistema productivo de Toyota para responder a la presión de competidores con calidad, eficiencia y costos controlados.</p><p class="foda-action"><strong>Acción:</strong> reducir desperdicios y tiempos de producción sin disminuir la confiabilidad de los vehículos.</p></article>
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">DO</span><span class="foda-cross">D1 + O2</span></div><h4>Corregir una debilidad innovando.</h4><p>Aprovechar avances en baterías y software para fortalecer la oferta de vehículos totalmente eléctricos.</p><p class="foda-action"><strong>Acción:</strong> priorizar proyectos de ingeniería, alianzas tecnológicas y capacitación para modelos BEV competitivos.</p></article>
 <article class="foda-strategy" data-reveal="up"><div class="foda-strategy-top"><span class="foda-strategy-code">DA</span><span class="foda-cross">D2 + A2</span></div><h4>Reducir vulnerabilidades y riesgos.</h4><p>Evitar que las inversiones necesarias y los cambios externos comprometan la estabilidad de la empresa.</p><p class="foda-action"><strong>Acción:</strong> modernizar por etapas, diversificar suministros y revisar costos y requisitos legales por mercado.</p></article>
 </div>
-<div class="foda-priority" data-reveal="up"><div class="foda-kicker">03 / PRIORIDAD ESTRATÉGICA</div><h3>Fortalecer los vehículos eléctricos, sin abandonar los híbridos.</h3><p class="foda-priority-intro">La principal prioridad propuesta es mejorar la competitividad de Toyota en vehículos eléctricos de batería, apoyándose en su experiencia productiva y manteniendo una oferta adaptada a cada región. Es una recomendación académica, no una decisión oficial de Toyota.</p>
+<div id="foda-prioridad" class="foda-priority" data-reveal="up"><div class="foda-kicker">03 / PRIORIDAD ESTRATÉGICA</div><h3>Fortalecer los vehículos eléctricos, sin abandonar los híbridos.</h3><p class="foda-priority-intro">La principal prioridad propuesta es mejorar la competitividad de Toyota en vehículos eléctricos de batería, apoyándose en su experiencia productiva y manteniendo una oferta adaptada a cada región. Es una recomendación académica, no una decisión oficial de Toyota.</p>
 <div class="foda-action-steps" aria-label="Ruta propuesta de implementación">
 <div><b>01</b><span>INNOVACIÓN</span></div><i aria-hidden="true"></i>
 <div><b>02</b><span>CAPACITACIÓN</span></div><i aria-hidden="true"></i>
@@ -1208,7 +1341,7 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
 <article><h4>¿Qué estrategia aplicar primero?</h4><p>La DO: acelerar proyectos de baterías, software y vehículos BEV para mejorar la oferta y desarrollar capacidades internas.</p></article>
 <article><h4>¿Cómo sabríamos que funciona?</h4><p>Revisando participación de BEV en ventas, costos de producción, calidad, avances tecnológicos y capacitación del personal.</p></article>
 </div></div>
-<div class="foda-closing" data-reveal="up"><div class="foda-kicker">04 / CONCLUSIÓN DEL DIAGNÓSTICO</div><h3>Conservar las fortalezas. Preparar el futuro.</h3><p>Toyota cuenta con ventajas importantes en producción, calidad y experiencia híbrida, pero también enfrenta retos de adaptación tecnológica y competencia. El FODA muestra que una estrategia equilibrada debe proteger la eficiencia actual mientras fortalece sus capacidades para nuevas formas de movilidad. La propuesta del equipo es atender primero el desarrollo competitivo de vehículos eléctricos, con innovación y control de costos, sin perder la confiabilidad que distingue a Toyota.</p></div>
+<div id="foda-conclusion" class="foda-closing" data-reveal="up"><div class="foda-kicker">04 / CONCLUSIÓN DEL DIAGNÓSTICO</div><h3>Conservar las fortalezas. Preparar el futuro.</h3><p>Toyota cuenta con ventajas importantes en producción, calidad y experiencia híbrida, pero también enfrenta retos de adaptación tecnológica y competencia. El FODA muestra que una estrategia equilibrada debe proteger la eficiencia actual mientras fortalece sus capacidades para nuevas formas de movilidad. La propuesta del equipo es atender primero el desarrollo competitivo de vehículos eléctricos, con innovación y control de costos, sin perder la confiabilidad que distingue a Toyota.</p></div>
 <div class="foda-sources">Fuentes: <a href="https://global.toyota/en/company/vision-and-philosophy/production-system/" target="_blank" rel="noopener noreferrer">Toyota Production System</a> · <a href="https://global.toyota/pages/global_toyota/ir/financial-results/2026_4q_presentation_2_en.pdf" target="_blank" rel="noopener noreferrer">Resultados financieros FY2026, p. 5 (ventas por tecnología)</a>. Factores externos, debilidades interpretadas y estrategias: diagnóstico académico del equipo, no declaraciones oficiales de Toyota.</div>
 </div></section>
 
@@ -1257,6 +1390,78 @@ if(!reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').m
    hero.style.setProperty('--cinema-x','0px');hero.style.setProperty('--cinema-y','0px');
   });
  }
+})();
+</script>
+
+<script id="toyota-foda-hypertransitions">
+(function(){
+ const root=document.getElementById('diagnostico-foda');
+ if(!root)return;
+ const hero=root.querySelector('.foda-hero');
+ const navigation=root.querySelector('.foda-navigator');
+ const wipe=root.querySelector('.foda-transition-flash');
+ const links=[...navigation.querySelectorAll('a[href^="#foda-"]')];
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const anchors=links.map(a=>document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+ let onScreen=false,raf=0;
+ const clamp=(value)=>Math.max(0,Math.min(1,value));
+ function renderProgress(){
+   raf=0;if(!onScreen)return;
+   const r=root.getBoundingClientRect();
+   const progress=clamp((innerHeight-r.top)/Math.max(1,r.height));
+   navigation.style.setProperty('--foda-scroll',progress.toFixed(3));
+   let current=anchors[0]&&anchors[0].id;
+   for(const anchor of anchors){if(anchor.getBoundingClientRect().top<=innerHeight*.56)current=anchor.id}
+   for(const link of links){
+     const active=link.getAttribute('href')==='#'+current;
+     link.classList.toggle('is-current',active);
+     if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+   }
+ }
+ function schedule(){if(onScreen&&!raf)raf=requestAnimationFrame(renderProgress)}
+ if('IntersectionObserver' in window){
+   const sectionObserver=new IntersectionObserver(entries=>{
+     onScreen=entries[0].isIntersecting;
+     navigation.classList.toggle('is-visible',onScreen);
+     if(onScreen)schedule();
+   },{threshold:0,rootMargin:'-3% 0px -3% 0px'});
+   sectionObserver.observe(root);
+   const heroObserver=new IntersectionObserver(entries=>{
+     hero.classList.toggle('is-energized',entries[0].isIntersecting&&!reduced.matches);
+   },{threshold:.03});
+   heroObserver.observe(hero);
+   const entranceObserver=new IntersectionObserver(entries=>{
+     for(const e of entries){
+       if(!e.isIntersecting)continue;
+       if(!reduced.matches){
+         e.target.classList.add(e.target.matches('.foda-strategy')?'foda-holo-in':'foda-signal-in');
+       }
+       entranceObserver.unobserve(e.target);
+     }
+   },{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+   root.querySelectorAll('.foda-subhead,.foda-priority,.foda-closing,.foda-strategy').forEach(el=>entranceObserver.observe(el));
+ }else{onScreen=true;navigation.classList.add('is-visible');hero.classList.add('is-energized');schedule()}
+ addEventListener('scroll',schedule,{passive:true});
+ addEventListener('resize',schedule,{passive:true});
+ document.addEventListener('visibilitychange',()=>{
+   if(document.hidden)hero.classList.remove('is-energized');
+   else if(hero.getBoundingClientRect().bottom>0&&hero.getBoundingClientRect().top<innerHeight&&!reduced.matches)hero.classList.add('is-energized');
+ });
+ reduced.addEventListener?.('change',()=>{
+   hero.classList.toggle('is-energized',!reduced.matches&&hero.getBoundingClientRect().top<innerHeight&&hero.getBoundingClientRect().bottom>0);
+ });
+ let activeTransition=null;
+ function flash(){
+   if(reduced.matches||document.body.classList.contains('presenting'))return;
+   wipe.classList.remove('is-travelling');
+   void wipe.offsetWidth;
+   wipe.classList.add('is-travelling');
+   if(activeTransition)clearTimeout(activeTransition);
+   activeTransition=setTimeout(()=>{wipe.classList.remove('is-travelling');activeTransition=null},800);
+ }
+ root.querySelectorAll('.foda-radar-node,.foda-hero-cta,.foda-navigator a').forEach(a=>a.addEventListener('click',flash,{passive:true}));
+ // The transition is decorative: native anchors and existing radar click behavior remain functional.
+ schedule();
 })();
 </script>
 <!-- ============ FIN MATRIZ FODA ============ -->
@@ -1481,7 +1686,7 @@ function buildExecutive(){
  const scroll=$('exec-scroll');
  scroll.innerHTML=slides.map((s,i)=>{
   const vis=s.visual?`<div class="s-visual">${s.visual()}</div>`:'';
-  return `<section class="exec-section ${i===8||i===10?'smoke-section':''}" id="exec-section-${i}" data-exec-index="${i}" style="--exec-img:url('${s.bg}')">${i===8||i===10?'<canvas class="tire-smoke" aria-hidden="true"></canvas>':''}<div class="exec-inner"><div class="exec-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div><div class="exec-overline">${s.tag}</div><div class="s-grid ${s.layout==='split'?'split':''}"><div class="s-text"><h2>${s.title}</h2><div class="lead">${s.body}</div></div>${vis}</div></div></section>`;
+  return `<section class="exec-section ${i===8||i===10?'smoke-section':''} ${s.tag.startsWith('FODA /')?'holo-exec':''}" id="exec-section-${i}" data-exec-index="${i}" style="--exec-img:url('${s.bg}')">${i===8||i===10?'<canvas class="tire-smoke" aria-hidden="true"></canvas>':''}<div class="exec-inner"><div class="exec-num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div><div class="exec-overline">${s.tag}</div><div class="s-grid ${s.layout==='split'?'split':''}"><div class="s-text"><h2>${s.title}</h2><div class="lead">${s.body}</div></div>${vis}</div></div></section>`;
  }).join('');
  // All sections are present together, like the VW report, rather than changing a card.
  const sections=[...scroll.querySelectorAll('.exec-section')];
