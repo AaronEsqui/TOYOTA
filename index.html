@@ -528,7 +528,141 @@ body.site-fullscreen .hero{min-height:100svh}
 #capitulo5 .cap5-reveal.cap5-visible{opacity:1;transform:none;filter:none}
 #capitulo5 .cap5-milestone{position:absolute;top:0;right:0;font-size:11px;letter-spacing:.18em;color:#ff6273;background:#eb0a1e18;border:1px solid #eb0a1e44;padding:7px 12px;border-radius:0 0 0 12px}
 @media(prefers-reduced-motion:reduce){#capitulo5:before,#capitulo5 .strategy-hero-image,#capitulo5 .strategy-hero:after,#capitulo5 .eyebrow:before{animation:none!important}#capitulo5 .cap5-reveal{opacity:1;transform:none;filter:none;transition:none}#capitulo5 .tile{transition:none}}
-</style></head>
+</style><style id="toyota-cinema-v5-style">
+/* ================= TOYOTA CINEMA V5 =================
+   Transiciones coordinadas, profundidad y escena ejecutiva.
+   Solo decoración visual: el contenido sigue siendo legible sin JS.
+   ==================================================== */
+body.cinema-v5{--cine-red:#ff3e54;--cine-glow:#eb0a1e;--cine-ease:cubic-bezier(.18,.82,.2,1)}
+body.cinema-v5 .cinema-veil{position:fixed;z-index:145;inset:0;pointer-events:none;opacity:0;visibility:hidden;overflow:hidden;contain:paint}
+body.cinema-v5 .cinema-veil .cine-shutter{position:absolute;top:-25%;bottom:-25%;left:-45%;width:65%;background:linear-gradient(100deg,transparent 0%,rgba(235,10,30,.025) 36%,rgba(242,40,61,.12) 46%,rgba(255,255,255,.16) 49.5%,rgba(250,56,76,.12) 53%,transparent 72%);transform:translateX(-120%) skewX(-15deg);filter:drop-shadow(0 0 14px #eb0a1e60)}
+body.cinema-v5 .cinema-veil .cine-shutter:nth-child(2){left:-66%;width:30%;opacity:.6;filter:none}
+body.cinema-v5 .cinema-veil .cine-horizon{position:absolute;top:50%;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent 10%,#ff4557a8 50%,transparent 90%);box-shadow:0 0 18px #eb0a1e;transform:scaleX(0);opacity:0}
+body.cinema-v5 .cinema-veil.is-moving{visibility:visible;animation:cine-veil-fade .8s ease both}
+body.cinema-v5 .cinema-veil.is-moving .cine-shutter{animation:cine-shutter-fly .79s var(--cine-ease) both}
+body.cinema-v5 .cinema-veil.is-moving .cine-shutter:nth-child(2){animation-delay:.08s}
+body.cinema-v5 .cinema-veil.is-moving .cine-horizon{animation:cine-horizon-pulse .55s ease-out both}
+@keyframes cine-veil-fade{0%,56%{opacity:1}100%{opacity:0}}
+@keyframes cine-shutter-fly{0%{transform:translateX(-130%) skewX(-15deg)}100%{transform:translateX(335%) skewX(-15deg)}}
+@keyframes cine-horizon-pulse{0%{transform:scaleX(0);opacity:0}32%{transform:scaleX(.8);opacity:.65}100%{transform:scaleX(1);opacity:0}}
+
+/* Portada: líneas técnicas con recorridos cinematográficos, detrás del contenido. */
+body.cinema-v5 #inicio .hero-inner{position:relative;z-index:3}
+body.cinema-v5 #inicio .cine-hero-ambient{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+body.cinema-v5 #inicio .cine-hero-ambient:before{content:"";position:absolute;right:-8%;top:13%;width:min(55vw,680px);aspect-ratio:1;border:1px solid #ffffff14;border-radius:50%;box-shadow:0 0 0 55px #eb0a1e06,0 0 0 130px #eb0a1e04;transform:rotate(-13deg);animation:cine-hero-orbit 16s ease-in-out infinite alternate}
+body.cinema-v5 #inicio .cine-hero-ambient:after{content:"";position:absolute;right:-18%;top:-5%;height:120%;width:27%;background:linear-gradient(90deg,transparent,#ff2b4010,transparent);transform:skewX(-22deg) translateX(-150%);animation:cine-hero-sweep 13s ease-in-out infinite}
+body.cinema-v5 #inicio .cine-hero-horizon{position:absolute;right:0;left:48%;top:72%;height:1px;background:linear-gradient(90deg,transparent,#f34b61aa,#fff7,transparent);box-shadow:0 0 27px 3px #eb0a1e45;transform-origin:right;animation:cine-hero-horizon 9s ease-in-out infinite}
+body.cinema-v5 #inicio .cine-hero-coordinate{position:absolute;right:6%;bottom:9%;display:flex;flex-direction:column;gap:8px;text-align:right;color:#ff6e7c;font-weight:800;font-size:10px;letter-spacing:.28em;text-shadow:0 0 15px #eb0a1e66;opacity:.7}
+body.cinema-v5 #inicio .cine-hero-coordinate span:last-child{font-size:9px;color:#d9dde4;letter-spacing:.12em}
+@keyframes cine-hero-orbit{to{transform:rotate(20deg) scale(1.085);opacity:.55}}
+@keyframes cine-hero-sweep{0%,23%{transform:skewX(-22deg) translateX(-150%)}65%,100%{transform:skewX(-22deg) translateX(580%)}}
+@keyframes cine-hero-horizon{0%,100%{opacity:.18;transform:scaleX(.65)}50%{opacity:.62;transform:scaleX(1)}}
+
+/* Cada capítulo recibe su propia entrada de luz sin ocultar texto ni bloquear clics. */
+body.cinema-v5 section.cine-chapter{isolation:isolate}
+body.cinema-v5 section.cine-chapter .cine-chapter-rail{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+body.cinema-v5 section.cine-chapter .cine-rail-top{position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#ff4059,#ff7e8b 22%,#ffffff4d 38%,transparent 70%);box-shadow:0 0 18px #eb0a1e6b;transform:scaleX(0);transform-origin:left;opacity:.75}
+body.cinema-v5 section.cine-chapter .cine-rail-side{position:absolute;left:0;top:0;width:2px;height:clamp(70px,15vh,185px);background:linear-gradient(#ff3b55,transparent);transform:scaleY(0);transform-origin:top}
+body.cinema-v5 section.cine-chapter .cine-rail-scan{position:absolute;left:-60%;top:0;height:min(30vh,210px);width:35%;transform:skewX(-24deg);background:linear-gradient(90deg,transparent,rgba(255,55,73,.045),transparent);opacity:0}
+body.cinema-v5 section.cine-chapter.cine-seen .cine-rail-top{animation:cine-rail-open 1.25s var(--cine-ease) both}
+body.cinema-v5 section.cine-chapter.cine-seen .cine-rail-side{animation:cine-side-open 1.05s var(--cine-ease) .16s both}
+body.cinema-v5 section.cine-chapter.cine-seen .cine-rail-scan{animation:cine-rail-traverse 1.15s var(--cine-ease) .1s both}
+@keyframes cine-rail-open{0%{transform:scaleX(0);opacity:0}32%{opacity:1}100%{transform:scaleX(1);opacity:.55}}
+@keyframes cine-side-open{to{transform:scaleY(1)}}
+@keyframes cine-rail-traverse{12%{opacity:1}100%{left:145%;opacity:0}}
+body.cinema-v5 .toyota-comparison.cine-seen .compare-item{transition-duration:.7s}
+body.cinema-v5 .toyota-future.cine-seen .future-wrap h2{text-shadow:0 0 36px #eb0a1e3b}
+body.cinema-v5 .footer{background-attachment:scroll}
+
+/* FODA: tarjetas con perspectiva controlada, bordes holográficos e interacción real. */
+@media(hover:hover) and (pointer:fine){
+  body.cinema-v5 .toyota-foda .foda-panel.cine-tilt{will-change:transform;transform:perspective(1100px) rotateX(var(--cine-tilt-x,0deg)) rotateY(var(--cine-tilt-y,0deg)) translateY(-5px);transition:transform .22s ease-out,border-color .42s,box-shadow .42s}
+  body.cinema-v5 .toyota-foda .foda-panel.cine-tilt:hover{box-shadow:0 25px 65px #000a,0 0 36px color-mix(in srgb,var(--foda-accent) 12%,transparent)}
+}
+body.cinema-v5 .toyota-foda .foda-panel .cine-card-outline{position:absolute;inset:0;z-index:4;border:1px solid transparent;border-radius:inherit;pointer-events:none;background:linear-gradient(118deg,transparent 34%,color-mix(in srgb,var(--foda-accent) 70%,white) 50%,transparent 62%) border-box;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transform:translateX(-35%);transition:opacity .42s,transform 1s var(--cine-ease)}
+body.cinema-v5 .toyota-foda .foda-panel:hover .cine-card-outline,
+body.cinema-v5 .toyota-foda .foda-panel.is-spotlight .cine-card-outline{opacity:.8;transform:translateX(30%)}
+body.cinema-v5 .toyota-foda .foda-radar-node.is-active:after{content:"";position:absolute;inset:-7px;z-index:-1;border:1px solid #ff5a6a;border-radius:16px;box-shadow:0 0 12px #eb0a1e;animation:cine-node-pulse 1.3s ease-out infinite}
+@keyframes cine-node-pulse{from{opacity:1;transform:scale(.92)}to{opacity:0;transform:scale(1.25)}}
+body.cinema-v5 .toyota-foda .foda-radar-center strong{transition:opacity .3s,filter .3s}
+body.cinema-v5 .toyota-foda .foda-radar-center.cine-changing strong{animation:cine-radar-switch .65s var(--cine-ease) both}
+body.cinema-v5 .toyota-foda .foda-radar-center.cine-changing small{animation:cine-radar-switch .75s .07s var(--cine-ease) both}
+@keyframes cine-radar-switch{from{opacity:.2;filter:blur(6px);transform:scale(.75)}to{opacity:1;filter:none;transform:none}}
+body.cinema-v5 .toyota-foda .foda-strategy{transition:transform .55s var(--cine-ease),border-color .45s,box-shadow .55s;transform-origin:50% 85%}
+body.cinema-v5 .toyota-foda .foda-strategy:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 22px 65px #000a,0 0 30px #eb0a1e20}
+body.cinema-v5 .toyota-foda .foda-action-steps>div{background-image:linear-gradient(90deg,#eb0a1e0e,transparent)}
+body.cinema-v5 .toyota-foda .foda-priority.cine-seen .foda-action-steps>div{animation:cine-step-pop .76s var(--cine-ease) both}
+body.cinema-v5 .toyota-foda .foda-priority.cine-seen .foda-action-steps>div:nth-of-type(2){animation-delay:.16s}
+body.cinema-v5 .toyota-foda .foda-priority.cine-seen .foda-action-steps>div:nth-of-type(3){animation-delay:.32s}
+@keyframes cine-step-pop{from{opacity:.3;transform:translateY(18px) scale(.92)}to{opacity:1;transform:none}}
+body.cinema-v5 .toyota-foda .foda-stat strong{font-variant-numeric:tabular-nums;filter:drop-shadow(0 0 12px #eb0a1e50)}
+
+/* Recorrido ejecutivo: transiciones de escena, enfoque y paneles escalonados. */
+body.cinema-v5 #present .exec-scroll{scroll-snap-type:y proximity;scroll-padding-top:0}
+body.cinema-v5 #present .exec-section.cine-stage{scroll-snap-align:start}
+body.cinema-v5 #present .exec-section.cine-stage:before{transform:scale(1.035);filter:brightness(.78) saturate(.82);transition:transform 1.5s var(--cine-ease),filter 1.3s ease,opacity 1.2s ease;will-change:transform}
+body.cinema-v5 #present .exec-section.cine-stage.is-current:before{transform:scale(1);filter:brightness(1.03) saturate(1.02)}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .exec-inner{animation:cine-scene-arrive .85s var(--cine-ease) both}
+body.cinema-v5 #present .exec-section.cine-stage.holo-exec.is-current .exec-inner{animation:cine-foda-arrive 1s var(--cine-ease) both}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .exec-overline{animation:cine-label-arrive .8s .06s var(--cine-ease) both}
+body.cinema-v5 #present .exec-section.cine-stage.is-current h2{animation:cine-title-arrive .92s .08s var(--cine-ease) both}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .lead{animation:cine-body-arrive .87s .16s var(--cine-ease) both}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .tile,
+body.cinema-v5 #present .exec-section.cine-stage.is-current .img-tile{animation:cine-card-arrive .9s .17s var(--cine-ease) both}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .tile:nth-child(2),
+body.cinema-v5 #present .exec-section.cine-stage.is-current .img-tile:nth-child(2){animation-delay:.27s}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .tile:nth-child(3){animation-delay:.37s}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .tile:nth-child(4){animation-delay:.47s}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .tile:nth-child(5){animation-delay:.57s}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .tile:nth-child(6){animation-delay:.67s}
+body.cinema-v5 #present .exec-section.cine-stage.is-current .foda-presentation .tile{animation-name:cine-card-arrive}
+body.cinema-v5 #present .cine-presentation-flare{position:absolute;z-index:110;top:70px;bottom:66px;inset-inline:0;overflow:hidden;pointer-events:none;visibility:hidden}
+body.cinema-v5 #present .cine-presentation-flare:before{content:"";position:absolute;inset:0;transform:translateX(-150%) skewX(-24deg);background:linear-gradient(90deg,transparent 20%,rgba(235,10,30,.035) 43%,rgba(255,255,255,.15) 50%,rgba(235,10,30,.07) 57%,transparent 82%);filter:drop-shadow(0 0 16px #eb0a1e44)}
+body.cinema-v5 #present .cine-presentation-flare.is-active{visibility:visible}
+body.cinema-v5 #present .cine-presentation-flare.is-active:before{animation:cine-stage-flare .72s var(--cine-ease) both}
+body.cinema-v5 #present .cine-presentation-rail{position:absolute;z-index:115;top:71px;bottom:67px;right:0;width:2px;background:#ffffff20;pointer-events:none}
+body.cinema-v5 #present .cine-presentation-rail i{display:block;width:100%;height:100%;background:linear-gradient(180deg,#ff566e,#eb0a1e);box-shadow:0 0 15px 4px #eb0a1e44;transform:scaleY(var(--cine-stage-progress,0));transform-origin:top;transition:transform .65s var(--cine-ease)}
+@keyframes cine-scene-arrive{from{opacity:.6;transform:translateY(28px) scale(.988);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes cine-foda-arrive{from{opacity:.4;transform:perspective(1200px) rotateX(6deg) translateY(50px) scale(.96);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+@keyframes cine-label-arrive{from{opacity:0;letter-spacing:.45em;transform:translateX(-24px)}to{opacity:1;letter-spacing:.19em;transform:none}}
+@keyframes cine-title-arrive{from{opacity:.25;transform:translateY(39px);clip-path:inset(0 0 100% 0);filter:blur(6px)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0);filter:none}}
+@keyframes cine-body-arrive{from{opacity:.22;transform:translateY(27px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes cine-card-arrive{from{opacity:.2;transform:translateY(26px) scale(.965);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes cine-stage-flare{from{transform:translateX(-150%) skewX(-24deg)}to{transform:translateX(150%) skewX(-24deg)}}
+
+@media(max-width:850px){
+ body.cinema-v5 #inicio .cine-hero-coordinate{display:none}
+ body.cinema-v5 #inicio .cine-hero-horizon{left:58%;opacity:.35}
+ body.cinema-v5 #present .cine-presentation-flare{top:64px}
+ body.cinema-v5 #present .exec-scroll{scroll-snap-type:none}
+ body.cinema-v5 #present .exec-section.cine-stage:before{will-change:auto}
+}
+@media(max-width:600px){
+ body.cinema-v5 #inicio .cine-hero-ambient{opacity:.5}
+ body.cinema-v5 #present .exec-section.cine-stage.is-current h2{animation-duration:.65s}
+ body.cinema-v5 #present .exec-section.cine-stage.is-current .lead{animation-duration:.65s}
+ body.cinema-v5 section.cine-chapter .cine-rail-scan{display:none}
+ body.cinema-v5 .toyota-foda .foda-panel .cine-card-outline{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ body.cinema-v5 .cinema-veil,body.cinema-v5 #inicio .cine-hero-ambient,body.cinema-v5 .cine-chapter-rail,body.cinema-v5 #present .cine-presentation-flare{display:none!important}
+ body.cinema-v5 #present .exec-scroll{scroll-behavior:auto;scroll-snap-type:none}
+ body.cinema-v5 #present .exec-section.cine-stage:before{transform:none;filter:none;will-change:auto}
+ body.cinema-v5 #present .exec-section.cine-stage.is-current .exec-inner,
+ body.cinema-v5 #present .exec-section.cine-stage.is-current .exec-overline,
+ body.cinema-v5 #present .exec-section.cine-stage.is-current h2,
+ body.cinema-v5 #present .exec-section.cine-stage.is-current .lead,
+ body.cinema-v5 #present .exec-section.cine-stage.is-current .tile,
+ body.cinema-v5 #present .exec-section.cine-stage.is-current .img-tile,
+ body.cinema-v5 .toyota-foda .foda-panel.cine-tilt,
+ body.cinema-v5 .toyota-foda .foda-radar-node.is-active:after,
+ body.cinema-v5 .toyota-foda .foda-priority.cine-seen .foda-action-steps>div,
+ body.cinema-v5 .toyota-foda .foda-radar-center.cine-changing strong,
+ body.cinema-v5 .toyota-foda .foda-radar-center.cine-changing small{animation:none!important;transform:none!important;filter:none!important;opacity:1!important;clip-path:none!important}
+ body.cinema-v5 #present .cine-presentation-rail i{transition:none}
+}
+</style>
+</head>
 <body>
 <a class="skip-link" href="#sistema">Saltar al contenido</a>
 <div id="scroll-progress" aria-hidden="true"></div><div id="fullscreen-message" role="status" aria-live="polite"></div>
@@ -1905,5 +2039,188 @@ if(!('IntersectionObserver' in window)||reduced.matches){targets.forEach(el=>el.
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('cap5-visible');observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px -25px 0px'});
 targets.forEach(el=>observer.observe(el));
 })();
-</script></body>
+</script><script id="toyota-cinema-v5-js">
+(function(){
+ "use strict";
+ const body=document.body;
+ if(!body || body.classList.contains("cinema-v5"))return;
+ body.classList.add("cinema-v5");
+ const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
+ const fine=window.matchMedia("(hover: hover) and (pointer: fine)");
+ const make=(tag,className,parent)=>{
+   const el=document.createElement(tag);el.className=className;parent.appendChild(el);return el;
+ };
+
+ // A single lightweight film wipe; leaves real navigation and forms functional.
+ const veil=make("div","cinema-veil",body);
+ veil.setAttribute("aria-hidden","true");
+ make("span","cine-shutter",veil);
+ make("span","cine-shutter",veil);
+ make("span","cine-horizon",veil);
+ let veilTimeout=0;
+ const playWipe=()=>{
+   if(reduced.matches || document.hidden)return;
+   veil.classList.remove("is-moving");
+   void veil.offsetWidth;
+   veil.classList.add("is-moving");
+   clearTimeout(veilTimeout);
+   veilTimeout=setTimeout(()=>veil.classList.remove("is-moving"),820);
+ };
+
+ // Hero: ambient engineering/automotive instrumentation behind the title.
+ const hero=document.querySelector("#inicio.hero");
+ if(hero && !hero.querySelector(".cine-hero-ambient")){
+   const ambient=document.createElement("div");
+   ambient.className="cine-hero-ambient";
+   ambient.setAttribute("aria-hidden","true");
+   ambient.innerHTML='<span class="cine-hero-horizon"></span><span class="cine-hero-coordinate"><span>TOYOTA / SYSTEM READY</span><span>EXPERIENCIA CORPORATIVA · 360°</span></span>';
+   const grid=hero.querySelector(".hero-grid");
+   if(grid)grid.insertAdjacentElement("afterend",ambient);
+   else hero.prepend(ambient);
+ }
+
+ // Introduce chapter light only once upon reaching each section.
+ const chapterIds=["sistema","componentes","coordinacion","produccion","tecnologia","caso","quiz","conclusion","planeacion","filosofia","valores-toyota","valores","conclusion-final","filosofia-propuesta","propuestas-toyota","capitulo5","diagnostico-foda"];
+ const chapters=chapterIds.map(id=>document.getElementById(id)).filter(el=>el && el.tagName==="SECTION");
+ chapters.forEach(section=>{
+   section.classList.add("cine-chapter");
+   if(section.querySelector(".cine-chapter-rail"))return;
+   const rail=document.createElement("div");
+   rail.className="cine-chapter-rail";
+   rail.setAttribute("aria-hidden","true");
+   rail.innerHTML='<span class="cine-rail-top"></span><span class="cine-rail-side"></span><span class="cine-rail-scan"></span>';
+   section.insertBefore(rail,section.firstChild);
+ });
+ if("IntersectionObserver" in window){
+   const chapterObserver=new IntersectionObserver(entries=>{
+     entries.forEach(entry=>{
+       if(!entry.isIntersecting)return;
+       entry.target.classList.add("cine-seen");
+       chapterObserver.unobserve(entry.target);
+     });
+   },{threshold:.06,rootMargin:"0px 0px -8% 0px"});
+   chapters.forEach(s=>chapterObserver.observe(s));
+ }else chapters.forEach(s=>s.classList.add("cine-seen"));
+
+ // Cinematic in-page travel outside FODA (which has its own radar/flash).
+ document.addEventListener("click",event=>{
+   const link=event.target.closest("a[href^='#']");
+   if(!link || link.closest("#diagnostico-foda,#present"))return;
+   if(event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;
+   const hash=link.getAttribute("href");
+   if(!hash || hash==="#")return;
+   const destination=document.getElementById(decodeURIComponent(hash.slice(1)));
+   if(!destination)return;
+   event.preventDefault();
+   playWipe();
+   const travel=()=>{
+     if(location.hash!==hash)history.pushState(null,"",hash);
+     destination.scrollIntoView({behavior:reduced.matches?"auto":"smooth",block:"start"});
+   };
+   if(reduced.matches)travel();else setTimeout(travel,155);
+ });
+ document.addEventListener("click",event=>{
+   if(event.target.closest('button[onclick*="startPresentation"],button[onclick*="exitPresentation"]'))playWipe();
+ },true);
+
+ // FODA: kinetic lighting and a small purposeful 3D response on desktop.
+ const foda=document.getElementById("diagnostico-foda");
+ if(foda){
+   const panels=[...foda.querySelectorAll(".foda-panel")];
+   panels.forEach(panel=>{
+     const outline=make("span","cine-card-outline",panel);outline.setAttribute("aria-hidden","true");
+     if(!fine.matches || reduced.matches)return;
+     let frame=0,rx=0,ry=0;
+     panel.addEventListener("pointermove",e=>{
+       const r=panel.getBoundingClientRect();
+       ry=(((e.clientX-r.left)/Math.max(r.width,1))-.5)*5;
+       rx=-(((e.clientY-r.top)/Math.max(r.height,1))-.5)*4;
+       if(frame)return;
+       frame=requestAnimationFrame(()=>{
+         frame=0;panel.classList.add("cine-tilt");
+         panel.style.setProperty("--cine-tilt-x",rx.toFixed(2)+"deg");
+         panel.style.setProperty("--cine-tilt-y",ry.toFixed(2)+"deg");
+       });
+     },{passive:true});
+     panel.addEventListener("pointerleave",()=>{
+       if(frame)cancelAnimationFrame(frame);
+       frame=0;panel.classList.remove("cine-tilt");
+       panel.style.removeProperty("--cine-tilt-x");
+       panel.style.removeProperty("--cine-tilt-y");
+     });
+   });
+   const center=foda.querySelector(".foda-radar-center");
+   const centerTitle=center?.querySelector("strong");
+   const centerCaption=center?.querySelector("small");
+   const names={fortaleza:["F","FORTALEZAS"],oportunidad:["O","OPORTUNIDADES"],debilidad:["D","DEBILIDADES"],amenaza:["A","AMENAZAS"]};
+   let radarTimer=0;
+   foda.querySelectorAll(".foda-radar-node").forEach(node=>node.addEventListener("click",()=>{
+     const category=node.dataset.target?.replace("foda-","");
+     if(!names[category]||!centerTitle||!centerCaption)return;
+     centerTitle.textContent=names[category][0];
+     centerCaption.textContent=names[category][1];
+     center.classList.remove("cine-changing");
+     void center.offsetWidth;
+     if(!reduced.matches)center.classList.add("cine-changing");
+     clearTimeout(radarTimer);
+     radarTimer=setTimeout(()=>{
+       centerTitle.textContent="FODA";centerCaption.textContent="ANÁLISIS 360°";
+       center.classList.remove("cine-changing");
+     },2400);
+   }));
+   const priority=foda.querySelector(".foda-priority");
+   if(priority && "IntersectionObserver" in window){
+     const io=new IntersectionObserver(entries=>{
+       if(entries[0].isIntersecting){priority.classList.add("cine-seen");io.disconnect()}
+     },{threshold:.2});
+     io.observe(priority);
+   }else priority?.classList.add("cine-seen");
+ }
+
+ // The live presentation uses full-height sections in a scrolling storyboard.
+ // This enhances the real active scene, not the legacy hidden slide component.
+ const presentation=document.getElementById("present");
+ const scroller=document.getElementById("exec-scroll");
+ if(!presentation||!scroller)return;
+ const flare=make("div","cine-presentation-flare",presentation);
+ flare.setAttribute("aria-hidden","true");
+ const rail=make("div","cine-presentation-rail",presentation);
+ rail.setAttribute("aria-hidden","true");make("i","",rail);
+ let progress=rail.querySelector("i"),stageTime=0,lastStage=-1,setup=false;
+ function triggerScene(){
+   if(!body.classList.contains("presenting"))return;
+   const current=scroller.querySelector(".exec-section.is-current");
+   if(!current)return;
+   const i=Number(current.dataset.execIndex);
+   if(i===lastStage)return;
+   lastStage=i;
+   const total=Math.max(1,scroller.querySelectorAll(".exec-section").length);
+   rail.style.setProperty("--cine-stage-progress",((i+1)/total).toFixed(4));
+   if(reduced.matches)return;
+   flare.classList.remove("is-active");
+   void flare.offsetWidth;
+   flare.classList.add("is-active");
+   clearTimeout(stageTime);
+   stageTime=setTimeout(()=>flare.classList.remove("is-active"),760);
+ }
+ function stageSetup(){
+   if(setup||!scroller.querySelector(".exec-section"))return;
+   setup=true;
+   scroller.querySelectorAll(".exec-section").forEach(el=>el.classList.add("cine-stage"));
+   const activeObserver=new MutationObserver(records=>{
+     if(records.some(r=>r.type==="attributes"&&r.attributeName==="class"&&r.target.classList.contains("is-current")))triggerScene();
+   });
+   activeObserver.observe(scroller,{attributes:true,attributeFilter:["class"],subtree:true});
+   triggerScene();
+ }
+ const populateObserver=new MutationObserver(()=>stageSetup());
+ populateObserver.observe(scroller,{childList:true});
+ stageSetup();
+ document.addEventListener("click",e=>{
+   if(e.target.closest('button[onclick*="startPresentation"]')){lastStage=-1;setTimeout(()=>{stageSetup();triggerScene()},80)}
+ },true);
+ document.addEventListener("visibilitychange",()=>{if(document.hidden)flare.classList.remove("is-active")});
+})();
+</script>
+</body>
 </html>
