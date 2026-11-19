@@ -669,7 +669,7 @@ body.cinema-v5 #present .cine-presentation-rail i{display:block;width:100%;heigh
 
 <header class="hdr" id="hdr">
   <a class="brand" href="#inicio"><span class="toyota-emblem"><svg viewBox="0 0 100 64" width="49" height="34" aria-label="Emblema Toyota" role="img"><ellipse cx="50" cy="32" rx="46" ry="28" fill="none" stroke="currentColor" stroke-width="5"/><ellipse cx="50" cy="32" rx="15" ry="26" fill="none" stroke="currentColor" stroke-width="5"/><ellipse cx="50" cy="23" rx="30" ry="11" fill="none" stroke="currentColor" stroke-width="5"/></svg></span> TOYOTA <small>ESTUDIO ACADÉMICO</small></a>
-  <nav id="nav"><a href="#sistema">Sistema</a><a href="#componentes">Componentes</a><a href="#coordinacion">Coordinación</a><a href="#produccion">Fábrica</a><a href="#tecnologia">Tecnología</a><a href="#caso">Caso práctico</a><a href="#planeacion">Planeación</a></nav>
+  <nav id="nav"><a href="#sistema">Sistema</a><a href="#componentes">Componentes</a><a href="#coordinacion">Coordinación</a><a href="#produccion">Fábrica</a><a href="#tecnologia">Tecnología</a><a href="#caso">Caso práctico</a><a href="#planeacion">Planeación</a><a href="#diagnostico-foda">FODA</a><a href="#objetivos-smart">Objetivos SMART</a></nav>
   <div style="display:flex;gap:10px;align-items:center"><button class="btn alt small site-fullscreen-btn" type="button" onclick="toggleSiteFullscreen()" aria-label="Mostrar página web en pantalla completa" aria-pressed="false" title="Expandir la página web a pantalla completa">⛶ <span class="fullscreen-label">Pantalla completa</span></button><button class="btn small" onclick="startPresentation()">▶ Presentar</button><button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button></div>
 </header>
 
@@ -1599,6 +1599,130 @@ body.presenting .toyota-foda .foda-navigator{display:none}
 })();
 </script>
 <!-- ============ FIN MATRIZ FODA ============ -->
+
+<style id="toyota-smart-week12-style">
+#objetivos-smart{position:relative;isolation:isolate;overflow:hidden;padding:clamp(76px,9vw,125px) 5%;background:radial-gradient(ellipse at 92% 8%,rgba(235,10,30,.16),transparent 42%),linear-gradient(145deg,#0b0e13,#111720 58%,#090c11);color:#f5f6f8;scroll-margin-top:78px}
+#objetivos-smart:before{content:"SMART";position:absolute;right:-.04em;top:3%;font-size:clamp(100px,21vw,330px);font-weight:900;letter-spacing:-.1em;line-height:1;color:#ffffff07;pointer-events:none}
+#objetivos-smart .w12-wrap{position:relative;max-width:1220px;margin:auto}
+#objetivos-smart .w12-kicker{display:flex;align-items:center;gap:12px;color:#ff596b;font-size:11px;font-weight:900;letter-spacing:.22em;text-transform:uppercase}
+#objetivos-smart .w12-kicker:before{content:"";width:28px;height:2px;background:#eb0a1e;box-shadow:0 0 14px #eb0a1e}
+#objetivos-smart h2{font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.06em;margin:18px 0}
+#objetivos-smart h2 em{font-style:normal;color:#ff4056}
+#objetivos-smart .w12-lead{max-width:850px;color:#c7ced8;font-size:clamp(16px,1.6vw,19px);line-height:1.8}
+#objetivos-smart .w12-meta{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 0}
+#objetivos-smart .w12-meta span{padding:7px 12px;border:1px solid #ffffff27;border-radius:99px;background:#ffffff07;color:#dce1e8;font-size:11px}
+#objetivos-smart .w12-block{margin-top:64px}
+#objetivos-smart .w12-block-head{margin-bottom:20px}
+#objetivos-smart .w12-block-head h3{font-size:clamp(26px,3.4vw,40px);line-height:1.15;margin:9px 0;color:#fff}
+#objetivos-smart .w12-block-head p{max-width:850px;color:#b9c2ce;margin:0;line-height:1.75}
+#objetivos-smart .w12-table-wrap{overflow-x:auto;border:1px solid #ffffff24;border-radius:13px;background:#0a0e14}
+#objetivos-smart table{width:100%;min-width:700px;border-collapse:collapse;text-align:left}
+#objetivos-smart th{padding:15px 17px;background:#202630;color:#ff7180;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+#objetivos-smart td{padding:15px 17px;border-top:1px solid #ffffff17;color:#d2d8e1;font-size:13px;line-height:1.65;vertical-align:top}
+#objetivos-smart td strong{color:#fff}
+#objetivos-smart .w12-foda{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#objetivos-smart .w12-card{position:relative;padding:23px;border:1px solid #ffffff23;border-radius:15px;background:linear-gradient(145deg,#1a2029,#0d1118);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+#objetivos-smart .w12-card:hover{transform:translateY(-4px);border-color:#eb0a1e88;box-shadow:0 16px 38px #0006}
+#objetivos-smart .w12-card h4{font-size:19px;margin:0 0 13px;color:#fff}
+#objetivos-smart .w12-card p{font-size:13px;line-height:1.7;color:#c1c9d3;margin:8px 0}
+#objetivos-smart .w12-card p b{color:#ff6879}
+#objetivos-smart .w12-objectives{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#objetivos-smart .w12-objective{padding:24px;border:1px solid #ffffff25;border-top:3px solid #eb0a1e;border-radius:14px;background:linear-gradient(150deg,#1a2029,#0c1016)}
+#objetivos-smart .w12-objective .w12-index{font-size:11px;font-weight:900;letter-spacing:.17em;color:#ff6677}
+#objetivos-smart .w12-objective h4{font-size:20px;margin:12px 0;color:#fff}
+#objetivos-smart .w12-objective p{font-size:13px;line-height:1.75;color:#c4ccd6;margin:9px 0}
+#objetivos-smart .w12-objective .w12-smart{margin-top:16px;padding-top:13px;border-top:1px solid #ffffff20;color:#aeb8c5;font-size:12px}
+#objetivos-smart .w12-objective .w12-smart b{color:#fff}
+#objetivos-smart .w12-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#objetivos-smart .w12-actions article{padding:22px;border:1px solid #ffffff22;border-radius:14px;background:#ffffff08}
+#objetivos-smart .w12-actions h4{margin:0 0 12px;color:#fff;font-size:17px}
+#objetivos-smart .w12-actions ol{padding-left:20px;margin:0;color:#c7ced8;font-size:13px;line-height:1.85}
+#objetivos-smart .w12-corrective{padding:clamp(23px,4vw,40px);border:1px solid #eb0a1e66;border-radius:18px;background:linear-gradient(115deg,#32131b,#141922 58%,#0b0e14);box-shadow:0 20px 55px #0005}
+#objetivos-smart .w12-corrective h3{font-size:clamp(25px,3vw,38px);margin:10px 0;color:#fff}
+#objetivos-smart .w12-corrective p{color:#cbd2dc;line-height:1.8;font-size:14px}
+#objetivos-smart .w12-corrective strong{color:#ff7786}
+#objetivos-smart .w12-conclusion{padding:28px 0 0;border-top:1px solid #ffffff27;color:#cbd2dc;font-size:16px;line-height:1.9;max-width:1000px}
+#objetivos-smart .w12-note{font-size:11px;color:#929eac;margin-top:22px;line-height:1.7}
+#objetivos-smart .w12-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+#objetivos-smart .w12-reveal.w12-visible{opacity:1;transform:none}
+@media(max-width:900px){#objetivos-smart .w12-objectives,#objetivos-smart .w12-actions{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){#objetivos-smart .w12-foda,#objetivos-smart .w12-objectives,#objetivos-smart .w12-actions{grid-template-columns:1fr}#objetivos-smart .w12-card,#objetivos-smart .w12-objective{padding:20px}}
+@media(prefers-reduced-motion:reduce){#objetivos-smart .w12-card,#objetivos-smart .w12-reveal{transition:none}#objetivos-smart .w12-reveal{opacity:1;transform:none}}
+</style>
+<section id="objetivos-smart" aria-labelledby="w12-title">
+<div class="w12-wrap">
+<header class="w12-reveal">
+<div class="w12-kicker">Semana 12 · Planeación estratégica</div>
+<h2 id="w12-title">Del diagnóstico a los <em>objetivos.</em></h2>
+<p class="w12-lead">Establecimiento de objetivos SMART, acciones e indicadores de seguimiento para Toyota Motor Corporation. Esta propuesta retoma el diagnóstico FODA desarrollado en esta misma página y convierte sus prioridades en resultados medibles.</p>
+<div class="w12-meta"><span>3 objetivos SMART</span><span>6 acciones</span><span>3 indicadores</span><span>Seguimiento y mejora continua</span></div>
+</header>
+
+<div class="w12-block w12-reveal">
+<div class="w12-block-head"><div class="w12-kicker">01 / EMPRESA</div><h3>Toyota Motor Corporation</h3></div>
+<p class="w12-lead">Empresa automotriz japonesa dedicada al desarrollo, fabricación y comercialización de vehículos y soluciones de movilidad. Su filosofía corporativa se expresa en <strong>“Producing Happiness for All”</strong> (producir felicidad para todos) y <strong>“Creating Mobility for All”</strong> (crear movilidad para todos), según la sección de misión y visión de este proyecto.</p>
+</div>
+
+<div class="w12-block w12-reveal">
+<div class="w12-block-head"><div class="w12-kicker">02 / RECUPERAR EL DIAGNÓSTICO</div><h3>Matriz FODA seleccionada</h3><p>Se retoman los factores de la matriz FODA que ya aparece en la página. Se destaca uno de cada cuadrante para orientar los objetivos y las decisiones.</p></div>
+<div class="w12-foda">
+<article class="w12-card"><h4>Fortalezas</h4><p><b>F1.</b> Sistema de Producción Toyota: Just in Time, jidoka y mejora continua, que favorecen la calidad y eficiencia.</p><p><b>F2.</b> Experiencia en vehículos híbridos y presencia internacional.</p></article>
+<article class="w12-card"><h4>Oportunidades</h4><p><b>O1.</b> Demanda de alternativas de movilidad con menores emisiones.</p><p><b>O2.</b> Avances en baterías, software y automatización para mejorar productos y procesos.</p></article>
+<article class="w12-card"><h4>Debilidades</h4><p><b>D1.</b> Baja participación relativa de vehículos eléctricos de batería (BEV): alrededor de 2.3% de las ventas Toyota y Lexus en el ejercicio fiscal 2026.</p><p><b>D2.</b> Necesidad de inversión, adaptación tecnológica y capacitación.</p></article>
+<article class="w12-card"><h4>Amenazas</h4><p><b>A1.</b> Competencia de nuevos fabricantes de vehículos eléctricos, en precio, autonomía y software.</p><p><b>A2.</b> Cambios regulatorios y volatilidad en costos de materias primas y suministro.</p></article>
+</div>
+<p class="w12-note">Factores y dato base retomados del diagnóstico FODA de esta página. La selección prioritaria es F1, O2, D1 y A1 porque conecta la eficiencia productiva con la necesidad de acelerar capacidades eléctricas ante la competencia.</p>
+</div>
+
+<div class="w12-block w12-reveal">
+<div class="w12-block-head"><div class="w12-kicker">03 / OBJETIVOS SMART</div><h3>Tres objetivos estratégicos</h3><p>Las metas siguientes son propuestas académicas del equipo, no compromisos ni resultados oficiales publicados por Toyota.</p></div>
+<div class="w12-objectives">
+<article class="w12-objective"><div class="w12-index">OBJETIVO 01 · COMERCIAL</div><h4>Impulsar la participación de BEV</h4><p>Elevar la participación de vehículos eléctricos de batería (BEV) de aproximadamente <strong>2.3% a 3.0%</strong> de las ventas combinadas Toyota y Lexus en los próximos 12 meses, mediante acciones comerciales y una oferta alineada con las necesidades de cada mercado.</p><div class="w12-smart"><b>SMART:</b> específico (participación BEV), medible (3.0%), alcanzable (crecimiento gradual), relevante (competitividad) y temporal (12 meses).</div></article>
+<article class="w12-objective"><div class="w12-index">OBJETIVO 02 · OPERATIVO</div><h4>Reducir desperdicios</h4><p>Disminuir en <strong>10%</strong> el desperdicio de materiales en los procesos de producción durante los próximos 12 meses, tomando como referencia la medición inicial y aplicando principios del Sistema de Producción Toyota.</p><div class="w12-smart"><b>SMART:</b> específico (desperdicio de materiales), medible (10%), alcanzable (mejora continua), relevante (eficiencia y costos) y temporal (12 meses).</div></article>
+<article class="w12-objective"><div class="w12-index">OBJETIVO 03 · ORGANIZACIONAL</div><h4>Fortalecer capacidades tecnológicas</h4><p>Capacitar al menos al <strong>90%</strong> del personal relacionado con ingeniería, producción y servicio técnico en tecnologías BEV, baterías y software durante los próximos 12 meses.</p><div class="w12-smart"><b>SMART:</b> específico (personal y temas definidos), medible (90%), alcanzable (programa por etapas), relevante (adaptación tecnológica) y temporal (12 meses).</div></article>
+</div>
+</div>
+
+<div class="w12-block w12-reveal">
+<div class="w12-block-head"><div class="w12-kicker">04 / PLAN DE ACCIÓN</div><h3>Dos acciones para cada objetivo</h3></div>
+<div class="w12-actions">
+<article><h4>01 · Comercial</h4><ol><li>Fortalecer la promoción y las pruebas de manejo de modelos BEV en los mercados donde exista demanda e infraestructura adecuada.</li><li>Capacitar a distribuidores para explicar autonomía, carga, costos de uso y beneficios de los modelos eléctricos.</li></ol></article>
+<article><h4>02 · Operativo</h4><ol><li>Medir los desperdicios por línea de producción e identificar las causas principales.</li><li>Aplicar mejoras Kaizen, reutilización de materiales y controles de proceso para reducir mermas.</li></ol></article>
+<article><h4>03 · Organizacional</h4><ol><li>Implementar un programa de capacitación sobre baterías, sistemas eléctricos, software y seguridad BEV.</li><li>Evaluar los conocimientos del personal mediante prácticas y evaluaciones al finalizar cada módulo.</li></ol></article>
+</div>
+</div>
+
+<div class="w12-block w12-reveal">
+<div class="w12-block-head"><div class="w12-kicker">05 / INDICADORES DE SEGUIMIENTO</div><h3>Medición de resultados</h3><p>Los resultados se compararán con la línea base y las metas propuestas para identificar avances o desviaciones.</p></div>
+<div class="w12-table-wrap"><table><thead><tr><th>Objetivo</th><th>Indicador: ¿qué se medirá?</th><th>Meta esperada</th><th>Frecuencia</th></tr></thead><tbody>
+<tr><td><strong>Comercial</strong></td><td>Participación de BEV en ventas Toyota y Lexus.</td><td>Alcanzar 3.0%, partiendo de 2.3%.</td><td>Mensual</td></tr>
+<tr><td><strong>Operativo</strong></td><td>Porcentaje de desperdicio de materiales respecto a la línea base.</td><td>Reducir 10% en 12 meses.</td><td>Mensual</td></tr>
+<tr><td><strong>Organizacional</strong></td><td>Porcentaje del personal objetivo que completa y acredita la capacitación.</td><td>Al menos 90% en 12 meses.</td><td>Trimestral</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="w12-block w12-reveal">
+<div class="w12-corrective">
+<div class="w12-kicker">06 / ACCIÓN CORRECTIVA</div><h3>¿Qué hacer si no se alcanza la meta comercial?</h3>
+<p><strong>Situación:</strong> la participación de BEV permanece por debajo de la trayectoria necesaria para llegar al 3.0%.</p>
+<p><strong>Posibles causas:</strong> precio poco competitivo, infraestructura de carga limitada, baja información del cliente o una oferta que no responde a cada mercado.</p>
+<p><strong>Consecuencia:</strong> menor crecimiento en vehículos eléctricos y pérdida de oportunidades frente a competidores.</p>
+<p><strong>Acción correctiva:</strong> analizar ventas y comentarios por región, ajustar la estrategia comercial, reforzar pruebas de manejo y capacitación de distribuidores y revisar la adecuación de modelos y precios al mercado.</p>
+<p><strong>Responsables de supervisión:</strong> dirección comercial, responsables regionales de ventas y equipos de producto.</p>
+</div>
+</div>
+
+<div class="w12-block w12-reveal">
+<div class="w12-block-head"><div class="w12-kicker">07 / CONCLUSIÓN</div><h3>Evaluar para mejorar</h3></div>
+<p class="w12-conclusion">La planeación estratégica permite que Toyota convierta su diagnóstico FODA en objetivos concretos y acciones coordinadas. Los indicadores ayudan a comparar los resultados reales con las metas, detectar desviaciones y tomar decisiones oportunas. Revisar periódicamente el desempeño comercial, operativo y organizacional favorece la mejora continua, fortalece la competitividad y permite avanzar hacia una movilidad con menores emisiones.</p>
+<p class="w12-note">Nota metodológica: las metas de 3.0%, 10% y 90%, así como los plazos y acciones, son propuestas académicas elaboradas para esta actividad. El 2.3% se conserva únicamente como dato de referencia del FODA presentado en el proyecto.</p>
+</div>
+</div>
+</section>
+<script id="toyota-smart-week12-motion">
+(()=>{const root=document.getElementById('objetivos-smart');if(!root)return;const items=[...root.querySelectorAll('.w12-reveal')];if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver'in window)){items.forEach(x=>x.classList.add('w12-visible'));return}const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('w12-visible');io.unobserve(e.target)}}),{threshold:.08});items.forEach(x=>io.observe(x));})();
+</script>
+
 </main>
 
 <footer class="footer smoke-section"><canvas class="tire-smoke" aria-hidden="true"></canvas><div class="eyebrow">Coordinación · Innovación · Mejora continua</div><h2 data-split>GRACIAS POR SU ATENCIÓN</h2><p class="muted">Sistema Administrativo de Toyota · Presentación académica independiente</p></footer>
