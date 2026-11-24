@@ -2305,7 +2305,32 @@ targets.forEach(el=>observer.observe(el));
 #semana-12-toyota .step{background:#151e26;border-left:2px solid #eb1c24;padding:14px;border-radius:0 10px 10px 0;color:#aebdc9}
 #semana-12-toyota .step b{display:block;color:#fff;margin-bottom:6px}
 #semana-12-toyota .note{border-left:3px solid #eb1c24;padding:12px 16px;background:#121b23;border-radius:0 10px 10px 0}
-#semana-12-toyota a{color:#a9d9f6}
+#semana-12-toyota a{color:#a9d9f6;transition:color .25s ease,text-shadow .25s ease}
+#semana-12-toyota a:hover{color:#fff;text-shadow:0 0 18px #eb1c1e88}
+#semana-12-toyota .rule{position:relative;overflow:hidden}
+#semana-12-toyota .rule:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#fff9,transparent);transform:translateX(-110%);animation:s12-line-sweep 4.5s ease-in-out infinite}
+#semana-12-toyota .card,#semana-12-toyota .panel{position:relative;overflow:hidden;box-shadow:0 12px 36px #0003;transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .4s ease,box-shadow .55s ease,background .4s ease}
+#semana-12-toyota .card:before,#semana-12-toyota .panel:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),#eb1c1e20,transparent 68%);transition:opacity .4s ease}
+#semana-12-toyota .card:hover,#semana-12-toyota .panel:hover{transform:translateY(-7px);border-color:#eb1c1e88;box-shadow:0 24px 55px #0008,0 0 0 1px #eb1c1e18}
+#semana-12-toyota .card:hover:before,#semana-12-toyota .panel:hover:before{opacity:1}
+#semana-12-toyota .num{display:inline-flex;align-items:center;gap:9px}
+#semana-12-toyota .num:before{content:"";width:18px;height:2px;background:#eb1c24;box-shadow:0 0 12px #eb1c2488}
+#semana-12-toyota .tag{transition:background .3s,border-color .3s,transform .3s}
+#semana-12-toyota .card:hover .tag{background:#20394a;border-color:#6aa5c9;transform:translateY(-2px)}
+#semana-12-toyota th{position:relative}
+#semana-12-toyota tbody tr{transition:background .3s ease}
+#semana-12-toyota tbody tr:hover{background:#ffffff0a}
+#semana-12-toyota .step{transition:transform .4s ease,border-color .3s,background .3s;position:relative}
+#semana-12-toyota .step:hover{transform:translateY(-5px);border-left-color:#ff6672;background:#1c2933}
+#semana-12-toyota.s12-motion-enabled .s12-reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--s12-delay,0ms)}
+#semana-12-toyota.s12-motion-enabled .s12-reveal.s12-visible{opacity:1;transform:none}
+#semana-12-toyota.s12-motion-enabled .s12-stagger>*{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--s12-index,0)*90ms)}
+#semana-12-toyota.s12-motion-enabled .s12-stagger.s12-visible>*{opacity:1;transform:none}
+#semana-12-toyota h2{animation:s12-heading-in 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes s12-heading-in{from{opacity:0;transform:translateY(24px);letter-spacing:.02em}to{opacity:1;transform:none}}
+@keyframes s12-line-sweep{0%,25%{transform:translateX(-110%)}65%,100%{transform:translateX(110%)}}
+@media(hover:none){#semana-12-toyota .card:hover,#semana-12-toyota .panel:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){#semana-12-toyota *,#semana-12-toyota *:before,#semana-12-toyota *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}#semana-12-toyota.s12-motion-enabled .s12-reveal,#semana-12-toyota.s12-motion-enabled .s12-stagger>*{opacity:1;transform:none}}
 @media(max-width:850px){#semana-12-toyota .grid{grid-template-columns:1fr}#semana-12-toyota .steps{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){#semana-12-toyota .steps{grid-template-columns:1fr}}
 </style>
@@ -2390,7 +2415,10 @@ targets.forEach(el=>observer.observe(el));
 <h3 class="stitle">Fuentes de referencia</h3>
 <p><a href="https://global.toyota/en/newsroom/corporate/39013233.html" target="_blank" rel="noopener">Toyota Motor Corporation — New Management Policy & Direction Announcement</a><br><a href="https://global.toyota/pages/global_toyota/ir/library/annual/2025_001_integrated_en.pdf" target="_blank" rel="noopener">Toyota Integrated Report 2025</a></p>
 <p class="note">Nota metodológica: los porcentajes, plazos y cifras del ejemplo de seguimiento son propuestas académicas e ilustrativas, no resultados oficiales de Toyota.</p>
-</div></section>
+</div>
+<script>
+(()=>{const root=document.getElementById('semana-12-toyota');if(!root||root.dataset.motionReady)return;root.dataset.motionReady='1';const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce)return;root.classList.add('s12-motion-enabled');const targets=root.querySelectorAll('.stitle,.card,.panel,.tablewrap,.note,.steps,.rule');targets.forEach((el,i)=>{el.classList.add('s12-reveal');el.style.setProperty('--s12-delay',(i%4)*65+'ms');if(el.classList.contains('grid')||el.classList.contains('steps'))el.classList.add('s12-stagger')});root.querySelectorAll('.grid,.steps').forEach(group=>{group.classList.add('s12-stagger');[...group.children].forEach((el,i)=>el.style.setProperty('--s12-index',i))});if(!('IntersectionObserver'in window)){targets.forEach(el=>el.classList.add('s12-visible'));root.querySelectorAll('.s12-stagger').forEach(el=>el.classList.add('s12-visible'));return}const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('s12-visible');io.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -45px 0px'});targets.forEach(el=>io.observe(el));root.querySelectorAll('.s12-stagger').forEach(el=>io.observe(el));root.querySelectorAll('.card,.panel').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true}));})();
+</script></div></section>
 
 
 <footer class="footer smoke-section"><canvas class="tire-smoke" aria-hidden="true"></canvas><div class="eyebrow">Coordinación · Innovación · Mejora continua</div><h2 data-split>GRACIAS POR SU ATENCIÓN</h2><p class="muted">Sistema Administrativo de Toyota · Presentación académica independiente</p></footer>
